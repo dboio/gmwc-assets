@@ -1,0 +1,140 @@
+=mobile_only($display)
+  display: $display
+
+=input_container
+  display: block
+  line-height: $dimension-grid-height
+  height: $dimension-grid-height
+  border-style: solid
+  border-width: 0
+  border-color: $ol-inputs
+  +border-radius($br-inputs, $br-inputs)
+  box-shadow: $bs-input
+  padding: 0
+  position: relative
+  overflow: hidden
+  background-color: $bg-inputs
+  &.focus, &:focus
+    +box-shadow($bs-input-focus)
+  &.btn
+    +baseButtons
+  .btn, .btn-base, .btn-default
+    &.focus, &:focus
+      background: transparent !important
+      +box-shadow(none !important)
+    &:hover, &.focus:hover
+      background-color:  transparentize($bg-inputs, .4) !important
+  pre
+    margin: 0
+    padding: 0
+    border: 0
+    background-color: transparent
+    font-family: $font-family-monospace !important
+
+
+  label
+    input
+      line-height: $dimension-grid-height
+      height: $dimension-grid-height
+      padding: 0 $inputPadding
+      margin: 0 auto
+      position: relative
+      display: inline
+      float: none
+      left: 0
+      width: 100px !important
+      border-width: 1px !important
+      border-style: solid !important
+      +border-radius($br-inputs, $br-inputs)
+      border-color: $ol-inputs
+      box-shadow: $bs-input
+      &:focus
+        border-color: $ol-inputs-focus
+      &::-webkit-autofill,
+      &::-webkit-autofill:focus
+        background: none !important
+
+  p
+    display: inline
+    padding: 0
+    margin-left: 0
+  .input_container_checkbox
+    clear: both
+    display: block
+    padding-bottom: 5px
+    position: relative
+  .bootstrap-tagsinput
+    padding: 0
+    border: none
+    background: transparent
+    +border-radius(0)
+    +box-shadow(none)
+    display: block
+    line-height: $dimension-grid-height
+    height: $dimension-grid-height
+    input
+      position: inherit
+      float: left
+      padding-left: $inputPadding
+      margin-top: $inputPadding
+    .tag
+      float: left
+      vertical-align: middle
+      margin-top: $padding-large-vertical
+      &:first-child
+        margin-left: $dimension-grid-inputpadding
+
+
+  .input_triggers
+    float: right
+    text-align: center
+    z-index: 3
+    +dimensionGrid()
+    .icon, .glyphicon
+      margin: 0
+      color: $icon-color-disabled
+      font-size: $dimension-grid-iconsize !important
+    &.disabled, .disabled
+      &, div, i, span, label, .icon, .glyphicon
+        color: lighten($icon-color-disabled, 15%) !important
+    a
+      text-decoration: none
+      display: inherit
+      &.text-underline
+        text-decoration: $link-hover-decoration
+
+    label
+      float: none
+      display: inline-block
+      margin: 0
+      padding: 0
+      +dimensionGrid()
+    .form_btn
+      line-height: 18px
+      height: 22px !important
+      margin: 0 !important
+      padding: 0 !important
+      > .icon, .glyphicon
+        line-height: 16px
+        font-size: .9em
+        vertical-align: top
+        margin: 0 !important
+        padding: 0 !important
+    > .form_btn
+      margin: 3px 0 0 !important
+      padding: 0 !important
+      line-height: 22px
+      outline: none
+
+  &.input_container_with_hint
+    input, .input, .placeholder, .choice, textarea
+      padding-left: 0 !important
+
+  &.input_container_with_btns
+    input, .input, .placeholder, .choice, textarea
+      padding-right: 0 !important
+
+  &.view_only
+    padding: 0 $dimension-grid-inputpadding
+    pre
+      margin: $dimension-grid-inputpadding 0

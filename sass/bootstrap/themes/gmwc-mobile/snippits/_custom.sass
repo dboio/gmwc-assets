@@ -1,0 +1,95 @@
+.main-content
+  .winery-logo
+    max-height: $dimension-grid-height * 5.5
+    max-width: $dimension-grid-width * 5.5
+    min-width: $dimension-grid-height * 3.25
+    width: 30%
+    padding: $default-paddings
+    margin-top: $default-paddings
+  > .media
+    margin-left: -$default-paddings
+    margin-right: -$default-paddings
+    &:last-child
+      border-bottom: $default-border-size $default-border-style $default-border-color-bright
+.sidebar
+  .media.club
+    .media-right
+      display: none
+
+// SIDEBAR
+.sidebar
+  padding-left: 0 !important
+  padding-right: 0 !important
+  margin-top: -$default-border-size
+  .panel:last-child
+    margin-bottom: -$default-border-size
+
+  @media (min-width: $screen-tablet)
+    border-left: $site-borders-frames $default-border-size $default-border-style
+    margin-left: -$default-border-size !important
+    padding-left: $default-border-size !important
+    margin-top: 0
+
+// MAIN CONTENT
+.main-content
+  @media (min-width: $screen-tablet)
+    padding-bottom: $default-paddings
+    min-height: $dimension-grid-height * 15
+    border-right: $site-borders-frames $default-border-size $default-border-style
+  .description
+    display: block
+    padding-bottom: $default-paddings
+  .list-group + .description
+    padding-top: $default-paddings
+
+
+// TAG SEARCH
+@media (max-width: $screen-xs)
+  .tagsearch-active
+    .navbar-top
+      &.navbar-with-small-cart
+        margin-top: -($dimension-grid-height * 3 + $default-border-size)
+        &.navbar-fixed-top
+          margin-top: -($dimension-grid-height + $default-border-size)
+
+
+// CAROUSEL FLYOVERS
+.carousel-wrapper
+  position: relative
+  .carousel-flyover
+    position: absolute
+    display: block
+    z-index: 11
+    &-tl
+      top: $default-paddings * 2
+      left: -($default-paddings)
+      border-top-right-radius: $border-radius-base
+      border-bottom-right-radius: $border-radius-base
+    &-tr
+      top: $default-paddings * 2
+      right: -($default-paddings)
+      border-top-left-radius: $border-radius-base
+      border-bottom-left-radius: $border-radius-base
+    &-bl
+      bottom: $default-paddings * 2
+      left: -($default-paddings)
+      border-top-right-radius: $border-radius-base
+      border-bottom-right-radius: $border-radius-base
+    &-br
+      bottom: $default-paddings * 2
+      right: -($default-paddings)
+      border-top-left-radius: $border-radius-base
+      border-bottom-left-radius: $border-radius-base
+
+  .carousel-inner .carousel-flyover
+    z-index: 10
+    &-tl
+      left: 0
+    &-tr
+      right: 0
+    &-bl
+      left: 0
+    &-br
+      right: 0
+
+

@@ -1,0 +1,52 @@
+= dimensionGrid($dimension-grid: $dimension-grid)
+  line-height: $dimension-grid
+  min-height: $dimension-grid
+  margin: 0
+  padding: 0
+  border: none !important
+  .row
+    margin: 0
+    padding: 0
+    border: none
+    min-height: $dimension-grid
+  .btn
+    vertical-align: top
+  +baseGridIcons
+
+.dimension-grid
+  +dimensionGrid()
+
+
+
+.grid-square
+  display: block
+  height: $dimension-grid-height
+  width: $dimension-grid-width
+  white-space: nowrap
+.grid-square-width
+  display: block
+  width: $dimension-grid-width
+  white-space: nowrap
+.grid-square-height
+  display: block
+  height: $dimension-grid-height
+  white-space: nowrap
+.grid-square-margin-left
+  margin-left: $dimension-grid-width !important
+.grid-square-margin-right
+  margin-right: $dimension-grid-width !important
+.grid-square-margin-top
+  margin-top: $dimension-grid-height !important
+.grid-square-margin-bottom
+  margin-bottom: $dimension-grid-height !important
+.grid-square-padding-bottom
+  padding-bottom: $dimension-grid-height !important
+.grid-square-padding-top
+  padding-top: $dimension-grid-height !important
+.grid-square-padding-right
+  padding-right: $dimension-grid-width !important
+.grid-square-padding-left
+  padding-left: $dimension-grid-width !important
+@media (max-width: 992px)
+  .grid-square-margin-left, .grid-square-margin-right
+    margin-left: 0 !important

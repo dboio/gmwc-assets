@@ -1,0 +1,1119 @@
+
+
+// mixins
+// @import mixins/form // imported in base.sass
+
+
+// columnar view as mixin
+//////////////////////////////////////////////////////////////////////////////
+=columnar
+
+  $form-column-left-width: 20%
+
+  h3
+    margin-left: $form-column-left-width
+  .form_row
+    label
+      display: inline-block
+      float: left
+      width: $form-column-left-width
+      margin-bottom: 0
+      padding: 0 $dimension-grid-inputpadding
+      &.border-right
+        margin-right: -1px
+      + div
+        margin-left: $form-column-left-width !important
+      &.hidden + div
+        margin-left: 0 !important
+      + div.multiple_inputs
+        > .pull-left
+          width: 50%
+          + div
+            margin-left: 50%
+          &.grid-square-width
+            width: $dimension-grid-width
+            display: inline
+            float: left
+            + div
+              margin-left: $dimension-grid-width
+        > .pull-right
+          width: 50%
+          + div
+            margin-right: 50%
+          &.grid-square-width
+            width: $dimension-grid-width
+            display: inline
+            float: right
+            + div
+              margin-right: $dimension-grid-width
+
+    p
+      margin-left: 20%
+    p + .input_container
+      margin-top: -15px
+    .preview
+      width: 10%
+    .input_container
+      p
+        display: inline
+        padding: 0
+      .input_triggers
+        +dimensionGrid()
+        span
+          font-size: .9em
+        label
+          float: none
+          display: inline-block
+          line-height: $dimension-grid-lineheight
+          margin: 0
+          padding: 0
+          width: auto
+
+    // TYPE: legend
+    &.type_legend
+      margin-left: $form-column-left-width
+    // TYPE: Image
+    &.type_image
+      .preview
+        margin-left: $form-column-left-width !important
+        margin-right: 2%
+        width: 10%
+      .type_image_group
+        margin-left: $form-column-left-width + 10
+    // TYPE: URL
+    &.type_url
+      .type_url_group
+        margin-left: $form-column-left-width
+        padding-left: 0
+    // TYPE: CUSTOM COMBO and COMBINED
+    //&.type_combo, &.type_combined, &.input_container_with_btns
+      .menu > ul
+        //left: 18% !important;
+    // TYPE: Avatar or Captcha
+    &.type_avatar, &.type_captcha
+      p
+        margin-left: 30%
+        margin-top: 5px
+        padding-top: 0
+    // TYPE: Mapping
+    &.type_mapping
+      margin-left: $form-column-left-width
+      .form_row
+        width: 50%
+        white-space: nowrap
+        text-overflow: ellipsis
+        overflow: hidden
+        .input_container
+          margin-left: 51%
+        + .form_row
+          label
+            display: none
+          .input_container
+            margin-left: 0
+      &.no_sorting_type
+        // when no type combobox is used
+        .form_row
+          &:first-child
+            display: block
+            width: 100%
+            float: none
+          + .form_row
+            display: none
+
+/* General Screen
+//////////////////////////////////////////////////////////////////////////////
+@media all
+  body.full_screen,
+  html.full_screen
+    //overflow: hidden;
+  .dbo_form
+    font-family: $form-font-family
+    display: block
+    padding: 0
+    margin: 0
+    // global form settings
+    .ui-menu
+      font-family: $form-font-family
+      position: absolute
+      border: $menu-border-size $border-style $dropdown-border
+      background-color: $menu-bg-color
+      +box-shadow($bs-menu)
+      +border-radius($br-inputs, $br-inputs)
+      cursor: pointer
+      -webkit-backdrop-filter: blur(10px)
+      backdrop-filter: blur(10px)
+      .ui-menu-item
+        padding: 0
+        margin: 0
+        width: 100%
+        line-height: $dimension-grid-height
+        text-align: left
+        border-top: $default-border-size $default-border-style $default-border-color
+        position: relative
+        display: block
+        +baseGridIcons
+        &:first-child
+          border-top-style: none
+
+        &, a, .choice, .hint, .input_triggers, span, div, strong, i, .icon, .icon:before
+          //+transition(all .3s ease-in-out !important)
+        a
+          text-decoration: none
+          display: block
+          padding: 0 $dimension-grid-inputpadding
+          line-height: $dimension-grid-height
+          min-height: 0
+          color: $dropdown-link-color
+          font-size: $font-size-base
+          font-weight: normal
+          +ellipsis(true)
+          .icon, .glyphicon
+            margin: 0 0 - $dimension-grid-inputpadding
+          .dimension-grid
+            width: $dimension-grid-width
+            height: $dimension-grid-height
+            .icon, .glyphicon
+              margin: 0
+            &.pull-left
+              margin-left: -$dimension-grid-inputpadding
+            &.pull-right
+              margin-right: -$dimension-grid-inputpadding
+          .double-text-rows
+            margin-top: $table-condensed-cell-padding
+            font-size: $font-size-small
+            font-weight: normal
+            span
+              display: block
+              font-size: $font-size-base
+              font-weight: normal
+          &:hover, &.ui-state-focus, &.ui-state-active
+            background: $dropdown-link-hover-bg
+            &, span, div
+              color: $dropdown-link-hover-color !important
+
+      .ui-state-disabled
+        font-weight: normal
+        line-height: 1.5
+        a
+          cursor: default
+
+
+    .ui-datepicker
+      border-color: $dropdown-border
+      font-family: $form-font-family !important
+      background-color: darken($body-bg, 10%)
+      width: auto !important
+      .ui-datepicker-header
+        font-family: $form-font-family
+        padding: 0
+        line-height: $dimension-grid-line-height !important
+        height: $dimension-grid-height !important
+        background-color: $color-gray
+        color: $body-bg !important
+        .ui-datepicker-title
+          font-family: inherit
+          font-weight: bold
+          line-height: $dimension-grid-line-height !important
+          height: $dimension-grid-height !important
+          margin: 0 !important
+          color: inherit
+          span
+            line-height: inherit
+            height: inherit
+            color: inherit
+        a, a:before
+          +icon-basics
+          font-weight: normal !important
+          width: $dimension-grid-width
+          height: $dimension-grid-height
+          line-height: $dimension-grid-line-height !important
+          color: darken($body-bg, 10%)
+          font-size: $dimension-grid-icon-size
+          top: 0 !important
+          cursor: pointer
+          text-align: center
+          padding: 0
+          &:hover, &:active, &:focus
+            color: $body-bg !important
+          span.ui-icon
+            display: none
+
+          &.ui-datepicker-next
+            right: 0 !important
+            width: $dimension-grid-width !important
+            height: $dimension-grid-height !important
+            &:before
+              content: '\f106'
+            &:hover, &:active, &:focus
+              &:before
+                content: '\f105'
+
+          &.ui-datepicker-prev
+            left: 0 !important
+            &:before
+              content: '\f103'
+            &:hover, &:active, &:focus
+              &:before
+                content: '\f102'
+
+      td, th
+        line-height: ($dimension-grid-line-height - 1) // -border
+        height: ($dimension-grid-height - 1) // -border
+        padding: 0 !important
+        border-bottom: $default-border-size $default-border-style $default-border-color
+        border-left: $default-border-size $default-border-style $default-border-color
+        text-align: center
+        a
+          line-height: ($dimension-grid-line-height - 1) // -border
+          height: ($dimension-grid-height - 1) // -border
+          padding: 0 !important
+          width: ($dimension-grid-width - 1)
+          text-align: center
+          font-size: 1.2em
+          color: $default-gray-text
+          &.ui-state-hover
+            background-color: $default-hover-bg
+            color: $body-bg
+          &.ui-state-active
+            color: darken($body-bg, 10%)
+            background-color: $default-gray-text
+          &.ui-state-highlight
+            color: $default-gray-text
+            background-color: $bg-required
+        &:first-child
+          border-left: none
+          a
+            width: $dimension-grid-height
+
+
+
+      th
+        background-color: lighten($default-gray-text, 10%)
+        border-left-color: lighten($default-gray-text, 10%)
+        span
+          font-family: $form-font-family
+
+    .ui-menu
+      li:first-child a
+        +border-radius($br-inputs $br-inputs 0 0, $br-inputs $br-inputs 0 0)
+      li:last-child a
+        +border-radius(0 0 $br-inputs $br-inputs, 0 0 $br-inputs $br-inputs)
+
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+
+      > li
+        +clearfix
+    h2
+      margin: 55px 0 20px
+      &:first-child
+        margin: 10px 0 20px
+    h3
+      margin: 0 0 10px 0
+      display: block
+      border-bottom-width: 1px
+      border-bottom-style: solid
+      line-height: 28px
+      position: relative
+      zoom: 1
+    input, input:focus, input:active, input::-moz-focus-inner,
+    textarea, .input
+      +font-reset
+      border: none !important
+      outline: none !important
+      font-family: $form-font-family !important
+      resize: none
+      background: none !important
+      appearance: border-box
+    .menu_container
+      display: block
+      position: relative
+      margin: 0 auto
+      .menu
+        //display: none
+    // buttons and controls
+    .form_controls
+      display: block
+      text-align: right
+      padding: 0
+      margin-right: 0
+      &.alignLeft
+        text-align: left
+      .form_btn
+        margin: 0 0 10px 10px !important
+        &:first-child
+          margin-left: 0 !important
+    // form row buttons
+    .form_btn
+      display: inline-block
+      padding: 4px 15px !important
+      margin: 0 10px 10px 0 !important
+      +border-radius(3px, 3px)
+      border: 1px solid $ol-button
+      font: normal 16px / 22px $form-font-family, Sans-Serif
+      height: 30px !important
+      cursor: pointer
+      vertical-align: bottom
+      text-align: center
+      +transition(all 0.2s ease-in-out)
+      color: $fg-button
+      background-clip: padding-box
+      background-color: rgba(0, 0, 0, 0.3)
+      background: $bg-button
+      /* Old browsers
+      background: -moz-linear-gradient(top, $bg-button 0%, $bg-button-2 100%)
+      /* FF3.6+
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $bg-button), color-stop(100%, $bg-button-2))
+      /* Chrome,Safari4+
+      background: -webkit-linear-gradient(top, $bg-button 0%, $bg-button-2 100%)
+      /* Chrome10+,Safari5.1+
+      background: -o-linear-gradient(top, $bg-button 0%, $bg-button-2 100%)
+      /* Opera 11.10+
+      background: -ms-linear-gradient(top, $bg-button 0%, $bg-button-2 100%)
+      /* IE10+
+      background: linear-gradient(to bottom, $bg-button 0%, $bg-button-2 100%)
+      /* W3C
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$bg-button},endColorstr=#{$bg-button-2},GradientType=1)
+      &:last-child
+        margin-right: 0 !important
+      &:hover, &:active, &:focus
+        border-width: 1px !important
+        border-style: solid !important
+        box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0 0
+        color: $fg-button-hover
+      &:active, &:focus, &.active
+        border-width: 1px !important
+        border-style: solid !important
+        box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+      i.dbo
+        display: inline
+        font-size: 1rem
+        cursor: pointer
+        color: $fg-icons
+        width: auto
+        padding-left: 0
+        &:before
+          line-height: 1.4rem
+        &.dbo
+          line-height: 22px
+          font-size: 1rem
+          //margin-bottom: 2px !important;
+          &:before
+            line-height: 22px
+            font-size: 1rem
+            //margin-bottom: 2px !important;
+        &[class*="fi-"]:before
+          line-height: 1rem
+          vertical-align: 5%
+      &.choice
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        .icon, .glyphicon, .ui-icon
+          margin: 0 - $dimension-grid-inputpadding
+          width: $dimension-grid-height
+          display: block
+        .ui-menu-icon
+          display: none !important
+          &:before
+            display: none !important
+      span
+        font: normal 16px / 16px $form-font-family
+        vertical-align: top
+        cursor: pointer
+        margin: 0
+        padding: 0
+    // form rows
+    &, .form_row
+      display: block
+      padding: 0
+      margin: 0
+      line-height: $dimension-grid-height
+      clear: both
+      +error('.form_row')
+
+      &.add_row, .add_row
+        a
+          display: block
+          line-height: $dimension-grid-height
+          height: $dimension-grid-height
+          text-align: left
+          +transition(all 0.2s linear)
+          +baseGridIcons()
+          .icon, .glyphicon,
+          .ui-icon
+            float: left !important
+          &:hover
+            background-color: $bg-inputs-focus
+
+      label
+        display: block
+        line-height: $dimension-grid-height
+        cursor: pointer
+        padding: 0 $dimension-grid-inputpadding
+        margin-bottom: 0 !important
+        +text-overflow
+        a
+          text-decoration: underline !important
+        .additional-enlarged-tools
+          display: none
+      p
+        display: block
+        padding: 0
+        line-height: $dimension-grid-height
+      input, .input
+        +input_default
+      textarea
+        +input_textarea
+      select
+        +input_select
+      .hint
+        font-size: inherit
+        float: left
+        min-width: $dimension-grid-width
+        +dimensionGrid()
+        margin: 0
+        padding: 0 $dimension-grid-inputpadding
+        +baseIcons
+        .icon, .glyphicon, .ui-icon
+          margin: 0 0 - $dimension-grid-inputpadding
+          color: $icon-color
+          &.filter
+            color: $icon-color
+            &:before
+              font-size: 1.2em !important
+        + label
+          padding: 0 !important
+      .choice
+        +dimensionGrid()
+        width: auto
+        display: block
+        line-height: $dimension-grid
+        height: $dimension-grid-inputheight
+        margin: 0
+        font-size: $form-font-size
+        position: absolute
+        top: 0
+        left: 0
+        padding: 0 $default-paddings
+        white-space: nowrap
+        text-overflow: ellipsis
+        overflow: hidden
+        z-index: 1
+        color: $fg-placeholder
+        font-family: $form-font-family
+        cursor: default
+        .icon, .glyphicon
+          margin: 0 (-$dimension-grid-inputpadding)
+          margin-right: 0
+          width: $dimension-grid-width
+          display: inline
+          float: left
+        .dimension-grid
+          width: $dimension-grid-width
+          height: $dimension-grid-height
+          .icon, .glyphicon
+            margin: 0
+            color: $icon-color
+          &.pull-left
+            margin-left: -$default-paddings
+          &.pull-right
+            margin-right: -$default-paddings
+        .ui-icon
+          display: none
+        a
+          &, &:link, &:hover, &:visited, &:focus
+            text-decoration: underline !important
+          &:hover
+            color: $color-purple
+        &.btn
+          +baseButtons
+          margin: 0
+          padding: 0
+          .icon, .glyphicon, .ui-icon
+            margin: 0
+
+      .placeholder
+        +input_placeholder
+      .file_value
+        line-height: $dimension-grid-inputheight
+        height: $dimension-grid-inputheight
+        margin: 0
+        padding: $dimension-grid-inputpadding
+        font-size: $dimension-grid-fontsize
+        float: left
+        white-space: nowrap
+        text-overflow: ellipsis
+        overflow: hidden
+        position: absolute
+        top: 0
+        left: 0
+        margin-right: 80px
+        z-index: 1
+      .preview
+        height: 100px
+        width: 13%
+        margin-right: 2%
+        overflow: hidden
+        border-width: 1px
+        border-style: solid
+        float: left
+        text-align: center
+        vertical-align: middle
+        border-color: $ol-inputs
+        +border-radius($br-inputs, $br-inputs)
+        img
+          height: 100px
+          margin: auto
+      .captcha
+        height: 40px
+        width: 13%
+        margin-right: 2%
+        overflow: hidden
+        border-width: 1px
+        border-style: solid
+        float: left
+        text-align: center
+        vertical-align: middle
+        border-color: $ol-inputs
+        +border-radius($br-inputs, $br-inputs)
+        img
+          height: 40px
+          margin: auto
+      .form_btn
+        margin-right: 5px !important
+      .input_container
+        +input_container
+
+      &.focus
+        .input_container
+          +box-shadow($bs-input-focus)
+          background-color: $bg-inputs-focus
+          input, .input
+            +opacity(1)
+          &.view_only
+            +box-shadow(none)
+
+      &.auto-height
+        &, label, .input_container
+          height: auto !important
+          min-height: $dimension-grid-height
+
+      // TYPE: base button
+      // places the input in a square and removes the clear
+      &.type_base_btn
+        clear: none !important
+        float: left
+        &, label, .input_container
+          +dimensionGrid()
+          width: $dimension-grid-width
+          overflow: hidden
+          text-align: center
+        .input
+          font-weight: bold
+          &[type=number], &[type=tel]
+            &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+              -webkit-appearance: none
+              margin: 0
+
+        &.value_set
+          &, .input , label, .input_container
+            color: $base-color-active
+
+
+
+      // TYPE: Picker
+      &.type_picker
+        position: relative
+        .menu
+          > ul
+            display: none
+            z-index: 10000
+            max-height: 190px
+            overflow-y: auto
+            overflow-x: hidden
+            li
+              z-index: 10001
+        .input_container.btn
+          cursor: pointer
+          .choice
+            text-overflow: clip
+            cursor: pointer !important
+      // for when 2 pickers are within a form_row
+      > .type_picker
+        .input_container
+          margin-left: 0 !important
+          &.border-left
+            &, &:hover
+              border-left: 1px solid $base-color-borders !important
+          &.border-right
+            &, &:hover
+              border-right: 1px solid $base-color-borders !important
+
+      // TYPE: Radio
+      &.type_radio
+        .input_container
+          border: none
+          box-shadow: none
+          padding: 0
+          height: auto
+          background: transparent none !important
+          label
+            width: auto
+            margin-right: 15px
+            float: left
+            vertical-align: middle
+          input
+            display: inline
+            position: relative
+            left: auto
+            float: left
+            line-height: 25px
+            height: 25px
+            width: auto !important
+            font-size: 1.2em
+            margin-right: 10px
+            cursor: pointer
+            outline: none
+        &.disabled
+          .input_container
+            +opacity(1)
+
+      // TYPE: Check
+      &.type_checkbox
+        .input_container
+          border: none
+          box-shadow: none
+          padding: 0
+          height: auto
+          background: transparent none !important
+          line-height: $dimension-grid-height !important
+          vertical-align: middle
+          label
+            float: none
+            display: block
+            width: auto
+            vertical-align: middle
+          label.handle
+            display: block
+            position: absolute
+            top: 0
+            left: 0
+            width: $dimension-grid-width
+            height: $dimension-grid-height
+            margin: 0
+          .input_triggers
+            label.handle
+              position: relative
+          input, .input
+            width: auto !important
+            float: left !important
+            margin: 0 $default-paddings !important
+            padding: 0 !important
+            height: $dimension-grid-height !important
+            line-height: $dimension-grid-height !important
+            font-size: $dimension-grid !important
+            position: inherit !important
+            +opacity(1)
+            vertical-align: middle !important
+
+            + label
+              padding-left: 0
+              margin-left: $dimension-grid-width
+            &.pull-right
+              float: right !important
+              + label
+                padding-left: $dimension-grid-padding-left
+                padding-right: 0
+                margin-left: 0
+                margin-right: $dimension-grid-width
+
+        &.disabled
+          .input_container
+            +opacity(1)
+
+      // TYPE: ON-OFF
+      &.type_onoff
+        position: relative
+        label.handle
+          display: block
+          position: absolute
+          top: 0
+          left: 0
+          width: $dimension-grid-width
+          height: $dimension-grid-height
+        .input_triggers
+          label.handle
+            position: relative
+        input, .input
+          +opacity(0)
+          position: relative
+          top: 0
+          left: -999px
+
+      // TYPE: textarea & code
+      &.type_textarea, &.type_code
+        min-height: $dimension-grid-height + 1
+        +transition(all 0.5s ease)
+        .input_container
+          height: auto !important
+          //margin-bottom: -1px
+          input, textarea, .input
+            display: block
+            position: inherit
+            float: none
+            padding: $dimension-grid-inputpadding $default-paddings
+            cursor: text
+            +transition(all 0.5s ease)
+            +box-sizing(border-box)
+            resize: none
+            margin: 0
+            overflow: auto !important
+            min-height: $dimension-grid-height
+        &.border-bottom
+          .input_container
+            input, textarea, .input
+              margin-bottom: -1px
+      &.type_code
+        height: $dimension-grid-height * 3 + 3 !important
+        .input_container
+          input, textarea, .input
+            padding: 0 $dimension-grid-inputpadding
+            font-family: $font-family-monospace !important
+            height: ($dimension-grid-height * 3) + 2 !important
+
+      // TYPE: select
+      &.type_select
+        .input_container
+          cursor: pointer !important
+          label.handle
+            display: block
+            position: absolute
+            top: 0
+            left: 0
+            width: $dimension-grid-width
+            height: $dimension-grid-height
+          .input_triggers
+            +dimensionGrid()
+            label.handle
+              position: relative
+          input, .input
+            +opacity(0)
+            position: absolute
+            top: 0
+            left: -999px
+          select, select.input
+            position: absolute
+            top: 0
+            left: 0
+            opacity: 0
+            +opacity(0)
+            cursor: pointer
+            height: 30px
+            line-height: 30px
+            bottom: 0
+            +appearance(menulist-button)
+            margin-right: 0 !important
+            option
+              line-height: 30px
+              font-size: 14px !important
+              padding: 5px
+          &:hover
+            background: $dropdown-link-hover-bg
+            color: $dropdown-link-hover-color
+            .choice, .hint, .input_triggers
+              &, .icon, .glyphicon
+                color: $dropdown-link-hover-color
+            .placeholder
+              &, .icon, .glyphicon
+                color: transparentize($dropdown-link-hover-color, .9)
+
+      // TYPE: CUSTOM COMBO and COMBINED
+      &.type_combined
+        //position: relative;
+        .input_container
+          cursor: pointer !important
+          .input_triggers
+            +dimensionGrid()
+          select, .input[type="hidden"]
+            display: none
+          .text-nowrap
+            display: block
+            > a
+              text-decoration: $link-hover-decoration
+            > .choice
+              width: auto !important
+              margin-left: auto !important
+              margin-right: auto !important
+              position: relative
+              .fg-color-gray-dark
+                +ellipsis
+
+
+        &.focus, .input_container:hover
+          cursor: pointer !important
+          background: $dropdown-link-hover-bg
+          color: $dropdown-link-hover-color
+          &, .placeholder, .choice, .hint, .input_triggers, > span, > div, .fg-color-gray-dark, .text-nowrap > a, .input_triggers > a.text-underline
+            color: $dropdown-link-hover-color !important
+            > .icon, > .glyphicon
+              color: $dropdown-link-hover-color !important
+          .choice > .dimension-grid
+            .glyphicon, .icon
+              &, &:before, &:after
+                color: $dropdown-link-hover-color !important
+          //.placeholder
+            &, .icon, .glyphicon
+              color: transparentize($dropdown-link-hover-color, .9) !important
+        &.has-text-input
+          .input_container
+            &:hover
+              background-color: $bg-inputs
+            .choice, .hint, span, div, .input
+              &, .icon, .glyphicon
+                color: $input-color !important
+            .placeholder
+              color: $input-color-placeholder !important
+            .input_triggers
+              &, .icon, .glyphicon
+                color: transparentize($input-color, .8) !important
+
+
+        .menu
+          > ul
+            display: none
+            z-index: 10000
+            max-height: 190px
+            overflow-y: auto
+            overflow-x: hidden
+            li
+              z-index: 10001
+
+      // TYPE: DATE
+      &.type_date, .type_date
+        position: relative
+        .input_container
+          .input_triggers
+            .form_btn
+              height: 40px
+              width: 40px
+              margin: 0
+              padding: 0
+
+      // TYPE: CREDIT CARD
+      &.type_creditcard
+        .input_container
+          float: left
+          border-right: 1px solid $form-border-color
+          width: 60%
+          + .input_container
+            width: 20%
+            + .input_container
+              float: none
+              border-right: none
+              width: 19%
+          .hint
+            img
+              width: 40%
+
+
+
+      &.full_screen
+        display: block
+        position: fixed !important
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: $zindex-popover
+        background: $bg-inputs
+        overflow: hidden
+        height: 100% !important
+        &[class*="border-"], [class*="border-"]
+          border: none !important
+        label
+          display: block
+          background: $body-bg
+          height: $dimension-grid-height
+          width: 100% !important
+          top: 0
+          left: 0
+          right: 0
+          z-index: $zindex-popover + 1
+          padding-right: $dimension-grid-width
+          .additional-enlarged-tools
+            display: inherit !important
+          &.hidden
+            display: block !important
+            visibility: visible !important
+          + .input_container
+            margin: $dimension-grid-height 0
+            .input_triggers
+              top: -$dimension-grid-height
+              border-bottom: 1px solid $base-color-borders !important
+
+        .input_container
+          display: block
+          position: absolute !important
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          border: 0
+          z-index: $zindex-popover + 1
+          border-top: $default-border-size $default-border-style $base-color-borders !important
+          box-shadow: none
+          padding-left: 0
+          margin-left: 0 !important
+          overflow: visible
+          input, textarea, .input
+            margin: 0 !important
+            height: 100% !important
+            width: 100% !important
+            overflow: auto !important
+            padding-right: $dimension-grid-inputpadding !important
+          .input_triggers
+            position: absolute !important
+            top: 0
+            right: 0
+            z-index: $zindex-popover + 2
+            +baseButtons()
+          .CodeMirror
+            margin: 0 !important
+            height: 100% !important
+            width: 100% !important
+            overflow: auto !important
+
+
+      // required, errors, states, disabled, value_set, focus, separate_rows
+      &.required, .required
+        .input_container
+          .choice, .placeholder
+            color: $fg-required
+          &:after
+            content: ''
+            position: absolute
+            top: -($dimension-grid-height / 4)
+            left: -($dimension-grid-height / 4)
+            height: $dimension-grid-height / 2
+            width: $dimension-grid-width / 2
+            border-top: ($dimension-grid-width/4) $default-border-style transparent
+            border-bottom: ($dimension-grid-width/4) $default-border-style transparent
+            border-right: ($dimension-grid-width/4) $default-border-style transparentize($fg-required, .4)
+            +transform(scale(1) rotate(45deg) translate(0px, 0px))
+          input, select, textarea
+            border: none !important
+            outline: 0 none !important
+            &:focus, &:active
+              border: none !important
+              outline: 0 none !important
+
+      &.disabled, .disabled
+        .input_container
+          +opacity(.5)
+          input, select, textarea
+            cursor: default
+            resize: none
+
+
+
+      &.error, .error
+        position: relative
+        .input_container
+          +box-shadow($default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur $ol-error inset)
+          +animation-duration(.75s)
+          +animation-fill-mode(both)
+          +animation-name(shake)
+          input, select, textarea
+            left: 0
+      //&.error.form_row:after
+        content: ''
+        position: absolute
+        top: $dimension-grid-height / 4
+        left: -3px
+        height: $dimension-grid-height / 2
+        width: $dimension-grid-width / 2
+        border-top: ($dimension-grid-width/4) $default-border-style transparent
+        border-bottom: ($dimension-grid-width/4) $default-border-style transparent
+        border-left: ($dimension-grid-width/4) $default-border-style $fg-error
+        +animation-duration(.3s)
+        +animation-fill-mode(both)
+        +animation-name(fadeInLeft)
+      &.value_set, .value_set
+        .placeholder
+          display: none !important
+        .input_container
+          .placeholder
+            display: none !important
+          input, .input
+            +opacity(1)
+          select, select.input, input[type='file']
+            +opacity(0)
+          .choice
+            color: $input-color
+            .icon, .glyphicon
+              &, &:before, &:after
+                color: $icon-color-disabled
+            > .dimension-grid
+              .icon, .glyphicon
+                &, &:before, &:after
+                  color: $icon-color
+
+            &.active
+              .icon, .glyphicon
+                &, &:before, &:after
+                  color: $icon-color
+        &.required
+          .choice
+            color: $fg-required
+
+
+      &.focus, .focus
+        .placeholder
+          display: none !important
+        .input_container
+          background: $dropdown-link-active-bg
+          color: $dropdown-link-active-color
+          input, select, textarea
+            border: none !important
+            outline: 0 none !important
+            resize: none
+            &:focus, &:active
+              border: none !important
+              outline: 0 none !important
+          .placeholder
+            display: none !important
+          //.input_triggers, .hint, .choice, div, span
+            &, .icon, .glyphicon
+              color: $dropdown-link-active-color !important
+
+      &.separate_rows, .separate_rows
+        .input_container_radio,
+        .input_container_checkbox
+          clear: both
+          display: block
+          padding-bottom: 5px
+          position: relative
+          label
+            line-height: 30px
+            float: none
+    // columnar view
+    &.columnar
+      +columnar
+
+
+
+
+
+/* enable columnar view on desktop devices
+@media (min-width: $screen-md-min)
+  .dbo_form
+    +columnar
+
+/* Mobile
+@media (max-width: $screen-xs-max)
+  .dbo_form
+    .form_controls
+      text-align: center

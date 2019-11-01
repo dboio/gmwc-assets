@@ -1,0 +1,331 @@
+
+@import mixins
+@import snippits/flags
+@import alerts
+@import scaffolding
+@import type
+@import thumbnails
+@import badges
+@import snippits/dimension-grid
+@import dropdowns
+@import snippits/borders
+@import navs
+@import navbar
+@import snippits/footer
+@import buttons
+@import labels
+@import media
+@import snippits/custom
+@import snippits/spacing
+@import snippits/missing
+@import snippits/yotpo
+@import list-group
+@import panels
+@import wells
+@import modals
+@import snippits/thumbnail-grid
+@import snippits/dbo-forms
+
+
+.grapes
+  width: 150px
+  +transition(all .3s ease-in-out)
+  img
+    width: 100%
+    margin-top: $default-paddings
+  @media (max-width: $screen-xs - 1)
+    width: 25%
+
+
+.collapsing
+  +transition-duration(1s)
+
+
+// Colors
+@each $colors, $colors-var in $colors
+  .fg-color-#{$colors}
+    &, &:before, &:after
+      color: $colors-var !important
+    &.disabled, &.disabled:before, &.disabled:after
+      color: transparentize($colors-var, .6) !important
+  .bg-color-#{$colors}
+    background-color: $colors-var
+  .ol-color-#{$colors}
+    border-color: $colors-var
+
+// Custom Areas
+.item-detail
+  overflow: hidden
+  position: relative
+  min-height: (($dimension-grid-height * 5) - $default-border-size)
+  border-bottom: $default-border-size $default-border-style $navbar-default-border
+  margin: 0 (-$default-paddings)
+  padding: 0 $default-paddings
+  .flag
+    margin: 0 $padding-small-horizontal
+    left: 25px
+  .attributes
+    font-size: $font-size-small
+    display: table-cell
+    vertical-align: top
+    width: 100%
+    dl
+      +clearfix
+      @media (max-width: $min-device-width-iphone-6 - 1)
+        float: none
+    dt
+      font-weight: normal
+      line-height: $font-size-base
+      display: block
+      word-break: normal
+      text-wrap: normal
+    dd
+      font-weight: 300
+      line-height: $font-size-base
+      color: $default-gray-text
+      + dt
+        margin-top: $font-size-base
+    dt + dd + dt + dd + dt
+      float: left
+      margin-right: 5px
+    dt + dd + dt + dd + dt + dd
+      margin-top: $font-size-base
+      display: block
+    dt + dd + dt + dd + dt + dd:after
+      display: table
+      height: 3px
+      overflow: hidden
+      content: ''
+    dt + dd + dt + dd + dt + dd + dt
+      margin-top: 0
+      margin-right: 5px
+      float: left
+    dt + dd + dt + dd + dt + dd + dt + dd
+      margin-top: 0
+
+  h1
+    font-size: $font-size-h4 + 2
+    margin-bottom: $default-paddings/3
+    margin-top: $default-paddings
+    font-weight: 300
+    @media (min-width: $min-device-width-iphone-6)
+      font-size: $font-size-h3
+      margin-top: 12px
+      margin-bottom: 3px
+    .label.pull-right
+      font-size: .6em
+      font-weight: normal
+      padding: 3px 0.5em 2px !important
+      font-family: $font-family-base
+      line-height: $dimension-grid-height / 2
+  h2
+    font-size: $font-size-h5
+    margin: 0 0 $default-paddings
+    font-weight: 300
+    color: $default-gray-text
+    line-height: 1em
+    display: block
+    @media (min-width: $min-device-width-iphone-6)
+      font-size: $font-size-h5 + 2
+    .label.pull-left
+      margin-right: $padding-xs-horizontal
+      padding: $padding-xs-vertical $padding-xs-horizontal !important
+      line-height: inherit
+
+
+  .thumb
+    //float: left
+    display: table-cell
+    vertical-align: top
+    padding: ($dimension-grid-height/2) $default-paddings 0 0
+    .img-wrapper
+      max-height: $dimension-grid-height * 5.5
+      min-width: $dimension-grid-width * 2.5
+      position: relative
+      overflow: hidden
+      border-bottom: $default-border-size $default-border-style $default-border-color
+      margin: 0 0 (-$default-border-size) (-$default-paddings)
+      text-align: center
+      padding-left: $default-paddings * 2
+    img
+      max-width: $dimension-grid-width * 3
+      max-height: $dimension-grid-height * 6.75
+      margin-right: $default-paddings
+      +transition(all .5s ease-in-out)
+    @media (min-width: $screen-xs-min)
+      .img-wrapper
+        max-height: $dimension-grid-height * 7
+        min-width: $dimension-grid-width * 4
+      img
+        max-width: $dimension-grid-width * 4
+        max-height: $dimension-grid-height * 9.5
+    @media (max-width: $min-device-width-iphone-6 - 1)
+      .img-wrapper
+        min-width: $dimension-grid-width * 2.25
+      img
+        max-width: $dimension-grid-width * 2.75
+    a
+      display: block
+      &:hover, &:focus
+        text-decoration: none
+  &.item-detail-package
+    .flag
+      left: $default-paddings
+    .thumbnail-grid .flag
+      left: $default-border-size
+
+    .attributes
+      margin-left: 0
+    .thumb
+      display: inline
+      float: right
+      margin: 0 (-$default-paddings) (-$default-border-size) $padding-small-horizontal
+      border-bottom: $default-border-size $default-border-style $default-border-color
+      max-height: $dimension-grid-height * 5
+      min-width: $dimension-grid-width * 2.5
+      position: relative
+      overflow: hidden
+      .img-wrapper
+        text-align: left
+        min-width: 0
+        margin: 0 (-$default-paddings) (-$default-border-size) 0
+        padding-right: $default-paddings
+      img
+        margin-left: $default-paddings/3
+        margin-right: 0
+        max-width: $dimension-grid-width * 2.85
+        max-height: $dimension-grid-height * 5.5
+        @media (min-width: $screen-sm-min)
+          max-width: $dimension-grid-width * 4
+        @media (max-width: $min-device-width-iphone-6 - 1)
+          max-width: $dimension-grid-width * 3.25
+      a
+        padding-left: 0
+        &:before
+          left: auto !important
+          right: 0
+    @media (max-width: $screen-xs-max)
+      max-height: none
+      .thumb
+        float: none
+        display: block
+        min-height: auto
+        height: $dimension-grid-height * 3.5
+        margin-left: 0
+        a
+          overflow: hidden
+          border-bottom: $default-border-style $default-border-size $form-border-color
+          &:before
+            bottom: 0
+        img
+          max-height: $dimension-grid-height * 4
+    @media (max-width: $min-device-width-iphone-6 - 1)
+      .thumb
+        height: $dimension-grid-height * 3
+        a
+          padding-left: 0
+          padding-top: $padding-large-vertical
+          &:before
+            right: $default-paddings + 20
+        img
+          max-height: $dimension-grid-height * 3
+  + .list-group
+    margin-top: -$default-border-size !important
+
+.modal-body
+  .panel-grid
+    margin-top: -($default-paddings + $default-border-size)
+    margin-right: -$default-paddings
+    margin-left: -$default-paddings
+
+  .item-detail
+    max-height: none !important
+    margin: 0
+    padding: 0
+    border-bottom: none
+    overflow: visible
+    .large-image
+      display: block
+      position: relative
+      overflow: hidden
+      text-align: center
+      height: $dimension-grid-height * 7
+      margin-bottom: $default-paddings
+      border-bottom: $default-border-style $default-border-size $form-border-color
+      img
+        display: inline-block
+        margin: $default-paddings auto 0
+        max-height: $dimension-grid-height * 8.5
+        max-width: $dimension-grid-width * 6
+        +transition(all .5s ease-in-out)
+      @media (max-width: $screen-xs-max)
+        height: $dimension-grid-height * 4
+        img
+          margin-top: ($default-paddings/3) * 2
+          max-height: $dimension-grid-height * 4.5
+          max-width: $dimension-grid-width * 3.25
+      @media (max-width: $min-device-width-iphone-6 - 1)
+        height: $dimension-grid-height * 3
+        img
+          margin-top: ($default-paddings/3)
+          max-height: $dimension-grid-height * 3.5
+          max-width: $dimension-grid-width * 2.5
+
+
+// carousel
+.main-content
+  @media (max-width: $max-mobile-device)
+    min-height: $dimension-grid-height * 5
+  .carousel
+    margin: (-$default-border-size) (-$default-paddings) 0
+    border-bottom: $default-border-size $default-border-style $default-border-color
+    .flag
+      @media (max-width: $max-mobile-device)
+        +flags(25px, 5%, -30px, 18px, .8, 0deg)
+    .carousel-indicators
+      bottom: 0
+      li
+        border-color: $color-gray-dark
+        &.active
+          background-color: $color-gray-dark
+    .item
+      padding-bottom: $dimension-grid-height
+      p
+        padding-bottom: 0
+
+    a.item
+      &:hover, &:active
+        background-color: $list-group-hover-bg
+        text-decoration: none !important
+    .carousel-caption
+      position: relative
+      border-top: $default-border-size $default-border-style $default-border-color-bright
+      left: 0
+      right: 0
+      bottom: auto
+      top: auto
+      +text-shadow(none)
+      display: block
+      margin: 0
+      padding: $default-paddings $default-paddings 0
+      text-align: left
+      color: $color-black
+      &.more-icon
+        padding-right: $dimension-grid-width
+      strong
+        font-weight: normal
+      .pull-right + h2
+        margin-top: 0
+
+
+
+// impersonating
+.impersonate
+  display: none !important
+  &-highlight
+    border: $default-border-style $default-border-size $label-danger-bg !important
+    background: transparentize($color-orange, .9)
+  &.close.no-margin-right
+    position: absolute
+    top: 0
+    right: 0

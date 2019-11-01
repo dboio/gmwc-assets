@@ -1,0 +1,140 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3041000, 2015-06-11T16:05:16-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: HelveticaNeueLTStd-Lt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-45-light/
+ *
+ * Webfont: HelveticaNeueLTStd-MdIt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-66-medium-italic/
+ *
+ * Webfont: HelveticaNeueLTStd-UltLt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-25-ultra-light/
+ *
+ * Webfont: HelveticaNeueLTStd-Roman by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-55-roman/
+ *
+ * Webfont: HelveticaNeueLTStd-UltLtIt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-26-ultra-light-italic/
+ *
+ * Webfont: HelveticaNeueLTStd-Th by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-35-thin/
+ *
+ * Webfont: HelveticaNeueLTStd-Md by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-65-medium/
+ *
+ * Webfont: HelveticaNeueLTStd-ThIt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-36-thin-italic/
+ *
+ * Webfont: HelveticaNeueLTStd-It by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-56-italic/
+ *
+ * Webfont: HelveticaNeueLTStd-LtIt by Linotype
+ * URL: http://www.myfonts.com/fonts/linotype/neue-helvetica/helvetica-46-light-italic/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3041000
+ * Licensed pageviews: 1,000,000
+ * Webfonts copyright: Copyright &#x00A9; 1988, 1990, 1993, 2002 Adobe Systems Incorporated.  All Rights Reserved. &#x00A9; 1981, 2002 Heidelberger Druckmaschinen AG. All rights reserved.
+ *
+ * © 2015 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2e66e8");
+
+// Ultra Light
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_2_0.eot');
+  src: font-url('helvetica-neue/2e66e8_2_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_2_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_2_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_2_0.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+// Ultra Light Italic
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_4_0.eot');
+  src: font-url('helvetica-neue/2e66e8_4_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_4_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_4_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_4_0.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+// Thin
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_5_0.eot');
+  src: font-url('helvetica-neue/2e66e8_5_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_5_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_5_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_5_0.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+// Thin Italic
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_7_0.eot');
+  src: font-url('helvetica-neue/2e66e8_7_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_7_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_7_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_7_0.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+// Light
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_0_0.eot');src: font-url('helvetica-neue/2e66e8_0_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_0_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_0_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_0_0.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+// Light Italic
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_9_0.eot');
+  src: font-url('helvetica-neue/2e66e8_9_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_9_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_9_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_9_0.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+// Roman
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_3_0.eot');
+  src: font-url('helvetica-neue/2e66e8_3_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_3_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_3_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_3_0.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Italic
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_8_0.eot');
+  src: font-url('helvetica-neue/2e66e8_8_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_8_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_8_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_8_0.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+// Bold
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_6_0.eot');
+  src: font-url('helvetica-neue/2e66e8_6_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_6_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_6_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_6_0.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+// Bold Italic
+@font-face {
+  font-family: 'helvetica_neue';
+  src: font-url('helvetica-neue/2e66e8_1_0.eot');
+  src: font-url('helvetica-neue/2e66e8_1_0.eot?#iefix') format('embedded-opentype'),font-url('helvetica-neue/2e66e8_1_0.woff2') format('woff2'),font-url('helvetica-neue/2e66e8_1_0.woff') format('woff'),font-url('helvetica-neue/2e66e8_1_0.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}

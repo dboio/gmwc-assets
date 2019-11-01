@@ -1,0 +1,33 @@
+@each $color, $color-var in $colors
+
+  // background-color
+  .color-bg-#{$color}
+    transition: background-color .3s ease-in-out, border-color .3s ease-in-out
+    background-color: $color-var !important
+    &[href]:hover,
+    [href]:hover &
+      background-color: darken($color-var, 5%) !important
+
+  // color
+  .color-fg-#{$color}
+    &, &:before, &:after
+      transition: all .3s ease-in-out
+      color: $color-var !important
+    &.disabled:before
+      color: transparentize( $color-var, .6) !important
+
+  // border-color
+  .color-ol-#{$color}
+    transition: border-color .3s ease-in-out
+    border-color: $color-var
+    &[href]:hover,
+    [href]:hover &
+      border-color: darken($color-var, 7%)
+
+  // color hover
+  .color-fg-#{$color}
+    &[href]:hover,
+    [href]:hover &
+      &, &:before, &:after
+        transition: all .3s ease-in-out
+        color: darken($color-var, 5%) !important

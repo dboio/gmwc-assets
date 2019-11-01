@@ -1,0 +1,106 @@
+.media
+  clear: both
+  padding: $default-paddings
+  margin: 0
+  border-top: $default-border-size $default-border-style $default-border-color-bright
+  +transition(all .3s ease-in-out)
+  .media-left
+    +transition(all .3s ease-in-out)
+    position: relative
+    .media-object.no-borders
+      border: none !important
+    .flag
+      +flags(18px, $default-border-size, ($default-paddings + $default-border-size) / 4, 12px, 1)
+  &:link
+    display: block
+  a
+    text-decoration: none !important
+  &:hover, &:focus
+    text-decoration: none !important
+    background-color: $list-group-hover-bg
+    .media-left,
+    .media-left .media-object
+      border-color: darken($default-border-color, 20%) !important
+  .btn-cart
+    display: block
+    margin: 0
+  &.newsletter
+    .media-left
+      padding-right: 0
+      +transition(all .3s ease-in-out)
+      .media-object
+        width: 100px
+        +transition(all .3s ease-in-out)
+        border: $default-border-size $default-border-style $default-border-color
+      + .media-body
+        padding-left: $dimension-grid-padding-right
+    .media-heading
+      +clean-font
+      font-weight: 300
+      color: $color-black
+    p
+      color: $gray-light
+  &.recipe
+    .media-left
+      padding-right: 0
+      border: $default-border-size $default-border-style $default-border-color
+      width: 100px
+      height:  100px
+      overflow: hidden
+      display: inline
+      float: left
+      text-align: center
+      .media-object
+        min-width: 100px
+        min-height: 100px
+      + .media-body
+        padding-left: $dimension-grid-padding-right
+    .media-heading
+      font-weight: 300
+      color: $color-black
+    p
+      color: $gray-light
+  &.club
+    .media-right
+      width: 100px
+      float: right
+      @media (max-width: $screen-xs - 1)
+        display: none
+      .media-object
+        max-width: 100px
+    .media-left
+      padding-right: 0
+      width: 100px
+      display: inline
+      float: left
+      text-align: center
+      .media-object
+        max-width: 100px
+        margin-bottom: $padding-large-vertical
+        +border-radius($border-radius-small)
+      + .media-body
+        padding-left: $dimension-grid-padding-right
+    .media-heading
+      font-weight: 300
+      color: $color-black
+
+      @media (min-width: $screen-tablet) and (max-width: 924px)
+        word-break: break-all
+
+
+
+    p
+      color: $gray-light
+      &.lead
+        color: $color-black
+      + p
+        margin: (($padding-large-vertical*3)-2) 0 0 0
+      @media (max-width: $screen-xs - 1)
+        &.lead
+          margin-bottom: 0
+        + p
+          margin-top: 0
+
+.panel-body
+  .media:last-child
+    margin-bottom: -$default-paddings

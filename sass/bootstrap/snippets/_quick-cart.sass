@@ -1,0 +1,122 @@
+$pointer-height: 10px
+$quick-cart-header-bg: $color-pinotBG
+
+.quick-cart
+  top: $dimension-grid-height + $pointer-height
+  right: 0
+  font-size: $font-size-base
+  letter-spacing: .02em
+  line-height: 1
+  position: absolute
+  width: 80%
+  @media (min-width: $screen-sm-min)
+    width: percentage((4 / $grid-columns))
+  border: none
+  background-color: lighten($color-gray-light, 5%)
+  +box-shadow(0 10px 20px rgba(0,0,0,0.6))
+  +border-radius($br-inputs, $br-inputs)
+  z-index: $zindex-popover
+  +transition(all .5s ease)
+  &.fadeOutUp
+    top: 0
+  @media (max-device-width: $screen-sm-max)
+    display: none !important
+  &:before
+    content: ''
+    position: absolute
+    width: 0
+    height: 0
+    border-left: $pointer-height solid transparent
+    border-right: $pointer-height solid transparent
+    border-bottom: $pointer-height solid $quick-cart-header-bg
+    right: 25px
+    top: -$pointer-height
+  .dbo_form
+    border-style: none !important
+    .list-group-item
+      border-color: $color-gray-light !important
+      .list-group-item-text-single
+        padding-right: $padding-small-vertical
+      .input_container
+        margin-left: -$default-paddings
+        margin-right: -$default-paddings
+        .list-group-item-text-double
+          padding-left: $dimension-grid-inputpadding
+      @include bg-variant('.input_container.bg-warning', $state-warning-bg)
+      .form_rows .list-group-item
+        border-color: $color-borders-1 !important
+  .quick-cart-footer
+    padding: $padding-small-vertical
+    display: block
+    border-top: $color-borders-1 $default-border-size $default-border-style !important
+
+    .btn
+      font-size: $font-size-large
+      line-height:  $dimension-grid-height + 2
+  .quick-cart-header
+    padding: 0
+    position: relative
+    z-index: $zindex-popover + 1
+    background-color: $quick-cart-header-bg
+    *
+      color: $white !important
+    &.dbo_form .list-group-item
+      margin: 0 ($padding-small-vertical * -1)
+      min-height: ($dimension-grid-height * 2) - 5
+      &:first-child
+        border: none !important
+    .list-group
+      display: table
+      padding: 0 !important
+      margin: 0 !important
+      width: 100%
+      .list-group-item
+        padding: 0 !important
+        margin: 0 !important
+        line-height: 1 !important
+        display: table-row
+        width: 100%
+        > .dimension-grid.pull-left
+          padding-top: 0 !important
+          margin: 0 !important
+          font-weight: normal !important
+          height: ($dimension-grid-height * 2) - 5 !important
+          display: table-cell
+          vertical-align: middle
+          width: ($dimension-grid-height * 2)
+          .icon
+            font-size: 50px !important
+            margin-top: 0 !important
+            height: ($dimension-grid-height * 2) - 5 !important
+            &:before
+              margin-top: 0 !important
+        .list-group-item-text
+          font-size: $font-size-large
+          padding: 15px $padding-small-vertical
+          display: table-cell
+          vertical-align: middle
+          text-align: left
+          width: 100%
+
+  .list-group
+    margin-left: 0 !important
+    margin-right: 0 !important
+    border-bottom: none !important
+    .list-group-item
+      background: transparent !important
+      z-index: $zindex-popover
+      &:first-child
+        border: none !important
+  .quick-cart-items
+    border-top: 5px $quick-cart-header-bg solid !important
+    padding-top: $padding-small-vertical
+    background: $body-bg
+    display: block
+    max-height: 50vh
+    overflow: hidden
+    overflow-y: scroll
+    position: relative
+    color: $text-color
+    +transition(all .5s ease)
+    .list-group-item .input-group .list-group-item
+      padding-left: $padding-small-vertical !important

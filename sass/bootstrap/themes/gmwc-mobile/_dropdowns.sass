@@ -1,0 +1,50 @@
+=dropDownMenus
+  font-family: $form-font-family
+  position: absolute
+  border: $menu-border-size $border-style $dropdown-border
+  background-color: $menu-bg-color
+  +box-shadow($bs-menu)
+  +border-radius($br-inputs, $br-inputs)
+  cursor: pointer
+  width: 100%
+  top: $dimension-grid-height !important
+  -webkit-backdrop-filter: blur(10px)
+  backdrop-filter: blur(10px)
+  h3
+    padding: 0 $default-paddings
+    margin: 0 !important
+    line-height: $dimension-grid-height
+    font-weight: 200
+    border-color: $navbar-default-border
+    border-top: $navbar-default-border $default-border-style $default-border-size
+    background-color: transparentize($body-bg, .6)
+    margin-top: -$default-border-size
+
+  .tt-suggestion
+    padding: 0 $default-paddings
+    margin: 0
+    width: 100%
+    line-height: $dimension-grid-height
+    text-align: left
+    border-top: $default-border-size $default-border-style $default-border-color-bright
+    position: relative
+    font-weight: normal
+    p
+      display: block
+      +ellipsis(true)
+      white-space: nowrap !important
+      margin-bottom: 0
+      font-size: $font-size-base
+    &:first-child
+      border-top-style: none
+    &.tt-cursor, &:hover, &:focus
+      background: $dropdown-link-hover-bg
+      &, span, div
+        color: $dropdown-link-hover-color !important
+
+  .ui-state-disabled
+    font-weight: normal
+    line-height: 1.5
+    a
+      cursor: default
+

@@ -1,0 +1,90 @@
+.ui-datepicker
+  border: $menu-border-size $border-style $dropdown-border
+  background-color: $menu-bg-color
+  +box-shadow($bs-menu)
+  +border-radius($br-inputs, $br-inputs)
+  width: auto
+  min-width: $dimension-grid-width * 6
+  padding: 0
+  display: none
+  .ui-datepicker-header
+    position: relative
+    padding: 0
+  .ui-datepicker-prev,
+  .ui-datepicker-next
+    position: absolute
+    top: 0
+    width: $dimension-grid-width
+    height: $dimension-grid-height
+    +moreIcon
+    cursor: pointer
+    &:before
+      +transition(color .3s ease-in-out)
+    .ui-icon
+      display: none
+  .ui-datepicker-prev
+    left: 0
+  .ui-datepicker-next
+    right: 0
+  .ui-datepicker-prev-hover,
+  .ui-datepicker-next-hover
+    &:before
+      color: $color-black
+  .ui-datepicker-title
+    margin: 0 $dimension-grid-width
+    line-height: $dimension-grid-height
+    text-align: center
+    select
+      font-size: 1em
+      margin: 1px 0
+  select
+    &.ui-datepicker-month, &.ui-datepicker-year
+      width: 49%
+  table
+    width: 100%
+    font-size: .9em
+    border-collapse: collapse
+    margin: 0 0 .4em
+  th
+    padding: 0
+    text-align: center
+    font-weight: bold
+    border: 0
+    height: $dimension-grid-height
+    width: $dimension-grid-width
+  td
+    border: 0
+    padding: 0
+    text-align: center
+    &.ui-datepicker-current-day,
+    &.ui-datepicker-today
+      span, a
+        background-color: $white
+        border: $default-border-size $default-border-style $default-border-color
+    span, a
+      display: block
+      padding: 0
+      height: $dimension-grid-height * .75
+      width: $dimension-grid-width
+      text-decoration: none
+      font-weight: bold
+      line-height: $dimension-grid-height * .75
+      font-size: $font-size-base
+  .ui-datepicker-buttonpane
+    background-image: none
+    margin: .7em 0 0 0
+    padding: 0 .2em
+    border-left: 0
+    border-right: 0
+    border-bottom: 0
+    button
+      float: right
+      margin: .5em .2em .4em
+      cursor: pointer
+      padding: .2em .6em .3em .6em
+      width: auto
+      overflow: visible
+      &.ui-datepicker-current
+        float: left
+  &.ui-datepicker-multi
+    width: auto

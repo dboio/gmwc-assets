@@ -1,0 +1,30 @@
+/*!
+ * Bootstrap Modal
+ *
+ * Copyright Jordan Schroter
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Boostrap 3 patch for for bootstrap-modal. Include BEFORE bootstrap-modal.css!
+
+body.modal-open
+  margin-right: 0
+
+.modal-open
+  .navbar-fixed-top, .navbar-fixed-bottom
+    margin-right: 0
+
+.modal
+  left: 50%
+  bottom: auto
+  right: auto
+  padding: 0
+  width: 500px
+  margin-left: -250px
+  background-color: $oracle-white
+  border: 1px solid $oracle-white-op50
+  +border-radius($border-radius-large)
+  +box-shadow($modal-box-shadow)
+  background-clip: padding-box
+  &.container
+    max-width: none

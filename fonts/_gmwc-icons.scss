@@ -1,0 +1,58 @@
+//
+// Glyphicons for Bootstrap
+//
+// Since icons are fonts, they can be placed anywhere text is placed and are
+// thus automatically sized to match the surrounding child. To use, create an
+// inline element with the appropriate classes, like so:
+//
+// <a href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+
+@import "gmwc-icon.mixins";
+
+// Import the fonts
+@font-face {
+  font-family: 'Glyphicons Custom';
+  src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.eot'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.eot'));
+  src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.eot?#iefix'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.eot?#iefix')) format('embedded-opentype'),
+       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.woff2'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.woff2')) format('woff2'),
+       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.woff'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.woff')) format('woff'),
+       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.ttf'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.ttf')) format('truetype'),
+       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.svg##{$icon-font-svg-id}'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.svg##{$icon-font-svg-id}')) format('svg');
+}
+
+// Catchall baseclass
+.icon.glyphicon {
+  @include glyphicon;
+  font-family: "Glyphicons Custom";
+}
+
+
+// More Icon on Link Rows
+.more-icon {
+  @include moreIcon;
+  padding-right: $dimension-grid-width;
+  &:before {
+    margin-right: -$dimension-grid-width;
+  }
+}
+
+
+// Individual icons
+
+.glyphicon-shipping                { &:before { content: "\f9ff"; } }
+.glyphicon-quantity                { &:before { content: "\e001"; } }
+.glyphicon-money                   { &:before { content: "\e148"; } }
+.glyphicon-facebook                { &:before { content: "\f10f"; } }
+.glyphicon-twitter                 { &:before { content: "\f7ff"; } }
+.glyphicon-gplus                   { &:before { content: "\f3ff"; } }
+.glyphicon-youtube                 { &:before { content: "\f5ff"; } }
+.glyphicon-pinterest               { &:before { content: "\f6ff"; } }
+.glyphicon-instagram               { &:before { content: "\f4ff"; } }
+.ui-datepicker-prev                { &:before { content: "\e079" !important; } }
+.ui-datepicker-next                { &:before { content: "\e080" !important; } }
+.glyphicon-glass.bottlecount-1     { &:before { content: "\0031" !important; } }
+.glyphicon-glass.bottlecount-2     { &:before { content: "\0032" !important; } }
+.glyphicon-glass.bottlecount-3     { &:before { content: "\0033" !important; } }
+.glyphicon-glass.bottlecount-4     { &:before { content: "\0034" !important; } }
+.glyphicon-glass.bottlecount-12    { &:before { content: "\0035" !important; } }
+.glyphicon-glass.bottlecount-24    { &:before { content: "\0036" !important; } }

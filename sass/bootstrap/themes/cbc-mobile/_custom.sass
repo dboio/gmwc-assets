@@ -1,0 +1,342 @@
+$font-helvetica-neue: $font-family-base
+
+@import ../gmwc-mobile/custom
+
+
+
+html
+  background: #d77f3b image-url('../../../gmwc/gfx_cbc/bg.html.jpg') top center repeat fixed
+  background-size: 280px auto
+  body
+    border-color: $color-black
+    +box-shadow(0 0 10px transparentize($color-black, .5))
+
+a:hover, a:focus
+  color: darken($club-fallback, 5%)
+
+h1, .h1
+  font-family: $font-nexa-rust-displayslab
+h2, .h2
+  font-family: $font-nexa-rust-script
+h4, .h4,
+.panel-heading,
+.navbar-top .main-toolbar .nav-base > li + li:before,
+.navbar-top .main-header + .container .breadcrumb > li + li + li:before
+  font-family: $font-arvo
+  letter-spacing: 0
+.navbar-top .menu-section,
+.navbar-top .main-toolbar .nav-base > li a,
+.breadcrumb
+  font-family: $font-nexa-rust-displaysans
+
+.flag span
+  letter-spacing: 0
+
+.item-detail h2 .label
+  font-family: $font-arvo
+
+.navbar-cart
+  @media (min-width: $screen-desktop)
+    width: $container-md
+  .list-group.list-group-small-cart
+    > .list-group-item
+      @media (min-width: $screen-md-min)
+        &:before
+          margin-right: 0 !important
+      > a
+        padding-left: ($grid-gutter-width / 2) !important
+        padding-right: ($grid-gutter-width / 2) !important
+        color: $white
+  .quick-cart
+    &:before
+      right: $dimension-grid-width
+      //border-bottom-color: $brand-primary
+      border-bottom-color: $white
+    .quick-cart-header
+      background-color: $brand-primary
+    .quick-cart-items
+      border-top: none !important
+    .quick-cart-footer
+      .btn-success
+        background-color: $shopping-cart-bar-bg
+        border-color: $shopping-cart-bar-bg
+        &:hover, &:active, &:focus
+          background-color: darken($shopping-cart-bar-bg, 10%)
+          border-color: darken($shopping-cart-bar-bg, 12%)
+
+
+
+.navbar-top
+  @media (min-width: $screen-desktop)
+    position: relative
+    width: $container-md
+    body > &
+      &, &.navbar-with-small-cart
+        + .container
+          padding-top: 0
+  .main-header
+    background: image-url('../../../cbc/gfx/orange.jpg') top right no-repeat
+    background-size: cover
+    border-bottom: 2px $default-border-style $color-black
+    @media (min-width: $screen-desktop)
+      padding: ($grid-gutter-width / 2)
+    h1, .h1
+      position: relative
+      font-family: $font-28days
+      clear: left
+      float: left
+      z-index: 1
+      +text-shadow(3px 3px 2px transparentize(darken($club-fallback, 10%), .2))
+      &, a, strong
+        color: $body-bg
+        font-size: $font-size-h1 + 4 !important
+        line-height: $font-size-h1 + 4
+      &:after
+        content: '™'
+        font-family: $font-sans
+        font-size: $font-size-small
+        line-height: $font-size-base
+        position: absolute
+        top: 0
+        right: -$default-paddings
+      @media (max-width: 639px)
+        &, a, strong
+          font-size: $font-size-h2 !important
+          line-height: $font-size-h2
+    h2, .h2
+      font-family: $font-handsean
+      color: $color-black
+      position: relative
+      z-index: 2
+      @media (max-width: $screen-md-max)
+        //display: block !important
+        float: left
+        +clearfix
+      @media (max-width: 639px)
+        font-size: $font-size-h6
+        line-height: $font-size-h6
+        margin-top: -$padding-small-vertical
+
+    .navbar-link
+      margin-top: 0
+      float: right
+      @media (max-width: $screen-desktop)
+        float: none
+        display: block
+        clear: both
+        padding-bottom: $padding-small-vertical
+        +clearfix
+        .username
+          max-width: none
+      .telephone, .username
+        color: $color-black
+        font-weight: bold
+        &:after
+          color: $color-black
+      .btn
+        background-color: $club-fallback
+        border-color: $club-fallback
+        &:hover, &:focus
+          background-color: darken($club-fallback, 5%)
+          border-color: darken($club-fallback, 5%)
+
+  .main-toolbar
+    .search-area
+      .dbo_form > div
+        .input_container
+          top: 0
+          +border-top-radius(0)
+          +border-bottom-radius(0)
+          border-top-style: none
+          border-right-style: none
+          border-bottom-style: none
+        .focus .btn-square span.icon
+          color: $link-color
+      .bootstrap-tagsinput
+        .label-info
+          +label-variant($brand-primary)
+
+.head-banner
+  +clean-font
+  text-align: center
+  display: block
+  position: relative
+  .h4
+    text-align: left
+    +rotate(-4deg)
+    font-family: $font-nexa-rust-script-bold
+    font-size: 1.7em
+    margin: -10px 0 0 50px
+    padding-left: 250px
+    @media (min-width: 1319px)
+      margin-top: -15px !important
+    + .h4
+      clear: left
+      font-size: 1.3em
+      position: absolute
+      top: 50px
+      left: 0
+      float: none
+      margin: -20px 0 0 -70px
+      display: block
+      width: 100%
+      text-align: center
+      padding-left: 0
+  @media (max-width: $screen-desktop)
+    float: right
+    display: inline
+    padding-top: 10px
+    .h4
+      font-size: 1.4em
+      padding: 0
+      margin: 0
+      + .h4
+        font-size: 1.1em
+        margin-left: 0
+  @media (max-width: 476px)
+    display: none
+
+
+
+.beer_order_now
+  +clean-font
+  text-decoration: none !important
+  .full-width-img
+    margin-top: -$default-paddings
+    .img-responsive
+      position: relative
+      z-index: 1
+      margin: 0 auto
+      width: 100%
+  .free_shipping_crown
+    position: relative
+    z-index: 2
+    margin: -$dimension-grid-height auto 0
+    display: block
+    +clearfix
+    
+  span
+    text-align: center
+    width: 300px
+    display: block
+    margin: -($dimension-grid-height/2) auto 0
+    padding-right: $dimension-grid-width * 2
+    small
+      margin: 0
+      padding: 0
+      font-size: .9em
+      line-height: 1em
+      color: $color-black
+    div small
+      text-transform: none
+      display: block
+      margin: 0
+      padding: 7px 0 0
+      margin-left: 67%
+      text-align: left
+      b
+        display: block
+        margin: 0
+        padding: 0
+        line-height: 1.1em
+        font-size: .8em
+        font-weight: normal
+    h2
+      margin: 0
+      padding: 0
+      font-size: 1.7em
+      line-height: 1em
+      font-family: $font-nexa-rust-displayslab
+      float: left
+      display: inline
+    div
+      display: block
+      h3
+        float: left
+        width: 40%
+        font-size: 2em
+        line-height: 1
+        font-weight: 600
+        color: #000
+        margin-left: 14%
+        font-family: $font-nexa-rust-displaysans02
+        margin-top: 5px
+  h4
+    clear: left
+    display: block
+    text-align: center
+    margin-top: -5px
+    +rotate(-4deg)
+    font-family: $font-nexa-rust-script
+    font-size: 2em
+
+.mobile.ios
+  .beer_order_now span div small
+    margin-left: 72%
+
+
+.beer_order_banner
+  a.pull-right
+    margin-bottom: $padding-large-vertical
+
+.main-content .beer_order_banner
+  @media (min-width: $min-mobile-device)
+    .beer_order_now
+      span
+        margin-left: 0
+        display: inline-block
+        float: left
+        padding-right: 0
+        width: 220px
+      h4
+        clear: none
+    .btn-group-justified
+      width: 49%
+      float: right
+      clear: both
+    .btn-group-justified:last-child
+      float: none
+      clear: none
+      margin-top: 10px
+
+
+
+.media .media-heading
+  &h3
+    font-size: $font-size-h4
+  p
+    font-size: $font-size-h6
+    &.lead
+      font-size: $font-size-base
+
+
+.list-group-item
+  &.list-group-item-brand
+    .badge
+      background-color: $list-group-active-color
+      color: $brand-primary
+  &.list-group-item-bottles
+    background-color: $brand-primary
+    background-image: image-url('../../cbc/bg.bottles.png')
+    background-position: 95% ($dimension-grid-height / 2)
+    background-size: $dimension-grid-width*2.25 auto
+    background-repeat: no-repeat
+    &:hover
+      background-color: darken($brand-primary, 10%)
+    *, &:before
+      color: white !important
+    .list-group-item-heading
+      font-family: $font-nexa-rust-script
+      font-size: 3rem !important
+      line-height: 35px !important
+      margin-top: 5px !important
+      margin-left: -3px
+      margin-right: $dimension-grid-width
+    .list-group-item-text
+      font-family: $font-nexa-rust-displaysans
+      margin-top: -10px !important
+      font-size: 1em !important
+      b, strong
+        font-family: $font-nexa-rust-displayslab-shadow
+
+

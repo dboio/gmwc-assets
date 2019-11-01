@@ -1,0 +1,260 @@
+.btn
+  +clean-font
+  &-continue
+    +moreIcon
+    &:before
+      margin-right: -$padding-base-horizontal
+  &.dimension-grid-min-height
+    padding-top: 0
+    padding-bottom: 0
+    line-height: $dimension-grid
+  &:active
+    +box-shadow(none)
+  &:focus
+    outline: 0 !important
+  &-sm
+    font-size: $font-size-small
+    font-weight: bold
+    line-height: $font-size-small
+    padding: .2em .6em
+
+a
+  &:hover, &:active, &:focus
+    button
+      text-decoration: none !important
+
+.btn-square
+  @include button-size($dimension-grid-padding-top, $padding-xs-horizontal, $font-size-small, $line-height-small, $border-radius-small)
+  margin: 0
+  height: $dimension-grid-height
+  width: $dimension-grid-width
+  text-align: center
+  line-height: $dimension-grid-line-height
+  color: $default-icon-color
+  border: none
+  &:hover, &:focus, &.focus
+    color: $color-gray-dark !important
+  .icon
+    font-size: $dimension-grid-icon-size
+    vertical-align: top
+    //line-height: $dimension-grid-height - $dimension-grid-padding-top
+    width: $dimension-grid-width - $dimension-grid-padding-top
+    text-align: center
+    //top: 0 !important
+    margin: 0
+    //@media all and (-ms-high-contrast: none)
+      line-height: $font-size-base
+    //@supports (-ms-accelerator: true)
+      line-height: $font-size-base
+html.win
+  .btn-square
+    .icon
+      margin-top: -$padding-xs-horizontal
+
+.btn-cart
+  +button-size(0, 0, $font-size-small, $line-height-small, $border-radius-small)
+  background: $brand-primary
+  border: none
+  color: $body-bg
+  text-align: left
+  line-height: $dimension-grid-height/2
+  vertical-align: middle
+  @media (min-width: $min-device-width-iphone-6)
+    line-height: ($dimension-grid-height/2) + 5
+    font-size: $font-size-small + 3
+  &:hover
+    background: darken($brand-primary, 10%)
+    color: $body-bg
+    span.icon
+      background: darken($brand-primary, 20%)
+  span
+    padding: 0
+    line-height: $dimension-grid-height/2
+    height: $dimension-grid-height/2
+    font-weight: normal
+    @media (min-width: $min-device-width-iphone-6)
+      line-height: ($dimension-grid-height/2) + 5
+      height: ($dimension-grid-height/2) + 5
+    &.amount
+      min-width: 60px
+      margin-right: ($dimension-grid-height/2) + 5
+      display: block
+      padding-left: $border-radius-small * 2
+      padding-right: $border-radius-small
+      line-height: ($dimension-grid-height/2) + 5
+      +ellipsis(true)
+      @media (min-width: $min-device-width-iphone-6)
+        min-width: $dimension-grid-width * 1.75
+
+    &.icon
+      top: 0
+      float: right
+      text-align: center
+      line-height: ($dimension-grid-height/2) - 1
+      @media all and (-ms-high-contrast: none)
+        line-height: (($dimension-grid-height/2) - 1) * .75
+      width: $dimension-grid-width/2
+      background: darken($brand-primary, 10%)
+      padding: 0
+      font-size: $font-size-small
+      +border-top-right-radius($border-radius-small)
+      +border-bottom-right-radius($border-radius-small)
+      @media (min-width: $min-device-width-iphone-6)
+        line-height: ($dimension-grid-height/2) + 9
+        @media all and (-ms-high-contrast: none)
+          line-height: $font-size-h4
+        @supports (-ms-accelerator: true)
+          line-height: $font-size-h4
+        width: ($dimension-grid-width/2) + 5
+        font-size: $font-size-large
+  &.bg-color-International
+    background: $club-international
+    span.icon
+      background: darken($club-international, 10%)
+  &.bg-color-Gold
+    background: $club-gold
+    span.icon
+      background: darken($club-gold, 10%)
+  &.bg-color-PinotNoir
+    background: $club-pinot-noir
+    span.icon
+      background: darken($club-pinot-noir, 10%)
+  &.bg-color-Platinum
+    background: $club-platinum
+    span.icon
+      background: darken($club-platinum, 10%)
+  &.bg-color-Diamond
+    background: $club-diamond
+    span.icon
+      background: darken($club-diamond, 10%)
+  &.bg-color-Garagiste
+    background: $club-garagiste
+    span.icon
+      background: darken($club-garagiste, 10%)
+
+.btn-cart-lg
+  background: $brand-primary
+  font-weight: 200
+  &, span, div
+    +transition(all .3s ease-in-out)
+  &, &:hover, &:focus, &:active, &:visited
+    color: $color-off-white
+    text-decoration: none !important
+  > .pull-right
+    background-color: darken($brand-primary, 10%)
+    padding-left: $dimension-grid-width/2
+    padding-right: $default-paddings
+    font-weight: normal
+    line-height: $dimension-grid-height
+    font-size: $font-size-large
+    .pull-right
+      margin-right: -$default-paddings
+  > .text-nowrap
+    font-size: $font-size-large
+    line-height: $dimension-grid-height
+    padding-right: $dimension-grid-width/2
+    padding-left: $default-paddings
+    +ellipsis(true)
+    display: block
+    &.dimension-grid-offset-margin-left
+      margin-left: ($dimension-grid-width - $default-paddings) !important
+    del, small
+      color: $color-gray
+    small
+      font-size: .7em
+  > .dimension-grid.pull-left + .text-nowrap
+    padding-left: 0
+a.btn-cart-lg, button.btn-cart-lg
+  &:hover, &:focus, &:active
+    background-color: darken($brand-primary, 10%)
+    > .pull-right
+      background-color: darken($brand-primary, 20%)
+  &.btn-success
+    &:hover, &:focus, &:active
+      background-color: darken($label-success-bg, 10%)
+      > .pull-right
+        background-color: darken($label-success-bg, 20%)
+
+.btn-default
+  +button-variant($btn-default-color, $color-gray-dark, $color-gray-dark)
+  &:before
+    color: $btn-default-color !important
+  > .pull-right
+    background-color: darken($color-gray-dark, 10%)
+.btn-cart-lg.bg-color-default
+  background-color: $color-gray-dark
+  color: $btn-default-color
+  > .pull-right
+    background-color: darken($color-gray-dark, 10%)
+.btn-primary
+  +button-variant($btn-primary-color, $label-primary-bg, $label-primary-bg)
+  &:before
+    color: $btn-primary-color !important
+  > .pull-right
+    background-color: darken($label-primary-bg, 10%)
+.btn-cart-lg.bg-color-default
+  background-color: $label-primary-bg
+  color: $btn-primary-color
+  > .pull-right
+    background-color: darken($label-primary-bg, 10%)
+.btn-green
+  +button-variant($btn-success-color, $color-green, $color-green)
+  &:before
+    color: $btn-success-color !important
+  > .pull-right
+    background-color: darken($color-green, 10%)
+.btn-success
+  +button-variant($btn-success-color, $brand-success, $brand-success)
+  &:before
+    color: $btn-success-color !important
+  > .pull-right
+    background-color: darken($brand-success, 10%)
+.btn-cart-lg.bg-color-success
+  background-color: $label-success-bg
+  color: $btn-success-color
+  > .pull-right
+    background-color: darken($label-success-bg, 10%)
+.btn-info
+  +button-variant($btn-default-color, $link-color, $link-color)
+  &:before
+    color: $btn-info-color !important
+  > .pull-right
+    background-color: darken($link-color, 10%)
+.btn-cart-lg.bg-color-info
+  background-color: $label-info-bg
+  color: $btn-info-color
+  > .pull-right
+    background-color: darken($label-info-bg, 10%)
+.btn-warning
+  +button-variant($btn-warning-color, $label-warning-bg, $label-warning-bg)
+  &:before
+    color: $btn-warning-color !important
+  > .pull-right
+    background-color: darken($label-warning-bg, 10%)
+.btn-cart-lg.bg-color-warning
+  background-color: $label-warning-bg
+  color: $btn-warning-color
+  > .pull-right
+    background-color: darken($label-warning-bg, 10%)
+.btn-danger
+  +button-variant($btn-danger-color, $label-danger-bg, $label-danger-bg)
+  &:before
+    color: $btn-danger-color !important
+  > .pull-right
+    background-color: darken($label-danger-bg, 10%)
+.btn-cart-lg.bg-color-danger
+  background-color: $label-danger-bg
+  color: $btn-danger-color
+  > .pull-right
+    background-color: darken($label-danger-bg, 10%)
+
+// Browser specific
+.win
+  &.ff, &.chrome
+    .btn-cart span
+      &.icon
+        line-height: 21px
+.ff
+  .btn-cart span
+    line-height: 28px
+

@@ -1,0 +1,119 @@
+.modal
+  z-index: 10400
+
+.modal, .fancybox-overlay
+  background-image: none
+  background-color: transparentize($color-off-white, .6)
+  .modal-min-width
+    //width: $modal-sm
+    min-width: $modal-sm
+    @media (max-width: $min-device-width-iphone-6 - 1)
+      min-width: $modal-sm - $dimension-grid-width
+
+.modal-dialog
+  width: auto !important
+  max-width: $max-body-width
+  margin: -1px -1px 0
+  &.modal-sm
+    width: 90vw !important
+    margin-top: 5vh
+  @media (min-width: $screen-md-min)
+    margin: -1px auto 0
+    &.modal-sm
+      width: 400px !important
+      margin: 10vh auto 0
+  .fancybox-skin
+    background: $body-bg
+    padding: 0 !important
+    +border-radius(0)
+    .fancybox-close,
+    .resize-out
+      background: none
+      top: 0
+      right: 0
+      width: $dimension-grid-width
+      height: $dimension-grid-height
+    .resize-out
+      right: auto
+      left: -$default-paddings
+      top: -$default-paddings
+      position: absolute
+      color: $color-black
+      +opacity(.2)
+      &:hover, &:focus
+        +opacity(.5)
+
+
+    .fancybox-inner
+      overflow: visible !important
+      .large-image
+        display: block
+        .fancybox-image
+          margin: 0 auto
+  &.fancybox-type-image
+    .fancybox-skin
+      padding: $default-paddings !important
+  &.fancybox-type-iframe
+    .fancybox-skin
+      .fancybox-close
+        +opacity(1)
+        right: auto
+        left: 0
+        background: -moz-linear-gradient(top, #f5f4f9 0%, #f1f1f1 50%, #e9e9e9 50%, #e2e2e2 100%)
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f4f9), color-stop(50%,#f1f1f1), color-stop(50%,#e9e9e9), color-stop(100%,#e2e2e2))
+        background: -webkit-linear-gradient(top, #f5f4f9 0%,#f1f1f1 50%,#e9e9e9 50%,#e2e2e2 100%)
+        background: -o-linear-gradient(top, #f5f4f9 0%,#f1f1f1 50%,#e9e9e9 50%,#e2e2e2 100%)
+        background: -ms-linear-gradient(top, #f5f4f9 0%,#f1f1f1 50%,#e9e9e9 50%,#e2e2e2 100%)
+        background: linear-gradient(top, #f5f4f9 0%,#f1f1f1 50%,#e9e9e9 50%,#e2e2e2 100%)
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f4f9', endColorstr='#e2e2e2',GradientType=0 )
+        border-top: #d3d3d3 1px solid !important
+        border-bottom: #c1c1c1 1px solid !important
+        width: $dimension-grid-width - 2
+        height: $dimension-grid-height - 2
+
+        .icon
+          +opacity(.2)
+          +transition(all .3s ease-in-out)
+        &:hover
+          .icon
+            +opacity(1)
+
+
+
+.modal-content
+  border-radius: 0 !important
+  overflow: visible !important
+  &.modal-rounded
+    +border-radius($panel-border-radius)
+  //+box-shadow(none)
+
+
+.modal-header
+  border-color: $navbar-default-border
+  min-height: auto
+  height: $dimension-grid
+  padding-top: 0
+  padding-bottom: 0
+  .modal-title
+    line-height: $dimension-grid
+    font-weight: 200
+  .close
+    &.dimension-grid
+      margin-right: (-$default-paddings)
+
+.modal-body
+  padding: $default-paddings
+  &.list-group
+    padding: 0
+    margin: -1px 0 0
+    .well
+      margin: 0 $default-paddings
+    .btn-block.dimension-grid-min-height
+      margin: (($default-paddings/3)*2) $default-paddings $default-paddings
+      box-sizing: border-box
+      width: auto
+
+.modal-footer
+  .center-block
+    line-height: $dimension-grid-line-height
+    padding: $dimension-grid-padding-top 0

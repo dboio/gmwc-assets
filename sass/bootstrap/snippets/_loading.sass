@@ -1,0 +1,44 @@
+@keyframes spin
+  from
+    +transform(rotate(0deg))
+  to
+    +transform(rotate(359deg))
+
+@-moz-keyframes spin
+  from
+    +transform(rotate(0deg))
+  to
+    +transform(rotate(359deg))
+
+@-webkit-keyframes spin
+  from
+    +transform(rotate(0deg))
+  to
+    +transform(rotate(359deg))
+
+@-ms-keyframes spin
+  from
+    +transform(rotate(0deg))
+  to
+    +transform(rotate(359deg))
+
+@-o-keyframes spin
+  from
+    +transform(rotate(0deg))
+  to
+    +transform(rotate(359deg))
+
+=loading-icon
+  margin: ($dimension-grid-height/4) ($dimension-grid-width/4)
+  border-bottom: ($default-border-size * 1) $default-border-style transparent
+  border-left: ($default-border-size * 1) $default-border-style transparent
+  border-right: ($default-border-size * 1) $default-border-style $brand-primary
+  border-top: ($default-border-size * 1) $default-border-style $brand-primary
+  border-radius: 100%
+  height: $dimension-grid-height/2
+  width: $dimension-grid-width/2
+  display: block
+  +animation(spin .6s infinite linear)
+
+.loading-icon
+  +loading-icon

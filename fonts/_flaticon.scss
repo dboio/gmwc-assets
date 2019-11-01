@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Flaticon";
+  src: font-url('flaticon/oracle.eot');
+  src: font-url('flaticon/oracle.eot?#iefix') format("embedded-opentype"), font-url('flaticon/oracle.woff2') format("woff2"), font-url('flaticon/oracle.woff') format("woff"), font-url('flaticon/oracle.ttf') format("truetype"), font-url('flaticon/oracle.svg#Flaticon') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after,
+.flaticon:before, .flaticon:after {
+  font-family: Flaticon;
+  font-style: normal;
+  @include font-reset;
+}
+
+.flaticon-td:before {
+  content: "\e000";
+}
+
+.flaticon-plus-disc:before {
+  content: "\e001";
+}
+
+.flaticon-plus-circle:before {
+  content: "\e002";
+}
+
+.flaticon-check-disc:before {
+  content: "\e004";
+}
+
+.flaticon-check-circle:before {
+  content: "\e005";
+}
+
+.flaticon-clear:before {
+  content: "\e006";
+}
+
+.flaticon-pencil:before,
+.flaticon-edit:before {
+  content: "\e007";
+}
+
+.flaticon-cancel-disc:before {
+  content: "\e008";
+}
+
+.flaticon-cancel-circle:before {
+  content: "\e009";
+}
+
+.flaticon-triangle-down:before {
+  content: "\e00a";
+}
+
+.flaticon-caret-down:before {
+  content: "\e00b";
+}
+
+.flaticon-caret-right:before {
+  content: "\e00c";
+}
+
+.flaticon-caret-left:before  {
+  content: "\e00d";
+}
+
+.flaticon-search:before {
+  content: "\e00f";
+}
+
+.flaticon-map:before {
+  content: "\e010";
+}
+
+.flaticon-star:before {
+  content: "\e011";
+}
+
+.flaticon-menu:before {
+  content: "\e012";
+}
+
+.flaticon-doc:before {
+  content: "\e013";
+}
+
+.flaticon-doc-pdf:before {
+  content: "\e014";
+}
+
+.flaticon-pencil-disc:before,
+.flaticon-edit-disc:before {
+  content: "\e003";
+}
+
+.flaticon-pencil-circle:before,
+.flaticon-edit-circle:before {
+  content: "\e015";
+}
+
+.flaticon-triangle-r:before {
+  content: "\e016";
+}
+
+.flaticon-play:before {
+  content: "\e017";
+}
+
+.flaticon-logout:before {
+  content: "\e018";
+}
+
+.flaticon-minus-disc:before {
+  content: "\e019";
+}
+
+.flaticon-minus-circle:before {
+  content: "\e01a";
+}
+
+.flaticon-tr:before {
+  content: "\e01d";
+}
+
+.flaticon-combo:before {
+  content: "\e01f";
+}
+
+.flaticon-ok:before,
+.flaticon-check:before {
+  content: "\e020";
+}

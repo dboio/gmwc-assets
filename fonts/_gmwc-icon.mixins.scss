@@ -1,0 +1,25 @@
+
+@mixin moreIcon {
+  &:before {
+    @include glyphicon;
+    font-family: 'Glyphicons Custom';
+    float: right;
+    content: "\e258";
+    line-height: $dimension-grid-height;
+    @media all and (-ms-high-contrast: none) {
+      // IE10+ Hack
+      line-height: $dimension-grid-height * .75;
+    }
+    @supports (-ms-accelerator: true) {
+      // MS Edge Hack
+      line-height: $dimension-grid-height * .75;
+    }
+    height: $dimension-grid-height;
+    width: $dimension-grid-width;
+    font-size: $dimension-grid-icon-size;
+    vertical-align: middle;
+    text-align: center;
+    margin-right: 0;
+    color: $color-gray;
+  }
+}

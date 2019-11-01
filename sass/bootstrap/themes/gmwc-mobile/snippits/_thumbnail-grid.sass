@@ -1,0 +1,254 @@
+.thumbnail-grid
+  border: none
+  float: left
+  +transition(all .3s ease-in-out)
+  background: $color-off-white
+  overflow: hidden
+  padding: 0 ($default-paddings/3) 0 $default-paddings
+  position: relative
+  margin: 0
+  border-bottom: $default-border-size $default-border-style $default-border-color-bright
+  border-right: $default-border-size $default-border-style $default-border-color-bright
+  height: $dimension-grid-height * 4.5
+  @media (min-width: $min-device-width)
+    width: 50%
+  @media (min-width: $min-device-width-iphone-6)
+    height: $dimension-grid-height * 4.5 + ($dimension-grid-width / 2)
+  @media (min-width: $screen-tablet)
+    width: 33.3%
+  @media (min-width: $screen-desktop)
+    width: 25%
+  a, a:hover
+    +transition(all .3s ease-in-out)
+    text-decoration: none
+    display: block
+    height: 100%
+  &:hover
+    background: $color-bg-hover
+    background-position: top center
+    background-repeat: no-repeat
+    background-size: cover
+    .price
+      del
+        background: transparentize($color-bg-hover, .2)
+  &.gift-card
+    background-position: top center
+    background-repeat: no-repeat
+    background-size: cover
+    padding: 0
+    a
+      background-color: transparentize($color-off-white, .5)
+      &:hover, &:active
+        background-color: transparent
+    &.active a
+      background-color: transparent
+      border: $default-border-style $border-radius-small $brand-primary
+  h4, h5
+    font-weight: 300
+    color: darken($color-gray-dark, 10%)
+    +ellipsis(true)
+    margin: ($default-paddings/3) 0 0
+    line-height: $line-height-base
+    font-size: $font-size-h4 - 2
+    +transition(all .3s ease-in-out)
+    @media (min-width: $min-device-width-iphone-6)
+      font-size: $font-size-h4
+  h5
+    color: $color-gray-mid
+    margin: 0 0 ($default-paddings/3)
+    font-size: $font-size-h5 - 3
+    @media (min-width: $min-device-width-iphone-6)
+      font-size: $font-size-h5 - 1
+      margin-bottom: ($default-paddings * .75)
+  h6
+    color: $color-gray-mid
+    font-weight: 300
+    +ellipsis(true)
+    margin: 0 0 $default-paddings
+    line-height: $line-height-base
+  &:hover, a:hover
+    h4, h5
+      color: $color-black !important
+  .price
+    position: absolute
+    bottom: $default-paddings
+    left: $dimension-grid-width + $default-paddings + 10
+    @media (max-width: $min-device-width-iphone-6 -1)
+      left: $dimension-grid-width + $default-paddings
+    del
+      display: block
+      +ellipsis(true)
+      font-size: $font-size-h6
+      color: $color-gray-mid
+      margin-bottom: ($default-paddings/3) - 3
+      background: transparentize($body-bg, .2)
+      +border-top-left-radius($border-radius-small)
+      @media (min-width: $min-device-width-iphone-6)
+        font-size: $font-size-h5
+  .flag
+    +flags(12px, 0, 0, 6px)
+
+
+  .img-single
+    float: left
+    margin-right: 5px
+    img
+      max-height: $dimension-grid-height * 3.75
+      max-width: $dimension-grid-width * 2
+      float: left
+      @media (min-width: $min-device-width-iphone-6)
+        max-height: $dimension-grid-height * 4
+
+    + .caption
+      margin-left: $dimension-grid-width + 10
+      padding: 0
+  .img-stack
+    display: block
+    position: relative
+    height: $dimension-grid-height * 1.5
+    overflow: hidden
+    margin-top: -($default-paddings/3)
+    @media (min-width: $min-device-width-iphone-6)
+      height: $dimension-grid-height * 1.75
+    img
+      width: 13px
+      float: left
+      bottom: 0
+      left: 0
+      position: absolute
+      @media (min-width: $min-device-width-iphone-6)
+        width: $default-paddings
+      + img
+        left: $default-paddings
+        @media (min-width: $min-device-width-iphone-6)
+          left: ($dimension-grid-width / 2) - 2
+        + img
+          left: $default-paddings * 2
+          @media (min-width: $min-device-width-iphone-6)
+            left: $dimension-grid-width - 2
+          + img
+            left: $default-paddings * 3
+            @media (min-width: $min-device-width-iphone-6)
+              left: $dimension-grid-width * 1.5 - 2
+            + img
+              left: $default-paddings * 4
+              @media (min-width: $min-device-width-iphone-6)
+                left: $dimension-grid-width * 2 - 2
+              + img
+                left: $default-paddings * 5
+                @media (min-width: $min-device-width-iphone-6)
+                  left: $dimension-grid-width * 2.5 - 2
+    .badge
+      position: absolute
+      bottom: 0
+      right: 0
+      background: lighten($color-gray, 5%)
+      color: $color-purple
+      font-size: $font-size-h5
+      font-weight: 300
+      padding: 0
+      height: ($dimension-grid-height/2) + 4
+      line-height: ($dimension-grid-height/2) + 4
+      width: ($dimension-grid-width/2) + 4
+      text-align: center
+      +border-radius(100%)
+    .label-sale
+      position: absolute
+      top: 0
+      right: 0
+      padding: 0 .5em !important
+      line-height: $line-height-computed - 3
+
+
+.sidebar
+  .panel-grid .panel-body
+    margin-right: $default-border-size
+  .thumbnail-grid
+    @media (min-width: $min-device-width)
+      width: 50%
+      &:nth-child(2n+2)
+        border-right: none
+    @media (min-width: $screen-tablet) and (max-width: $screen-desktop)
+      width: 100%
+      border-right: none
+    @media (min-width: $screen-desktop)
+      width: 50%
+      &:nth-child(2n+2)
+        border-right: none
+  .scroll-container
+    .thumbnail-grid
+      border-right: $default-border-size $default-border-style $default-border-color-bright
+
+.scroll-container
+  .thumbnail-grid
+    border-bottom: none
+    width: ($dimension-grid-width * 4) - 10
+    @media (min-width: $min-device-width-iphone-6)
+      width: $dimension-grid-width * 4 + $default-paddings
+      height: $dimension-grid-height * 4.5 + ($dimension-grid-width / 2)
+
+.main-content
+  .thumbnail-grid
+    @media (max-width: $screen-tablet)
+      &:nth-child(2n+2)
+        border-right: none
+    @media (max-width: $screen-desktop) and (min-width: $screen-tablet)
+      &:nth-child(3n+3)
+        border-right: none
+    @media (min-width: $screen-desktop)
+      &:nth-child(4n+4)
+        border-right: none
+  .scroll-container
+    .thumbnail-grid
+      border-right: $default-border-size $default-border-style $default-border-color-bright
+
+.no-touch
+  .panel-body.scroll-mobile-only
+    height: auto !important
+    .scroll-container
+      width: auto !important
+      .thumbnail-grid
+        border-bottom: $default-border-size $default-border-style $default-border-color-bright
+        @media (min-width: $min-device-width)
+          width: 50%
+        @media (min-width: $min-device-width-iphone-6)
+          height: $dimension-grid-height * 4.5 + ($dimension-grid-width / 2)
+        @media (min-width: $screen-tablet)
+          width: 33.3%
+        @media (min-width: $screen-desktop)
+          width: 25%
+
+.cssgradients
+  .thumbnail-grid
+    background: -moz-linear-gradient(left, $color-off-white 0%, $body-bg 100%)
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$color-off-white), color-stop(100%,$body-bg))
+    background: -webkit-linear-gradient(left, $color-off-white 0%, $body-bg 100%)
+    background: -o-linear-gradient(left, $color-off-white 0%, $body-bg 100%)
+    background: -ms-linear-gradient(left, $color-off-white 0%, $body-bg 100%)
+    background: linear-gradient(to right, $color-off-white 0%, $body-bg 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color-off-white}', endColorstr='#{$body-bg}',GradientType=1 )
+    +border-radius(0)
+    &:hover
+      background: $color-bg-hover
+
+
+// CLUB THUMBNAILS
+
+.row-clubs
+  .col-md-4
+    margin-right: -2px
+    margin-bottom: -1px
+    margin-left: 1px
+
+a.thumbnail-club
+  &:hover
+    background: $color-bg-hover
+    border-color: $brand-primary
+    z-index: 2
+    position: relative
+
+a.thumbnail-club
+  &, &:focus, &:hover
+    &, *
+      color: $text-color
+      text-decoration: none !important

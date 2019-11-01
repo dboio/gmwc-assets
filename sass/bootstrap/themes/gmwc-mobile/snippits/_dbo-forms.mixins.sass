@@ -1,0 +1,85 @@
+=input_default
+  width: 100%
+  display: block
+  line-height: $dimension-grid-inputheight
+  height: $dimension-grid-inputheight
+  margin: $dimension-grid-inputpadding 0
+  font-size: $dimension-grid-fontsize
+  position: absolute
+  top: 0
+  left: 0
+  cursor: text
+  padding: 0 $default-paddings
+  outline: none !important
+  border: none !important
+  z-index: 2
+  font-family: $form-font-family !important
+  background-color: transparent !important
+  background: none !important
+  appearance: border-box
+  +opacity(0)
+  +ellipsis(true)
+  &:focus, &:active
+    outline: none !important
+    border: none !important
+    +opacity(1)
+  &[type="email"]
+    border: 0 !important
+    outline: none !important
+    box-shadow: none !important
+
+=input_textarea
+  width: 100%
+  outline: none !important
+  border: none !important
+  z-index: 2
+  font-family: $form-font-family !important
+  resize: none
+  white-space: pre !important
+  padding: 0 $default-paddings
+
+=input_select
+  width: 100%
+  outline: none !important
+  border: none !important
+  font-family: $form-font-family !important
+  resize: none
+  z-index: 4
+
+=input_placeholder
+  +dimensionGrid()
+  line-height: $dimension-grid-inputheight
+  height: $dimension-grid-inputheight
+  margin: 0
+  padding: $dimension-grid-inputpadding $default-paddings
+  font-size: $dimension-grid-fontsize
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+  position: absolute
+  top: 0
+  left: 0
+  display: block
+  z-index: 1
+  color: $fg-placeholder
+  .icon, .glyphicon
+    margin: 0 - $dimension-grid-inputpadding
+    margin-right: 0
+    width: $dimension-grid-width
+    display: inline
+    float: left
+
+=error($errorContainer: '.form_row')
+  #{$errorContainer} .error
+    display: none
+    color: $fg-error
+    margin-left: 0 !important
+  #{$errorContainer}.error .error
+    margin-left: 0 !important
+    clear: both
+    display: block
+    line-height: $dimension-grid-fontsize + 2
+    min-height: $dimension-grid-height
+    padding: ($dimension-grid-padding-top - 1) $default-paddings
+    color: $fg-error !important
+    font-weight: 300

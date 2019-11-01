@@ -1,0 +1,464 @@
+.navbar-top
+  border-top-style: none
+  border-left-style: none
+  border-right-style: none
+  margin-bottom: 0
+  min-height: $dimension-grid-height
+  z-index: 50
+  +transition(margin-top .5s ease-in-out)
+  +box-shadow(none)
+  +border-radius(0)
+  -webkit-backdrop-filter: blur(10px)
+  backdrop-filter: blur(10px)
+  .container
+    background-color: $body-bg
+    +transition(background-color .5s ease-in-out)
+  @media (min-width: $screen-md-min)
+    width: 100%
+    position: absolute
+    left: 0
+    margin: 0 auto !important
+    background: transparentize($body-bg, .1)
+    &.navbar-fixed-top
+      position: fixed
+    .container
+      padding-left: 0
+      padding-right: 0
+
+  .list-group
+    margin-bottom: 0
+  .main-toolbar
+    .search-area, .breadcrumb-area
+      line-height: $dimension-grid-height
+      min-height: $dimension-grid-height
+    .search-area
+      border-top: $site-borders-dividers $default-border-size $default-border-style
+      @media (min-width: $screen-desktop)
+        border-top: none
+        &.collapse
+          display: block !important
+          visibility: visible !important
+      .dbo_form
+        margin-right: -$default-paddings
+        margin-left: -$default-paddings
+        border-bottom: none
+        @media (min-width: $screen-desktop)
+          margin-right: -($default-paddings + $default-border-size)
+        > div
+          .bootstrap-tagsinput
+            padding: 0 0 0 $inputPadding
+            border: none
+            background: transparent
+            +border-radius(0)
+            +box-shadow(none)
+            display: block
+            line-height: $dimension-grid-height
+            height: $dimension-grid-height
+            .twitter-typeahead
+              display: block !important
+              .tt-input
+                +opacity(1)
+            pre, .tt-hint
+              display: none !important
+            input
+              position: inherit
+              float: left
+              padding-left: 0
+              margin-top: $inputPadding
+              width: 100% !important
+            .tag
+              float: left
+              vertical-align: middle
+              margin: $padding-small-horizontal $padding-xs-horizontal 0 0
+              font-weight: bold
+              padding: $padding-xs-vertical ($dimension-grid-width/2) $padding-xs-vertical $padding-xs-horizontal
+              font-size: $font-size-small
+              line-height: $line-height-small
+              position: relative
+              +ellipsis(true)
+              max-width: $dimension-grid-width * 2
+              position: relative
+              z-index: 1
+              span
+                z-index: 2
+                position: absolute
+                top: -2px
+                right: $padding-xs-horizontal
+                +opacity(.8)
+                &:hover, &:focus
+                  +opacity(1)
+
+
+            .tt-dropdown-menu
+              +dropDownMenus
+              max-height: 190px
+              overflow-y: auto
+              overflow-x: hidden
+              margin-left: -$inputPadding
+              right: 0 !important
+              width: auto !important
+              margin-right: 0 !important
+              @media (max-width: $screen-sm-max)
+                margin-right: -$dimension-grid-width !important
+          .input_container
+            overflow: visible
+            background-color: transparent
+            @media (min-width: $screen-desktop)
+              +transition(top .3s ease)
+              border-width: 1px
+              //margin-left: $padding-large-horizontal
+              +border-top-radius($border-radius-base)
+              +border-bottom-radius($border-radius-base)
+              top: -$padding-large-horizontal
+              z-index: $zindex-navbar-fixed + 1
+            &.focus
+              background-color: $body-bg
+          .btn-square
+            position: relative
+            span.icon
+              top: 0 !important
+              left: 0
+              position: absolute
+              color: $color-blue
+            &:hover
+              background-color: transparent !important
+              span.icon
+                color: darken($color-blue, 10%)
+
+    .breadcrumb-area
+      overflow: hidden
+      height: $dimension-grid-height
+      position: relative
+      padding-right: 0
+      padding-left: 0
+    .nav-base
+      line-height: $dimension-grid-height
+      float: left
+      font-size: $font-size-small
+      color: $default-gray-text
+      +ellipsis(true)
+      @media (min-width: $min-device-width-iphone-6)
+        font-size: $font-size-base
+      @media (min-width: $screen-xs)
+        font-size: ceil(($font-size-base * 1.1))
+      > li
+        display: inline-block
+        line-height: $dimension-grid-height
+        float: left
+        + li
+          &:before
+            content: '|'
+            float: left
+          > a
+            padding-left: ($dimension-grid-padding-top/2)
+            +transition(color .3s ease-in-out, font-size .5s ease-in-out)
+            @media (min-width: $screen-xs)
+              padding-left:  ($dimension-grid-padding-top)
+        > a
+          line-height: $dimension-grid-height
+          padding: 0 ($dimension-grid-padding-top/2) 0 $default-paddings
+          @media (min-width: $screen-xs)
+            padding-right:  ($dimension-grid-padding-top)
+          float: left
+          +border-radius(0)
+          background-color: transparent !important
+          color: $default-gray-text !important
+          &:hover
+            color: $color-black !important
+        &.active
+          > a, > a:hover
+            color: $color-black !important
+        @media (min-width: $screen-desktop)
+          body.home &:first-child > a
+            padding-left: 0
+    .pull-left.toggle-menus + .menu-section .nav-base > li:first-child > a
+      padding-left: 0
+
+
+  .main-header
+    padding-top: $dimension-grid-padding-top + 5
+    min-height: $dimension-grid-height * 2
+    border-bottom: $default-border-size $default-border-style $navbar-bright-border
+    z-index: 50
+    position: relative
+    @media (min-width: $min-device-width-iphone-6)
+      padding-top: $dimension-grid-padding-top
+    @media (min-width: $screen-desktop)
+      border-bottom: none
+      .navbar-brand + .pull-left
+        display: block !important
+        float: none !important
+    .navbar-brand
+      padding: 0 !important
+      margin-right: -($navbar-padding-horizontal / 3)
+      float: right
+      @media (min-width: $screen-desktop)
+        float: left
+        margin: (-($navbar-padding-horizontal / 3)) ($navbar-padding-horizontal / 3) 0 (-($navbar-padding-horizontal / 3)) !important
+        height: $dimension-grid-height * 1.75
+      img
+        height: 50px
+        @media (min-width: $screen-desktop)
+          height: $dimension-grid-height * 1.75
+      @media (min-width: $min-device-width-iphone-6)
+        margin-top: 5px
+    .navbar-link
+      padding-top: 4px
+      .telephone, .email
+        float: left
+        &:after
+          content: " |\00a0"
+          color: $default-gray-text
+        &:hover, &:focus
+          text-decoration: none
+      .username
+        float: left
+        max-width: 110px
+        +ellipsis(true)
+        @media (min-width: $min-device-width-iphone-6)
+          max-width: 160px
+      .btn
+        margin-top: -2px
+        font-size: $font-size-small
+        line-height: $font-size-small
+        font-weight: bold
+        padding: .2em .6em
+
+      @media (min-width: $screen-desktop)
+        float: right
+        margin-top: -($dimension-grid-height + 6)
+    h1, .h1
+      margin: 0 0 2px 0
+      &, a, strong
+        color: $brand-primary
+        font-size: $font-size-h3 !important
+        @media (min-width: $min-device-width-iphone-6)
+          font-size: $font-size-h3 + 5 !important
+        @media (min-width: $screen-desktop)
+          font-size: $font-size-h1 !important
+          line-height: $font-size-h1
+      @media (min-width: $screen-desktop)
+        &:after
+          content: ''
+          float: right
+    h2, .h2
+      font-size: $font-size-h4 - 2
+      font-weight: 300
+      margin: 0 0 0 2px
+
+    + .container
+      line-height: $dimension-grid-line-height
+      padding: 0
+      vertical-align: baseline
+      .btn-square
+        &.pull-left
+          display: inline
+          float: left !important
+          margin-left: -$default-paddings !important
+        &.pull-right
+          margin-right: -$default-paddings !important
+          margin-left: $default-paddings !important
+          + .pull-right
+            margin-left: 0 !important
+      .breadcrumb-area
+        .btn-square.pull-right
+          margin-left: 0 !important
+          margin-right: 0 !important
+        .btn-square.pull-left
+          margin-left: 0 !important
+          margin-right: 0 !important
+
+      .breadcrumb
+        padding: 0
+        margin-bottom: 0
+        background-color: transparent
+        +border-radius(0)
+        font-size: $font-size-small
+        line-height: $dimension-grid-height
+        @media (min-width: $min-device-width-iphone-6)
+          font-size: ceil(($font-size-base * 1.1))
+        display: inline
+        float: left
+        white-space: nowrap
+        +ellipsis(true)
+        > li
+          display: inline
+          line-height: $dimension-grid-height
+          .btn-square
+            width: $dimension-grid-width - $default-paddings
+            padding-left: 0
+            padding-right: 0
+            margin-left: -($padding-small-horizontal / 2)
+          &.active
+            &, a
+              color: $color-black
+          + li:before
+            display: none
+          + li:before
+            content: "#{$breadcrumb-separator}"
+            color: $default-gray-text
+            padding: 0 4px 0 1px
+            display: inline
+
+          a
+            color: $default-gray-text
+            line-height: $dimension-grid-height
+            +transition(color .3s ease-in-out, font-size .5s ease-in-out)
+            &:hover
+              color: $color-black
+              text-decoration: none
+
+  &.navbar-fixed-top
+    background: transparentize($body-bg, .1)
+    @supports (overflow: -webkit-marquee) and (justify-content: inherit)
+      background: transparentize($body-bg, .2)
+    .container
+      background: transparent
+    .main-header
+      display: none
+      margin-top: -($dimension-grid-height * 2)
+    @media (min-width: $screen-desktop)
+      .main-toolbar
+        .search-area .dbo_form > div
+          .input_container
+            border-top-style: none
+            border-bottom-style: none
+            +border-top-radius(0)
+            +border-bottom-radius(0)
+            top: 0
+
+  &.navbar-with-small-cart
+    padding-top: $dimension-grid-height
+
+  .toggle-menus
+    +transition(all .5s ease-in-out)
+    &.active
+      +transform-origin(50% 50%)
+      +transform(scale(1) rotate(90deg) translate(0px, 0px))
+      +box-shadow(none)
+    &.btn-square .icon
+      top: 0 !important
+    + .menu-section
+      padding-left: 0
+      margin-left: $dimension-grid-width
+  .menu
+    &-section
+      line-height: $dimension-grid-height
+      height: $dimension-grid-height
+      display: block
+      +transition(margin .5s ease-in-out)
+      overflow: hidden
+      overflow-x: auto
+      white-space: nowrap
+      -webkit-overflow-scrolling: touch
+      position: relative
+      border-right: $site-borders-dividers $default-border-size $default-border-style
+      margin-right: -($default-border-size)
+      margin-top: -($dimension-grid-height)
+      @media (min-width: $screen-md-min)
+        border-right: none
+        margin-right: 0
+      &.active
+        margin-top: 0
+    &-breadcrumbs
+      margin-top: 0
+      &.active
+        margin-top: 0
+
+.navbar-cart
+  display: none
+  z-index: 100
+  border: none !important
+  min-height: 0 !important
+  @media (min-width: $screen-md-min)
+    margin: 0 auto !important
+  .list-group.list-group-small-cart
+    margin-bottom: 0
+    background-color: $shopping-cart-bar-bg
+    > .list-group-item
+      color: $body-bg
+      display: block
+      +transition(all .3s ease-in-out)
+      @include container-fixed
+      background-color: transparent !important
+      padding: 0 0 0 15px
+      position: relative
+      margin: 0 auto
+      min-height: $dimension-grid-height
+      @media (min-width: $screen-sm-min)
+        width: $container-sm
+      @media (min-width: $screen-md-min)
+        width: $container-md
+      @media (min-width: $screen-lg-min)
+        width: $container-lg
+      &.list-group-item-brand
+        background-color: transparent
+        font-weight: normal
+        font-size: $font-size-large
+        letter-spacing: .02em
+        line-height: 1
+        padding-left: $padding-small-horizontal - 2
+        @media (min-width: $screen-md-min)
+          width: $max-body-width
+          padding-left: 0
+        .badge
+          color: darken($shopping-cart-bar-bg, 10%) !important
+          float: right !important
+          margin-top: -1px
+          &.pull-left
+            margin-right: $padding-xs-horizontal
+            font-weight: normal
+      > a
+        display: block
+        padding: 10px 0
+        background-color: transparent !important
+        color: $color-gray
+        @media (min-width: $screen-md-min)
+          +transition(all .3s ease-in-out)
+          &:hover,
+          &.active,
+          &.active:hover,
+          &.active:focus
+            color: $body-bg
+            &, *
+              text-decoration: none !important
+        +moreIcon
+        &:before
+          color: $body-bg
+          clear: both
+          margin-top: -10px
+          @media (min-width: $screen-md-min)
+            margin-right: -$default-paddings
+
+body.search-results
+  .navbar-top .main-toolbar
+    .search-area.collapse
+      display: block
+      visibility: visible
+    .toggle-search-area
+      display: none
+
+.navbar-impersonating
+  background-color: transparent
+  border-top-style: none
+  border-left-style: none
+  border-right-style: none
+  margin-bottom: 0
+  min-height: $dimension-grid-height
+  .container
+    background-color: $color-red
+    line-height: $dimension-grid-height
+    min-height: $dimension-grid-height
+    color: $white !important
+    .navbar-text, .navbar-brand, a
+      color: $white !important
+      padding-top: 0
+      padding-bottom: 0
+      margin: 0
+      line-height: $dimension-grid-height
+      font-weight: bold
+    a:link
+      text-decoration: underline
+
+html.win.no-touch .navbar-top .menu-section
+  overflow: hidden

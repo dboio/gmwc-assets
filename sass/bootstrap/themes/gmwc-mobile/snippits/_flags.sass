@@ -1,0 +1,83 @@
+$font-size-flag: 18px
+
+=flags($flag-height: 25px, $flag-top-offset: 0, $flag-left-offset: 25px, $flag-font-size: $font-size-flag, $flag-scale: 1, $flag-rotation: 90deg)
+  +transition(all .3s ease-in-out)
+  position: absolute
+  display: inline-block
+  top: $flag-top-offset
+  left: $flag-left-offset
+  +transform-origin(top left)
+  +transform(scale($flag-scale) rotate($flag-rotation) translate(0px, 0px))
+  height: $flag-height
+  padding: 0
+  z-index: 3
+  margin: 0 $flag-height
+  line-height: $flag-height
+  background-color: transparentize($club-fallback, .1)
+  vertical-align: middle
+  span
+    color: $body-bg
+    float: left
+    line-height: inherit
+    padding: 0 0 0 floor($flag-height/2.5)
+    +clean-font // important ff bug fix
+    text-align: right
+    font-size: $flag-font-size
+    font-weight: normal !important
+    text-transform: uppercase
+    letter-spacing: .05em
+    white-space: nowrap
+    min-width: $flag-height * 2
+    max-width: 265px
+    +ellipsis(true)
+    strong, b
+      font-weight: bold !important
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    right: -$flag-height
+    border: $default-border-style ($flag-height/2) transparentize($club-fallback, .1)
+    border-right-color: transparent !important
+    height: $flag-height
+    width: $flag-height
+  &-International
+    background: transparentize($club-international, .1)
+    &:after
+      border-color: transparentize($club-international, .1)
+  &-Diamond
+    background: transparentize($club-diamond, .1)
+    &:after
+      border-color: transparentize($club-diamond, .1)
+  &-PinotNoir
+    background: transparentize($club-pinot-noir, .1)
+    &:after
+      border-color: transparentize($club-pinot-noir, .1)
+  &-Gold
+    background: transparentize($club-gold, .1)
+    &:after
+      border-color: transparentize($club-gold, .1)
+  &-Platiunum
+    background: transparentize($club-platinum, .1)
+    &:after
+      border-color: transparentize($club-platinum, .1)
+  &-Garagiste
+    background: transparentize($club-garagiste, .1)
+    &:after
+      border-color: transparentize($club-garagiste, .1)
+
+.flag
+  +flags(25px, 0, $default-paddings, 18px, 1)
+  @media (min-width: $screen-tablet)
+    +flags(25px, 0, $default-paddings, 18px, .7)
+  @media (min-width: $screen-desktop)
+    +flags(25px, 0, $default-paddings, 18px, 1)
+  @media (max-width: $max-mobile-device)
+    +flags(25px, 0, $default-paddings, 18px, .8)
+  @media (max-width: $screen-xs - 1)
+    +flags(25px, 0, $default-paddings, 18px, .7)
+  @media (max-width: 440px)
+    +flags(25px, 0, $default-paddings / 2, 18px, .6)
+  @media (max-width: 380px)
+    +flags(25px, 0, 0, 18px, .45)

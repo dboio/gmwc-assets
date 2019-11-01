@@ -1,0 +1,186 @@
+// typography
+$font-family-sans-serif: $font-arvo
+$font-family-base:       $font-arvo
+$font-helvetica-neue:    $font-family-base
+$icon-font-name-custom:  "../icons/gmwcicons-regular"
+
+// colors
+$brand-primary:     #af0401
+$color-orange:      #f2bb00
+$color-gold:        #f2bd03
+$color-purple:      #58384D
+$color-pinot:       #a8456f
+$color-pinot2:      #c93484
+$color-pink:        #f44566
+$color-red:         #ee3b36
+$color-gray:        #cccccc
+$color-gray-light:  #e5e5e5
+$color-gray-bright: #f2f2f2
+$color-borders-1:   #E5E5E5
+$color-borders-2:   #cccccc
+$color-gray-mid:    #8a8a8a
+$color-gray-dark:   grey
+$color-gray-darker: #575757
+$color-green:       #6e9c42
+$color-cartgreen:   #8dc43b
+$color-brown:       #883717
+$color-turquoise:   #14d9bb
+$color-blue:        #00d2f7
+$color-black:       #000000
+$color-off-white:   #fbfbfb
+$color-bg-hover:    #f6f6f6
+$brand-success:     #57c50d
+$color-facebook:    #3b5998
+$color-twitter:     #55acee
+$color-pinterest:   #cc2127
+$color-gplus:       #dd4b39
+$color-youtube:     #cd201f
+$color-instagram:   #3f729b
+
+// Club Colors
+$club-fallback:      #8c2702
+$club-international: #77D624
+$club-diamond:       #616786
+$club-pinot-noir:    #D66193
+$club-gold:          #FFD12E
+$club-platinum:      #5F5957
+$club-garagiste:     #F7645B
+
+// Overrides
+$brand-success:      $color-turquoise
+
+$colors: ( 'primary': $brand-primary, 'orange': $color-orange, 'purple': $color-purple, 'gray': $color-gray, 'gray-mid': $color-gray-mid,'gray-dark': $color-gray-dark, 'black': $color-black, 'gold': $color-gold, 'Gold': $color-gold, 'pinot': $color-pinot, 'Pinot': $club-pinot-noir, 'PinotNoir': $club-pinot-noir, 'turquoise': $color-turquoise, 'brown': $color-brown, 'blue': $color-blue, 'green': $brand-success, 'red': $color-red, 'pinot2': $color-pinot2, 'garagiste': $club-garagiste, 'Garagiste': $club-garagiste, 'diamond': $club-diamond, 'Diamond': $club-diamond, 'international': $club-international, 'International': $club-international, 'platinum': $club-platinum, 'Platinum': $club-platinum, 'success': $brand-success, 'default': $color-gray-dark, 'info': $color-blue, 'warning': $color-orange, 'danger': $color-red )
+
+$label-default-bg:    $color-gray-dark
+$label-primary-bg:    $brand-primary
+$label-success-bg:    $brand-success
+$label-info-bg:       $color-blue
+$label-warning-bg:    $color-orange
+$label-danger-bg:     $color-red
+
+$btn-default-bg:      $color-gray-dark
+$btn-default-color:   $body-bg
+
+$shopping-cart-bar-bg: $color-cartgreen
+
+
+
+
+// reset colors
+$link-color:                      $club-fallback
+$navbar-default-border:           $color-borders-2
+$navbar-bright-border:            $color-borders-1
+$panel-default-border:            $navbar-bright-border
+$default-gray-text:               $color-gray-dark
+$fg-text:                         $default-gray-text
+$default-icon-color:              $color-gray-mid
+$fg-icons:                        $default-icon-color
+$icon-color:                      $default-icon-color
+$icon-link-color:                 $default-icon-color
+$icon-color-hover:                darken($default-icon-color, 10)
+$icon-color-active:               $color-turquoise
+$icon-color-disabled:             transparentize($default-icon-color, .5)
+$default-border-color:            $navbar-default-border
+$default-border-color-bright:     $navbar-bright-border
+$site-borders-frames:             $default-border-color
+$site-borders-dividers:           $default-border-color-bright
+$base-color-borders:              $default-border-color
+$default-border-color-hover:      darken($default-border-color, 10)
+$default-border-color-active:     $color-turquoise
+$fg-placeholder:                  lighten($default-gray-text, 10)
+$base-color-active:               $link-color
+$bg-required:                     $color-orange
+$fg-error:                        $color-red
+$ol-error:                        $color-red
+$color-inline-headers:            $club-fallback
+
+// breakpoints
+$min-device-width:            320px
+$min-device-width-iphone-6:   375px
+$max-body-width:              1020px
+$container-sm:                100%
+$container-lg:                $max-body-width - 2
+$container-md:                $container-lg
+
+$screen-md:                  $max-body-width !default
+$screen-md-min:              $screen-md !default
+$screen-desktop:             $screen-md-min !default
+$screen-sm-max:              ($screen-md-min - 1) !default
+
+// customize bootstrap
+$badge-line-height:           $line-height-computed - 2
+$default-box-shadow-color:    none
+$default-box-shadow-h-offset: 0
+$default-box-shadow-v-offset: 0
+$default-box-shadow-blur:     5px
+$default-box-shadow-spread:   false
+$default-box-shadow-inset:    false
+$bs-input:                    none
+$bs-input-focus:              $default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur $link-color inset
+$bs-menu:                     $default-box-shadow-h-offset $default-box-shadow-v-offset $default-box-shadow-blur transparentize($color-gray-dark, .5)
+$default-border-size:         1px
+$default-border-style:        solid
+$default-hover-bg:            $link-color
+$dropdown-link-hover-bg:      lighten($default-hover-bg, 15%)
+$dropdown-link-hover-color:   $body-bg
+$dropdown-link-active-bg:     $default-hover-bg
+$dropdown-link-active-color:  $body-bg
+
+// paddings
+$default-paddings:            ($grid-gutter-width / 2)
+
+// dimension-grid
+$dimension-grid-unit:         80px
+$dimension-grid-height:       ($dimension-grid-unit / 2)
+$dimension-grid:              $dimension-grid-height
+$dimension-grid-width:        $dimension-grid-height
+$dimension-grid-line-height:  ($dimension-grid-height / 2)
+$dimension-grid-lineheight:   $dimension-grid-line-height
+$dimension-grid-icon-size:    $dimension-grid - ceil($dimension-grid * 0.4)
+$dimension-grid-iconsize:     $dimension-grid-icon-size
+$dimension-grid-padding-top:  ($dimension-grid-height / 4)
+$dimension-grid-padding-bottom:   $dimension-grid-padding-top
+$dimension-grid-padding-left: $dimension-grid-padding-top
+$dimension-grid-padding-right: $dimension-grid-padding-top
+$dimension-grid-inputpadding: ($dimension-grid - ceil($dimension-grid * 0.65)) / 2
+$dimension-grid-inputheight:  $dimension-grid - ceil($dimension-grid * 0.35)
+$dimension-grid-fontsize:     (($dimension-grid - ceil($dimension-grid * 0.25)) / 2)-2
+
+// dbo forms
+$form-border-color:         $color-borders-2
+$form-border-color-bright:  $color-borders-1
+$fg-placeholder:            $color-gray-dark
+$input-color:               $color-black
+$ol-inputs:                 $form-border-color
+$form-border-color-hover:   darken($default-border-color, 10)
+$ol-inputs-hover:           $form-border-color-hover
+$form-border-color-focus:   $default-border-color-active
+$ol-inputs-focus:           $form-border-color-focus
+$ol-inputs-active:          $form-border-color-focus
+$form-border-radius:        0px
+$form-background-color:     $body-bg
+$br-inputs:                 $form-background-color
+$bg-inputs:                 $form-background-color
+$bg-inputs-focus:           $form-background-color
+$form-box-shadow:           inset 0 1px 3px rgba(0, 0, 0, 0.06)
+$form-box-shadow-focus:     $form-box-shadow, 0 0 5px rgba(darken($default-border-color-active, 5), 0.7)
+$form-font-size:            $font-size-base
+$form-font-family:          $font-family-base
+$inputPadding:              $dimension-grid-inputpadding
+$menu-border-size:          $default-border-size
+$border-style:              $default-border-style
+$menu-bg-color:             transparentize(lighten($color-gray-bright, 3%), .1)
+$bg-type-combined:          rgba(243,243,243,.85)
+
+
+// buttons
+$ol-button:                 $default-border-color
+$bg-button:                 $btn-default-bg
+$bg-button-2:               darken($bg-button, 10)
+$fg-button:                 $btn-default-color
+$fg-button-hover:           darken($fg-button, 10)
+
+// footer
+$footer-height:             $dimension-grid-unit * 2
+$footer-height-mobile:      $dimension-grid-unit * 3
+

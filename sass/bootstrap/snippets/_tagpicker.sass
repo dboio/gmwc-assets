@@ -1,0 +1,40 @@
+.bootstrap-tagsinput
+  @extend .form-control
+  width: auto
+  display: inline-block
+  color: $input-color
+  vertical-align: middle
+  max-width: 100%
+  cursor: text
+  input
+    border: none
+    box-shadow: none
+    outline: none
+    background-color: transparent
+    padding: 0
+    margin: 0
+    width: auto !important
+    max-width: inherit
+    font-size: 90%
+    &:focus
+      border: none
+      box-shadow: none
+  .tag
+    margin-right: 2px
+    color: $label-color
+    +transition(all .3s ease-in-out)
+    [data-role="remove"]
+      margin-left: 4px
+      cursor: pointer
+      font-size: 1.2em
+      color: $label-color
+      +transition(color .3s ease-in-out)
+      &:after
+        content: "\00d7"
+        padding: 0px 1px
+      &:hover
+        color: $label-color
+
+
+#multiple-datasets .tt-hint
+  display: none

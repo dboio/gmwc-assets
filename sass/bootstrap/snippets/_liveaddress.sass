@@ -1,0 +1,154 @@
+.smarty-ui
+  right: 0
+  text-align: center
+  top: 0 !important
+  position: fixed !important
+  + .smarty-ui
+    top: $dimension-grid-height * 2 !important
+    left: auto !important
+    width: 100%
+    min-height: $dimension-grid-height
+    display: none
+
+  .smarty-dots
+    position: relative
+    background: none !important
+    top: $dimension-grid-height !important
+    right: $dimension-grid-inputpadding !important
+    width: $dimension-grid-width
+    +loading-icon
+    display: none
+  .smarty-autocomplete
+    margin: 0 auto
+    font-family: $form-font-family
+    position: relative
+    text-align: left
+    border: $menu-border-size $border-style $dropdown-border
+    background-color: $menu-bg-color
+    +box-shadow($bs-menu)
+    +border-radius($br-inputs, $br-inputs)
+    cursor: pointer
+    width: 100%
+    max-height: $dimension-grid-height * 4.75
+    overflow-y: auto
+  .smarty-suggestion, .smarty-no-suggestions
+    padding: 0 $default-paddings
+    margin: 0
+    width: 100%
+    line-height: $dimension-grid-height
+    text-align: left
+    border-top: $default-border-size $default-border-style $default-border-color-bright
+    position: relative
+    font-weight: normal
+    font-size: $font-size-base
+    &, span, div, strong, i, b
+      +transition(all .3s ease-in-out)
+    b
+      font-weight: bold
+      background-color: $color-orange
+    &:first-child
+      border-top-style: none
+  .smarty-no-suggestions
+    color: $fg-error
+    font-style: normal
+  .smarty-active-suggestion,
+  .smarty-suggestion:hover,
+  .smarty-suggestion:focus
+    background: $dropdown-link-hover-bg
+    &, span, div
+      color: $dropdown-link-hover-color !important
+      b
+        color: $color-gray-dark
+  .smarty-tag
+    display: none !important
+  .smarty-popup
+    margin: 0 auto
+    font-family: $form-font-family
+    position: relative
+    text-align: left
+    border: $menu-border-size $border-style $dropdown-border
+    background-color: $menu-bg-color
+    +box-shadow($bs-menu)
+    +border-radius($br-inputs, $br-inputs)
+    cursor: pointer
+    width: 100%
+    max-height: $dimension-grid-height * 4.75
+    overflow-y: auto
+    .smarty-popup-header
+      line-height: $dimension-grid-height
+      border-color: $navbar-default-border
+      height: $dimension-grid
+      font-family: $form-font-family
+      font-size: $font-size-h4
+      color: $color-black
+      padding-top: 0
+      padding-bottom: 0
+      font-weight: 300
+      text-transform: none
+      background-color: transparent
+      border-bottom: $default-border-color $default-border-size $default-border-style
+      &.smarty-popup-invalid-header
+        color: $fg-error
+      .smarty-popup-close
+        right: 0
+        top: 0
+        padding: 0
+        height: $dimension-grid-height
+        line-height: $dimension-grid-height
+        width: $dimension-grid-width
+        font-family: 'Glyphicons Custom'
+        overflow: hidden
+        text-align: center
+        text-transform: none
+        color: $color-black !important
+        font-size: $dimension-grid-icon-size
+        +opacity(.2)
+        +transition(all .3s ease-in-out)
+        &:hover
+          background-color: transparent
+          +opacity(1)
+    .smarty-choice-list, .smarty-choice-alt
+      padding: $default-paddings
+      .smarty-choice
+        border: none
+        display: block
+        width: 100%
+        margin-bottom: 0
+        font-weight: normal
+        text-align: center
+        vertical-align: middle
+        touch-action: manipulation
+        cursor: pointer
+        background-image: none
+        white-space: nowrap
+        +button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $border-radius-base)
+        +button-variant($btn-default-color, $btn-default-bg, $btn-default-border)
+        +user-select(none)
+
+        &,
+        &:active,
+        &.active
+          &:focus,
+          &.focus
+            +tab-focus
+
+        &:hover,
+        &:focus,
+        &.focus
+          color: $btn-default-color
+          text-decoration: none
+    .smarty-choice-alt
+      padding-top: 0
+      border: none
+      background: transparent
+      +box-shadow(none)
+      .smarty-choice
+        +button-variant($btn-info-color, $brand-info, $brand-info)
+        color: $btn-info-color !important
+
+
+
+.modal-backdrop  + .smarty-ui
+  top: -1px !important
+
+

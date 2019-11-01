@@ -1,0 +1,108 @@
+.panel-body
+  > .media
+    margin-left: -$default-paddings
+    margin-right: -$default-paddings
+    &:first-child
+      margin-top: -$default-paddings
+      border-top: none
+    &:last-child
+      margin-bottom: -$default-paddings
+
+
+.panel
+  @include panel-variant($default-border-color, $default-gray-text, $body-bg, $default-border-color-bright)
+  +border-radius(0)
+  +box-shadow(0)
+  iframe
+    margin-bottom: -6px
+.panel-heading
+  line-height: $dimension-grid-height
+  min-height: $dimension-grid-height
+  color: $default-gray-text
+  padding-top: 0
+  padding-bottom: 0
+  font-size: $font-size-h4
+  font-weight: 300
+  letter-spacing: .03em
+  border: 0
+  display: block
+  +clearfix
+  border-bottom: $default-border-color-bright $default-border-style $default-border-size
+  margin-bottom: 0
+  .label
+    padding: .2em .6em
+    line-height: $font-size-base
+    font-size: $font-size-small
+    font-weight: bold
+    min-width: $dimension-grid-width * 1.7
+    &.pull-right
+      margin: 9px 0 0 $padding-small-vertical
+    &.pull-left
+      margin: 9px $padding-small-vertical 0 0
+  > a
+    color: darken($default-gray-text, 10%)
+    display: block
+    margin-left: -$panel-body-padding
+    margin-right: -$panel-body-padding
+    padding: 0 $panel-body-padding
+    +transition(all .3s ease-in-out)
+    &:before
+      color: $color-gray
+    span
+      font-size: $font-size-h4 - 1
+      color: $link-color
+    &:hover, &:focus
+      text-decoration: none
+      background-color: $list-group-hover-bg
+      span
+        text-decoration: underline
+      &.pull-right
+        background-color: transparent
+      &.pull-left
+        background-color: transparent
+    &:link
+      +moreIcon
+      &:before
+        margin-right: -$panel-body-padding
+      &.pull-right span
+        margin-right: -($panel-body-padding / 2)
+        white-space: nowrap
+
+.panel-grid
+  .panel-body
+    padding: 0
+    &.panel-body-horizontal-scroller
+      height: $dimension-grid-height * 4.5 + 30
+      overflow: hidden
+      overflow-x: auto
+      white-space: nowrap
+      -webkit-overflow-scrolling: touch
+      @media (min-width: $min-device-width-iphone-6)
+        height: $dimension-grid-height * 4.5 + ($dimension-grid-width / 2) + 30
+      .scroll-container
+        display: block
+        white-space: nowrap
+        height: $dimension-grid-height * 4.5 + 30
+        @media (min-width: $min-device-width-iphone-6)
+          height: $dimension-grid-height * 4.5 + ($dimension-grid-width / 2) + 30
+        .price
+          bottom: $dimension-grid-height / 2
+
+
+
+.main-content > .panel,
+.sidebar > .panel
+  margin: (-$default-border-size) (-$default-paddings) 0
+  border-left-style: none
+  border-right-style: none
+  +border-radius(0)
+  &:last-child
+    margin-bottom: -($default-border-size)
+    .panel-body
+      .media:last-child
+        margin-bottom: 0
+  + .list-group
+    margin-top: -$default-border-size !important
+
+.sidebar > .panel
+  margin: (-$default-border-size) (-$default-border-size) 0 (-($default-border-size))

@@ -1,0 +1,63 @@
+/*!
+ * Lightbox for Bootstrap 3 by @ashleydw
+ * https://github.com/ashleydw/lightbox
+ *
+ * License: https://github.com/ashleydw/lightbox/blob/master/LICENSE
+
+.ekko-lightbox
+  +transition(all 1s ease-in-out)
+  .modal-footer
+    text-align: left
+
+  .modal-dialog
+    +transition(all 1s ease-in-out)
+    @media (min-width: $screen-md-min)
+      max-width: ($screen-md-min * .8) !important
+
+    .ekko-lightbox-container
+      position: relative
+      +transition(all 1s ease-in-out)
+      > div
+        +transition(all 1s ease-in-out)
+      .img-responsive
+        margin: 0 auto
+
+  .ekko-lightbox-nav-overlay
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 100
+    width: 100%
+    height: 100%
+    a
+      z-index: 100
+      display: block
+      width: 49%
+      height: 100%
+      padding-top: 45%
+      font-size: 30px
+      color: $gray-darker
+      text-shadow: 0 0 10px $popover-bg, 0 0 20px $popover-bg, 0 0 30px $popover-bg
+      text-decoration: none
+      +opacity(0)
+      +transition(opacity 0.5s)
+      &:hover
+        +opacity(1)
+        text-decoration: none
+      &:empty
+        width: 49%
+      &.glyphicon
+        &:before
+          color: $gray-darker
+          text-shadow: 0 0 5px $popover-bg, 0 0 20px $popover-bg, 0 0 30px $popover-bg
+
+      &.glyphicon-chevron-left
+        left: 0
+        float: left
+        padding-left: 15px
+        text-align: left
+      &.glyphicon-chevron-right
+        right: 0
+        float: right
+        padding-right: 15px
+        text-align: right

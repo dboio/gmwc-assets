@@ -1,0 +1,92 @@
+.dimension-grid-min-height
+  min-height: $dimension-grid-height
+  .dimension-grid-img-container
+    height: ($dimension-grid-height - 5)
+    > img
+      max-height: $dimension-grid-height * 1.2
+.dimension-grid-min-height-x2
+  min-height: $dimension-grid-height * 2 !important
+  .dimension-grid-img-container
+    height: ($dimension-grid-height * 2 - 5)
+    > img
+      max-height: $dimension-grid-height * 2.5
+.dimension-grid-min-width
+  min-width: $dimension-grid-width
+  text-align: center
+  .badge
+    vertical-align: middle
+.dimension-grid-min-width-x2
+  min-width: $dimension-grid-width*2 !important
+  text-align: center
+.dimension-grid-line-height
+  line-height: $dimension-grid-line-height
+  padding-top: $dimension-grid-padding-top
+  padding-bottom: $dimension-grid-padding-bottom
+.dimension-grid-offset-padding-right
+  padding-right: $dimension-grid-width !important
+.dimension-grid-offset-padding-left
+  padding-left: $dimension-grid-width !important
+.dimension-grid-offset-margin-right
+  margin-right: $dimension-grid-width !important
+.dimension-grid-offset-margin-left
+  margin-left: $dimension-grid-width !important
+.dimension-grid-offset-padding-right-x2
+  padding-right: $dimension-grid-width * 2 !important
+.dimension-grid-offset-padding-left-x2
+  padding-left: $dimension-grid-width * 2 !important
+.dimension-grid-offset-margin-right-x2
+  margin-right: $dimension-grid-width * 2 !important
+.dimension-grid-offset-margin-left-x2
+  margin-left: $dimension-grid-width * 2 !important
+.dimension-grid-img-container
+  overflow: hidden
+  text-align: center
+  width: $dimension-grid-width
+  padding-top: $padding-small-vertical !important
+  > img
+    max-width: $dimension-grid-width * .8 !important
+  + .form_rows
+    margin-left: ($dimension-grid-width - $default-paddings)
+    .form_row.error .error
+      margin-left: ($default-paddings) !important
+      padding-left: 0 !important
+  &.dimension-grid-min-width-x2
+    + .form_rows
+      .form_row.error .error
+        margin-left: ($dimension-grid-width + $default-paddings) !important
+        padding-left: 0 !important
+
+  > .icon
+    margin-top: -$padding-small-vertical
+  &.set, &.club
+    padding-top: 0 !important
+    > img
+      max-width: $dimension-grid-width * 0.75 !important
+    > .icon
+      margin-top: 0
+  &.dimension-grid-img-container-x2
+    height: ($dimension-grid-height * 2)
+    width: $dimension-grid-width * 2
+    +baseGridIcons(($dimension-grid-height * 2), ($dimension-grid-width * 2), ($dimension-grid-height * 2), ($dimension-grid-icon-size * 1.7))
+    .icon, .glyphicon
+      &, &:before, &:after
+        margin-top: -5px !important
+    > img
+      max-height: $dimension-grid-height * 3
+    + .form_rows
+      margin-left: ($dimension-grid-width * 2) - $default-paddings
+      .form_row.error .error
+        margin-left: 0 !important
+        //padding-left: $dimension-grid-inputpadding !important
+    &.img-stack
+      vertical-align: bottom
+      > img
+        margin-top: $dimension-grid-padding-top * 2
+        max-height: $dimension-grid-height * 0.75
+    &.club
+      > img
+        max-width: $dimension-grid-width * 1.5 !important
+        margin-top: $dimension-grid-padding-top/2
+    &.set
+      > img
+        max-width: $dimension-grid-width * 1.6 !important

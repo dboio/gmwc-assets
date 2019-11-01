@@ -1,0 +1,174 @@
+.dbo_form
+  border-bottom: $default-border-size $default-border-style $navbar-default-border
+  .input_container
+    .input, .placeholder, .choice, textarea
+      font-size: $font-size-base
+      font-weight: normal
+  .form_rows
+    .col-md-6:first-child
+      padding-right: 0
+      + .col-md-6
+        padding-left: 0
+
+  .form_row
+    border-top: $default-border-style $default-border-size $form-border-color
+    line-height: ($dimension-grid-height - 1) !important
+    font-weight: normal
+    +clean-font
+    &.list-group-item
+      border-bottom: none !important
+    .expiration
+      &.pull-right
+        margin-right: $dimension-grid-padding-right
+        + .list-group-item-text-single
+          +ellipsis(true)
+    &.type_textarea
+      .input_container
+        textarea
+          height: $dimension-grid-height * 2.5
+          line-height: $line-height-base
+  .type_combined
+    .input_container
+      background-color: $bg-type-combined
+    &.has-text-input
+      .input_container
+        background-color: $bg-inputs
+  .type_creditcard
+    .input-group
+      display: block !important
+      height: $dimension-grid-height
+      border-collapse: inherit
+    .dimension-grid.pull-left + .input-group
+      margin-left: $dimension-grid-width
+    .dimension-grid.dimension-grid-min-width-x2.pull-left + .input-group
+      margin-left: $dimension-grid-width * 2
+    .input_container
+      float: left
+      width: 60%
+      +transition(width .3s ease-in-out)
+      .input.full-width
+        width: 100% !important
+      .input_triggers
+        z-index: 3
+        position: absolute
+        top: 0
+        right: 0
+      + .input_container
+        border-left: $default-border-style $default-border-size $form-border-color
+        width: 20%
+        + .input_container
+          width: 20%
+    .input-group > div + div .input_container
+      width: 100%
+    .hint
+      width: $dimension-grid-width
+      padding: 0
+      text-align: center
+      img
+        margin-bottom: 3px
+        width: $dimension-grid-width * 0.8 !important
+    p
+      margin-left: 0
+
+  +error('.type_creditcard')
+
+  .ui-menu
+    li.ui-menu-item
+      border-color: $form-border-color !important
+      a
+        font-weight: normal !important
+  .list-group-item
+    clear: both
+    line-height: ($dimension-grid-height - 1) !important
+    border-color: $form-border-color !important
+    > .form_row > .input_container
+      .choice, .placeholder, .input
+        padding-left: $dimension-grid-inputpadding
+      .dimension-grid-min-width-x2
+        &.pull-left
+          margin-right: $dimension-grid-inputpadding
+          margin-left: -$dimension-grid-inputpadding
+        .icon
+          float: none !important
+          margin: 0
+    .form_rows
+      margin-right: -($default-paddings)
+    &.no-padding
+      .form_rows
+        margin-right: 0
+    .form_rows, .input-group
+      .form_row, .list-group-item
+        clear: none
+        background-color: transparent
+        border-color: $form-border-color-bright !important
+        &:first-child
+          border-top-color: transparent !important
+          &.border-top
+            border-top-color: $form-border-color-bright !important
+      a.list-group-item
+        &:hover, &:active
+          background-color: $list-group-hover-bg
+      .input, .placeholder, .choice
+        padding-left: $dimension-grid-inputpadding !important
+
+      .list-group-item
+        padding-left: $dimension-grid-inputpadding
+        &.dimension-grid-offset-margin-left-x2
+          .dimension-grid-img-container, .dimension-grid
+            &.pull-left
+              margin-left: -(($dimension-grid-width * 1.5)) !important
+              + .form_row
+                margin-left: -($default-paddings)
+                border-top-style: none
+                + .form_row
+                  border-top-style: $default-border-style
+          &.no-padding
+            .dimension-grid-img-container, .dimension-grid
+              &.pull-left
+                margin-left: -(($dimension-grid-width * 2) + ($default-paddings/3) + 2) !important
+                width: $dimension-grid-width * 2
+                text-align: center
+                padding-right: ($default-paddings/2)
+                + .form_row
+                  margin-left: -($default-paddings/2)
+
+
+    .dimension-grid-img-container-x2
+      + .form_rows
+        .list-group-item
+          .dimension-grid-img-container, .dimension-grid
+            &.pull-left
+              margin-left: -($dimension-grid-inputpadding + ($dimension-grid-width * 2)) !important
+              text-align: center
+              width: $dimension-grid-width * 2
+
+
+  .form_row-header
+    line-height: $dimension-grid-height
+    min-height: $dimension-grid-height
+    padding: 0 $dimension-grid-inputpadding
+    display: block
+    font-size: $font-size-h5
+    font-weight: normal
+    color: $color-black
+    +ellipsis(true)
+    h4, h5
+      line-height: $line-height-base
+      font-size: $font-size-base
+      font-weight: normal
+      margin: 0
+      padding: 3px 0 1px
+      +ellipsis(true)
+    h5
+      color: $color-gray-dark
+      font-size: $font-size-small
+    h4 + h5
+      margin-top: -4px
+    .close
+      margin-right: -($dimension-grid-inputpadding)
+
+
+
+.list-group
+  > .dbo_form
+    border-bottom: none

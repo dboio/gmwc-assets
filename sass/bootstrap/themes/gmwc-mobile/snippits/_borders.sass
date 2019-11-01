@@ -1,0 +1,10 @@
+@each $orientation in top, bottom, left, right
+  .border-#{$orientation}
+    border-#{$orientation}: $default-border-style $default-border-size $navbar-default-border
+
+.no-borders
+  border: none !important
+  +border-radius(0)
+
+.offshift-top-border
+  margin-top: -$default-border-size

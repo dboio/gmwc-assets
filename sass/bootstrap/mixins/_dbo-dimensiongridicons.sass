@@ -1,0 +1,131 @@
+= font-reset
+  -webkit-font-smoothing: antialiased
+  -webkit-font-feature-settings: "liga", "dlig"
+  -moz-font-feature-settings: "liga=1, dlig=1"
+  -moz-font-feature-settings: "liga", "dlig"
+  -ms-font-feature-settings: "liga", "dlig"
+  -o-font-feature-settings: "liga", "dlig"
+  font-feature-settings: "liga", "dlig"
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  speak: none
+  font-weight: normal
+  font-variant: normal
+  font-style: normal
+  text-transform: none
+  line-height: 1
+  text-decoration: none !important
+  border: none
+
+= icon-basics
+  text-align: center
+  vertical-align: bottom
+  padding: 0
+  display: inline-block
+  width: auto
+
+
+= baseGridIcons($iconHeight: $dimension-grid-height, $iconWidth: $dimension-grid-width, $iconLineHeight: $dimension-grid-height, $iconFontSize: $dimension-grid-iconsize)
+  .icon, .glyphicon
+    &, &:before, &:after
+      height: $iconHeight
+      width: $iconWidth
+      line-height: $iconLineHeight
+      @media all and (-ms-high-contrast: none)
+        line-height: $iconLineHeight * .75
+      @supports (-ms-accelerator: true)
+        line-height: $iconLineHeight * .75
+      font-size: $iconFontSize
+      vertical-align: top
+      text-align: center
+
+
+= baseIcons($iconColor: $icon-color, $iconHoverColor: $icon-color-hover, $BgColor: $navbar-default-bg, $iconActiveColor: $icon-color-active, $iconDisabledColor: $icon-color-disabled)
+  color: $iconColor
+  +baseGridIcons
+  .icon, .glyphicon
+    +transition(all 0.5s ease)
+    color: $iconColor
+    &.active
+      color: $iconActiveColor
+    &.disabled
+      color: $iconDisabledColor
+  &.active
+    .icon, .glyphicon
+      color: $iconActiveColor
+
+
+= baseButtons($iconColor: $icon-link-color, $iconHoverColor: $icon-color-hover, $BgColor: $navbar-default-bg, $iconActiveColor: $icon-color-active, $iconDisabledColor: $icon-color-disabled)
+  background-color: transparent
+  border: none !important
+  color: $iconColor
+  border-radius: 0
+  margin: 0 !important
+  padding: 0
+  width: $dimension-grid-width
+  height: $dimension-grid-height
+  float: left !important
+  cursor: pointer
+  +transition(all 0.5s ease)
+  +opacity(1)
+  +box-sizing(border-box)
+  .icon, .glyphicon
+    +transition(all 0.5s ease)
+  //+baseGridIcons
+  +baseIcons($iconColor, $iconHoverColor, $BgColor, $iconActiveColor, $iconDisabledColor)
+  &:hover, &:active, &.focus
+    $newHoverColor: lighten($BgColor, 13.5%)
+    background-color:  transparentize($newHoverColor, .2)
+    box-shadow: none
+    outline: none
+    .icon, .glyphicon
+      color: $iconHoverColor
+      &:before, &:after
+        color: $iconHoverColor
+  &::-moz-focus-inner,
+  &:active, &:focus
+    outline: none !important
+    border: 0
+    -moz-outline-style: none !important
+  &.focus
+    +box-shadow($bs-input-focus)
+  &.active
+    box-shadow: none
+    background-color: lighten($BgColor, 13.5%)
+    .icon,
+    .icon.active
+      color: $iconActiveColor !important
+      &:before, &:after
+        color: $iconActiveColor !important
+  &.disabled
+    //[class*="icon-"].dbo,
+    .icon, .glyphicon,
+    .icon.disabled
+      color: $iconDisabledColor !important
+      &:before, &:after
+        color: $iconDisabledColor !important
+  &.drag_handle
+    &:before
+      font-family: "dbo-icons" !important
+      padding: 0
+      margin: 0
+      position: absolute
+      top: -6px
+      left: -7px
+      width: $dimension-grid-width
+      height: $dimension-grid-height
+      font-size: $dimension-grid-iconsize
+      vertical-align: bottom
+      line-height: $dimension-grid-lineheight
+  &.loading
+    background-size: $dimension-grid-width $dimension-grid-width !important
+    background-position: center center
+    background-repeat: no-repeat
+    background-image: url(/media/base/app/ui/gfx/loading.navbar.80.gif)
+    .icon, .glyphicon,
+    .icon.active
+      display: none !important
+
+
+

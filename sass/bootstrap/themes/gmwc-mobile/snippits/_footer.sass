@@ -1,0 +1,73 @@
+.footer
+  margin-top: 0
+  background: transparent
+  position: relative
+  z-index: 1
+  > .container
+    border-top: $navbar-default-border $default-border-size $default-border-style
+    margin: 0 auto
+    min-height: $footer-height
+    padding: $default-paddings
+    padding-bottom: $default-paddings + $dimension-grid-height
+    position: relative
+    height: auto
+    background: $color-gray-bright
+    @media (max-width: $screen-xs-max)
+      padding-bottom: $default-paddings + ($dimension-grid-height * 3)
+      .text-right
+        text-align: left
+
+  .referrals
+    > div
+      &, a, a:link, h4
+        color: $color-black !important
+        font-weight: 200
+        line-height: 1.3em
+        letter-spacing: .05em
+      h4
+        font-weight: 300
+        color: $brand-primary !important
+      a
+        display: inline-block
+        padding: 0 $padding-base-horizontal $padding-base-vertical 0
+    .social
+      font-size: 2.5em
+      margin-right: -$default-paddings
+      margin-left: -$padding-small-horizontal
+      .glyphicon-facebook
+        color: $color-facebook
+      .glyphicon-twitter
+        color: $color-twitter
+      .glyphicon-pinterest
+        color: $color-pinterest
+      .glyphicon-gplus
+        color: $color-gplus
+      .glyphicon-youtube
+        color: $color-youtube
+      .glyphicon-instagram
+        color: $color-instagram
+      &:hover
+        &, .icon
+          color: $color-black
+
+  .copyrights
+    background: $body-bg
+    line-height: $dimension-grid-height
+    position: absolute
+    bottom: 0
+    left: $default-paddings
+    width: 100%
+    &, div, a, a:link
+      font-size: $font-size-small !important
+      color: $color-gray-dark !important
+    div:first-child
+      a
+        &:before
+          content: '|'
+          text-decoration: none
+          display: inline-block
+          width: $default-paddings
+          text-align: center
+          padding-right: 3px
+        &:first-child:before
+          display: none

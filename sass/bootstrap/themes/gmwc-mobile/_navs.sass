@@ -1,0 +1,28 @@
+.nav-tabs
+  border-bottom: $default-border-size $default-border-style $default-border-color
+  border-top: $default-border-size $default-border-style $default-border-color
+  > li
+    float: left
+    margin-bottom: -$default-border-size
+    > a
+      margin: -$default-border-size
+      line-height: $dimension-grid-height
+      padding: 0 $default-paddings
+      border: $default-border-size $default-border-style $default-border-color
+      +border-radius(0 !important)
+      +transition(all .3s ease-in-out)
+      font-size: $font-size-large
+      &:hover
+        border-color: $default-border-color
+        background-color: transparentize($default-border-color, .4)
+    &.active > a
+      &,
+      &:hover,
+      &:focus
+        color: $white
+        background-color: $link-color
+        border: $default-border-size $default-border-style $link-color !important
+        cursor: default
+.nav-tabs-justified > li > a,
+.nav-tabs.nav-justified > li > a
+  margin-right: -$default-border-size

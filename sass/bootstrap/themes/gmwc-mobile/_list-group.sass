@@ -1,0 +1,249 @@
+body > .container > .row > div > .list-group,
+.quick-cart .list-group
+  margin: 0 (-$default-paddings) (-$default-border-size)
+  border-bottom: $default-border-size $default-border-style $default-border-color
+
+  &:last-child
+    margin-bottom: 0
+  .credit-card
+    height: $font-size-base
+  .list-group-item
+    border-color: $default-border-color-bright
+    border-left-style: none
+    border-right-style: none
+    border-bottom-style: none
+    min-height: $dimension-grid-height
+    display: block
+    clear: right
+    .btn-sm
+      &.pull-right
+        margin: 9px 0 0 $padding-small-vertical
+      &.pull-left
+        margin: 9px $padding-small-vertical 0 0
+    .label
+      font-weight: normal
+      padding: .2em .6em
+      line-height: $font-size-base
+      font-size: $font-size-small
+      font-weight: bold
+      min-width: $dimension-grid-width * 1.7
+      &.pull-right
+        margin: 9px 0 0 $padding-small-vertical
+      &.pull-left
+        margin: 9px $padding-small-vertical 0 0
+      &.label-default
+        background: transparent
+        border: $default-border-size $default-border-style $label-default-bg
+        color: $label-default-bg
+        &.label-solid
+          background: $label-default-bg
+          color: $label-color
+      &.label-primary
+        background: transparent
+        border: $default-border-size $default-border-style $label-primary-bg
+        color: $label-primary-bg
+        &.label-solid
+          background: $label-primary-bg
+          color: $label-color
+      &.label-success
+        background: transparent
+        border: $default-border-size $default-border-style $label-success-bg
+        color: $label-success-bg
+        &.label-solid
+          background: $label-success-bg
+          color: $label-color
+      &.label-info
+        background: transparent
+        border: $default-border-size $default-border-style $label-info-bg
+        color: $label-info-bg
+        &.label-solid
+          background: $label-info-bg
+          color: $label-color
+      &.label-warning
+        background: transparent
+        border: $default-border-size $default-border-style $label-warning-bg
+        color: $label-warning-bg
+        &.label-solid
+          background: $label-warning-bg
+          color: $label-color
+      &.label-danger
+        background: transparent
+        border: $default-border-size $default-border-style $label-danger-bg
+        color: $label-danger-bg
+        &.label-solid
+          background: $label-danger-bg
+          color: $label-color
+    .pull-right + .label.pull-right
+      margin-right: $padding-small-horizontal
+
+    &.no-padding-topbottom
+      padding-top: 0
+      padding-bottom: 0
+    > .dimension-grid-img-container
+      &.pull-left
+        margin-left: -$default-paddings !important
+      &.pull-right
+        margin-right: -$default-paddings
+    > .dimension-grid
+      &.pull-left
+        margin-left: -$default-paddings
+      &.pull-right
+        margin-right: -$default-paddings
+    .list-group-item-heading
+      font-size: $font-size-h3
+      color: $color-inline-headers
+      font-weight: 300
+      +ellipsis(true)
+      line-height: $font-size-h2
+    &.list-group-item-title
+      line-height: $dimension-grid-height
+      min-height: $dimension-grid-height
+      color: $default-gray-text
+      padding: 0 $dimension-grid-padding-right
+      font-size: $font-size-h4
+      font-weight: 200
+      letter-spacing: .05em
+    .list-group-item-text
+      font-weight: 300
+      color: $color-black
+    .list-group-item-text-single
+      display: block
+      line-height: $dimension-grid-height
+      +ellipsis(true)
+      font-weight: normal
+      clear: initial
+      &.h4, &.h5
+        margin-top: 0
+        margin-bottom: 0
+        letter-spacing: .03em
+      &.h5
+        color: $color-black
+        font-size: $font-size-h5 + 1
+        font-weight: 300
+    .list-group-item-text-double
+      display: block
+      line-height: $dimension-grid-line-height - 3
+      font-size: $font-size-small + 1
+      +ellipsis(true)
+      &.choice
+        margin-top: 0
+        margin-bottom: 0
+      .list-group-item-text
+        margin-top: $dimension-grid-padding-top/3.33
+        +ellipsis(true)
+        color: $color-gray-dark
+        font-size: $font-size-small
+        font-weight: normal
+        > span
+          display: block
+          font-size: $font-size-base
+          color: $color-black
+          font-weight: normal
+          +ellipsis(true)
+      .dimension-grid-min-width
+        .price
+          @media (min-width: $min-device-width-iphone-6)
+            min-width: $dimension-grid-width * 1.8
+            font-size: 1.1em
+          line-height: $dimension-grid-height
+          text-align: right
+
+    .list-group-item-conditions
+      color: $color-gray-dark
+      text-align: right
+      font-size: $font-size-small
+      margin-right: -(($dimension-grid-width)-$default-paddings)
+      span
+        color: $color-purple
+        font-size: $font-size-large
+        font-weight: normal
+    &.list-group-item-double-height
+      min-height: $dimension-grid-height * 2
+      &:before
+        margin-top: -10px
+    &.list-group-item-with-image
+      position: relative
+      padding-left: $dimension-grid-width * 2
+      .list-group-item-image
+        position: absolute
+        overflow: hidden
+        bottom: 0
+        left: 0
+        top: $padding-large-vertical
+        width: $dimension-grid-width * 2
+        text-align: center
+        img
+          margin: 0 auto
+          display: block
+          width: $dimension-grid-width * 1.65
+    &.dimension-grid-min-height
+      .badge
+        &.pull-right
+          margin-top: 10px
+
+  > a.list-group-item
+    padding-right: $dimension-grid-width
+    +transition(all .3s ease-in-out)
+    +moreIcon
+    &:before
+      margin-right: -$dimension-grid-width
+
+body > .container > .row > div.sidebar > .list-group
+  margin-left: 0 !important
+  margin-right: 0 !important
+  @media (min-width: $screen-desktop)
+    margin-right: -($default-border-size) !important
+    margin-left: -($default-border-size) !important
+    .list-group-item
+      padding-left: $default-paddings
+      padding-right: $default-paddings
+
+      &:before
+        margin-right: -$default-paddings
+      &.list-group-item-with-image
+        padding-left: $dimension-grid-width
+      &.list-group-item-with-image.list-group-item-double-height
+        padding-left: $dimension-grid-width * 2
+      &.list-group-item-advertising
+        padding-left: $default-paddings
+        padding-right: $default-paddings
+        border-top-style: none !important
+        margin-bottom: 0
+        + .list-group-item
+          border-top-style: none !important
+          + .list-group-item
+            border-top-style: $default-border-style !important
+      .list-group-item-conditions
+        margin-right: 0
+
+
+.list-group-item
+  &, &:first-child, &:last-child
+    +border-radius(0)
+  &.list-group-item-brand
+    .badge
+      background-color: $list-group-active-color
+      color: $brand-primary
+  &.list-group-item-bottles
+    +clean-font
+    background-image: image-url('bg.bottles.png')
+    background-position: 90% $dimension-grid-height
+    background-size: $dimension-grid-width*2.5 auto
+    background-repeat: no-repeat
+
+
+  &.bg-color-turquoise
+    background-color: $color-turquoise
+    &, .list-group-item-heading, .list-group-item-text, h4, div, span, &:before
+      color: $white !important
+    &:hover
+      background-color: darken($color-turquoise, 10%) !important
+
+  &.bg-color-blue
+    background-color: $color-blue
+    &, .list-group-item-heading, .list-group-item-text, h4, div, span, &:before
+      color: $white !important
+    &:hover
+      background-color: darken($color-blue, 10%) !important
+
+@include list-group-item-variant(brand, $brand-primary, $list-group-active-color)

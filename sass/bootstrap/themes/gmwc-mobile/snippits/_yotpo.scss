@@ -1,0 +1,37 @@
+.yotpo {
+
+ div,
+ span,
+ p,
+ a,
+ img,
+ i,
+ strong,
+ sup,
+ ul,
+ li,
+ form,
+ label {
+	font-family: $font-family-base !important;
+ }
+
+ .yotpo-default-button,
+ .primary-color-btn,
+ input[type="button"].primary-color-btn {
+	text-transform: capitalize !important;
+	font-family: $font-family-base !important;
+	padding: $padding-base-vertical $padding-base-horizontal !important;
+  font-size: $font-size-base !important;
+  line-height: $line-height-base !important;
+  border-radius: $border-radius-base;
+ }
+
+ &.yotpo-badge.badge-init.yotpo-small {
+	:hover & {
+	 &, * {
+		text-decoration: none !important;
+	 }
+	}
+ }
+
+}

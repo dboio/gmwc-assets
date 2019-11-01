@@ -1,0 +1,30 @@
+=label-outline($color)
+  border: $color $default-border-size $default-border-style
+  color: darken($color, 10%)
+  background: transparent !important
+  font-size: 1em
+  letter-spacing: .04em
+  font-weight: bold
+  &[href]
+    &:hover, &:focus
+      border-color: darken($color, 10%)
+      background-color: transparent !important
+.label-sale
+  +label-variant($color-pink)
+  +clean-font
+  text-transform: uppercase !important
+  font-size: $font-size-small - 1
+  padding: .05rem .5em !important
+  line-height: $line-height-computed
+  +border-radius($border-radius-small)
+.label-outline
+  &.label-default
+    +label-outline($label-default-bg)
+  &.label-primary
+    +label-outline($label-primary-bg)
+  &.label-info
+    +label-outline($label-info-bg)
+  &.label-warning
+    +label-outline($label-warning-bg)
+  &.label-danger
+    +label-outline($label-danger-bg)
