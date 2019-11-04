@@ -236,14 +236,14 @@ body > .container > .row > div.sidebar > .list-group
     background-color: $color-turquoise
     &, .list-group-item-heading, .list-group-item-text, h4, div, span, &:before
       color: $white !important
-    &:hover
+    &:hover, &:focus
       background-color: darken($color-turquoise, 10%) !important
 
   &.bg-color-blue
     background-color: $color-blue
     &, .list-group-item-heading, .list-group-item-text, h4, div, span, &:before
       color: $white !important
-    &:hover
+    &:hover, &:focus
       background-color: darken($color-blue, 10%) !important
 
 @include list-group-item-variant(brand, $brand-primary, $list-group-active-color)

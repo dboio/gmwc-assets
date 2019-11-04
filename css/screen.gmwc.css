@@ -8705,7 +8705,8 @@ button.close {
       padding: 0;
       margin: 0;
       line-height: 40px;
-      clear: both; }
+      clear: both;
+      position: relative; }
       .dbo_form .form_row .error, .dbo_form .form_row .form_row .error {
         display: none;
         color: #ee3b36;
@@ -8772,7 +8773,7 @@ button.close {
         display: block;
         line-height: 26px;
         height: 26px;
-        margin: 7px 0;
+        margin: 14px 0 0;
         font-size: 13px;
         position: absolute;
         top: 0;
@@ -8802,6 +8803,13 @@ button.close {
           border: 0 !important;
           outline: none !important;
           box-shadow: none !important; }
+        .dbo_form input:-internal-autofill-selected, .dbo_form input:-internal-autofill-selected:hover, .dbo_form input:-internal-autofill-selected:focus, .dbo_form input:-webkit-autofill, .dbo_form input:-webkit-autofill:hover, .dbo_form input:-webkit-autofill:focus, .dbo_form .input:-internal-autofill-selected, .dbo_form .input:-internal-autofill-selected:hover, .dbo_form .input:-internal-autofill-selected:focus, .dbo_form .input:-webkit-autofill, .dbo_form .input:-webkit-autofill:hover, .dbo_form .input:-webkit-autofill:focus, .dbo_form .form_row input:-internal-autofill-selected, .dbo_form .form_row input:-internal-autofill-selected:hover, .dbo_form .form_row input:-internal-autofill-selected:focus, .dbo_form .form_row input:-webkit-autofill, .dbo_form .form_row input:-webkit-autofill:hover, .dbo_form .form_row input:-webkit-autofill:focus, .dbo_form .form_row .input:-internal-autofill-selected, .dbo_form .form_row .input:-internal-autofill-selected:hover, .dbo_form .form_row .input:-internal-autofill-selected:focus, .dbo_form .form_row .input:-webkit-autofill, .dbo_form .form_row .input:-webkit-autofill:hover, .dbo_form .form_row .input:-webkit-autofill:focus {
+          border: none;
+          background-color: transparent !important;
+          -webkit-text-fill-color: #ec971f !important;
+          text-fill-color: #ec971f !important;
+          -webkit-box-shadow: 0 0 0 0 white inset !important;
+          box-shadow: 0 0 0 0 white inset !important; }
       .dbo_form textarea, .dbo_form .form_row textarea {
         width: 100%;
         outline: none !important;
@@ -8810,7 +8818,7 @@ button.close {
         font-family: "helvetica_neue", Helvetica Neu, HelveticaNeue, TeXGyreHeros, FreeSans, Helvetica, Arial, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
         resize: none;
         white-space: pre !important;
-        padding: 0 15px; }
+        padding: 7px 15px 0; }
       .dbo_form select, .dbo_form .form_row select {
         width: 100%;
         outline: none !important;
@@ -9067,6 +9075,14 @@ button.close {
               display: none !important; }
           .dbo_form .choice.btn .icon, .dbo_form .choice.btn .glyphicon, .dbo_form .choice.btn .ui-icon, .dbo_form .form_row .choice.btn .icon, .dbo_form .form_row .choice.btn .glyphicon, .dbo_form .form_row .choice.btn .ui-icon {
             margin: 0; }
+      .dbo_form .placeholder + .choice, .dbo_form .form_row .placeholder + .choice {
+        line-height: 26px;
+        margin: 14px 0 0; }
+      .dbo_form button.choice, .dbo_form button.choice:focus, .dbo_form button.choice:hover, .dbo_form .form_row button.choice, .dbo_form .form_row button.choice:focus, .dbo_form .form_row button.choice:hover {
+        background: transparent !important;
+        -webkit-appearance: none;
+        appearance: none;
+        text-align: left; }
       .dbo_form .placeholder, .dbo_form .form_row .placeholder {
         line-height: 40px;
         min-height: 40px;
@@ -9086,7 +9102,8 @@ button.close {
         left: 0;
         display: block;
         z-index: 1;
-        color: #808080; }
+        color: #808080;
+        transition: font-size, line-height, padding .3s ease; }
         .dbo_form .placeholder .row, .dbo_form .form_row .placeholder .row {
           margin: 0;
           padding: 0;
@@ -9623,7 +9640,7 @@ button.close {
             display: block;
             position: inherit;
             float: none;
-            padding: 7px 15px;
+            padding: 14px 15px 0;
             cursor: text;
             -webkit-transition: all 0.5s ease;
             -o-transition: all 0.5s ease;
@@ -9635,6 +9652,10 @@ button.close {
             margin: 0;
             overflow: auto !important;
             min-height: 40px; }
+          .dbo_form.type_textarea .input_container textarea.input, .dbo_form.type_code .input_container textarea.input, .dbo_form .form_row.type_textarea .input_container textarea.input, .dbo_form .form_row.type_code .input_container textarea.input {
+            padding-top: 0;
+            margin-top: 17.5px;
+            padding-bottom: 7px; }
         .dbo_form.type_textarea.border-bottom .input_container input, .dbo_form.type_textarea.border-bottom .input_container textarea, .dbo_form.type_textarea.border-bottom .input_container .input, .dbo_form.type_code.border-bottom .input_container input, .dbo_form.type_code.border-bottom .input_container textarea, .dbo_form.type_code.border-bottom .input_container .input, .dbo_form .form_row.type_textarea.border-bottom .input_container input, .dbo_form .form_row.type_textarea.border-bottom .input_container textarea, .dbo_form .form_row.type_textarea.border-bottom .input_container .input, .dbo_form .form_row.type_code.border-bottom .input_container input, .dbo_form .form_row.type_code.border-bottom .input_container textarea, .dbo_form .form_row.type_code.border-bottom .input_container .input {
           margin-bottom: -1px; }
       .dbo_form.type_code, .dbo_form .form_row.type_code {
@@ -10022,9 +10043,13 @@ button.close {
           .dbo_form.error .input_container input, .dbo_form.error .input_container select, .dbo_form.error .input_container textarea, .dbo_form .error .input_container input, .dbo_form .error .input_container select, .dbo_form .error .input_container textarea, .dbo_form .form_row.error .input_container input, .dbo_form .form_row.error .input_container select, .dbo_form .form_row.error .input_container textarea, .dbo_form .form_row .error .input_container input, .dbo_form .form_row .error .input_container select, .dbo_form .form_row .error .input_container textarea {
             left: 0; }
       .dbo_form.value_set .placeholder, .dbo_form .value_set .placeholder, .dbo_form .form_row.value_set .placeholder, .dbo_form .form_row .value_set .placeholder {
-        display: none !important; }
+        font-size: 10.4px;
+        line-height: 20.8px;
+        padding: 0 15px; }
       .dbo_form.value_set .input_container .placeholder, .dbo_form .value_set .input_container .placeholder, .dbo_form .form_row.value_set .input_container .placeholder, .dbo_form .form_row .value_set .input_container .placeholder {
-        display: none !important; }
+        font-size: 10.4px;
+        line-height: 20.8px;
+        padding: 0 15px; }
       .dbo_form.value_set .input_container input, .dbo_form.value_set .input_container .input, .dbo_form .value_set .input_container input, .dbo_form .value_set .input_container .input, .dbo_form .form_row.value_set .input_container input, .dbo_form .form_row.value_set .input_container .input, .dbo_form .form_row .value_set .input_container input, .dbo_form .form_row .value_set .input_container .input {
         opacity: 1;
         filter: alpha(opacity=100); }
@@ -10042,7 +10067,9 @@ button.close {
       .dbo_form.value_set.required .choice, .dbo_form .value_set.required .choice, .dbo_form .form_row.value_set.required .choice, .dbo_form .form_row .value_set.required .choice {
         color: #c93484; }
       .dbo_form.focus .placeholder, .dbo_form .focus .placeholder, .dbo_form .form_row.focus .placeholder, .dbo_form .form_row .focus .placeholder {
-        display: none !important; }
+        font-size: 10.4px;
+        line-height: 20.8px;
+        padding: 0 15px; }
       .dbo_form.focus .input_container, .dbo_form .focus .input_container, .dbo_form .form_row.focus .input_container, .dbo_form .form_row .focus .input_container {
         background: #08c;
         color: #fff; }
@@ -10054,7 +10081,9 @@ button.close {
             border: none !important;
             outline: 0 none !important; }
         .dbo_form.focus .input_container .placeholder, .dbo_form .focus .input_container .placeholder, .dbo_form .form_row.focus .input_container .placeholder, .dbo_form .form_row .focus .input_container .placeholder {
-          display: none !important; }
+          font-size: 10.4px;
+          line-height: 20.8px;
+          padding: 0 15px; }
       .dbo_form.separate_rows .input_container_radio,
       .dbo_form.separate_rows .input_container_checkbox, .dbo_form .separate_rows .input_container_radio,
       .dbo_form .separate_rows .input_container_checkbox, .dbo_form .form_row.separate_rows .input_container_radio,
@@ -12368,6 +12397,14 @@ body > .navbar-top.navbar-with-small-cart.navbar-fixed-top + .container {
 .no-margin-rightleft {
   margin-rightleft: 0 !important; }
 
+a:focus, button:focus {
+  outline: none;
+  text-decoration: underline; }
+
+a::-moz-focus-inner, button::-moz-focus-inner {
+  border: 0;
+  text-decoration: underline; }
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 200; }
@@ -12600,7 +12637,7 @@ blockquote {
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
       font-size: 18px; }
-      .nav-tabs > li > a:hover {
+      .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
         border-color: #cccccc;
         background-color: rgba(204, 204, 204, 0.6); }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -12662,17 +12699,48 @@ blockquote {
       margin-right: -15px;
       margin-left: -15px;
       border-bottom: none; }
+      .navbar-top .main-toolbar .search-area .dbo_form .input_container,
+      .navbar-top .main-toolbar .search-area .dbo_form .input_container_with_btns {
+        display: table;
+        width: 100%;
+        overflow: visible;
+        background-color: transparent; }
+        .navbar-top .main-toolbar .search-area .dbo_form .input_container .input_triggers,
+        .navbar-top .main-toolbar .search-area .dbo_form .input_container_with_btns .input_triggers {
+          display: table-cell;
+          vertical-align: bottom;
+          float: none !important;
+          width: 40px; }
+          .navbar-top .main-toolbar .search-area .dbo_form .input_container .input_triggers button,
+          .navbar-top .main-toolbar .search-area .dbo_form .input_container_with_btns .input_triggers button {
+            background: transparent; }
+        @media (min-width: 1020px) {
+          .navbar-top .main-toolbar .search-area .dbo_form .input_container,
+          .navbar-top .main-toolbar .search-area .dbo_form .input_container_with_btns {
+            -webkit-transition: top 0.3s ease;
+            -o-transition: top 0.3s ease;
+            transition: top 0.3s ease;
+            border-width: 1px;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+            top: -16px;
+            z-index: 1031; } }
       @media (min-width: 1020px) {
         .navbar-top .main-toolbar .search-area .dbo_form {
           margin-right: -16px; } }
+      .navbar-top .main-toolbar .search-area .dbo_form > div.focus {
+        background-color: #fff; }
       .navbar-top .main-toolbar .search-area .dbo_form > div .bootstrap-tagsinput {
+        display: table-cell;
+        width: 100% !important;
         padding: 0 0 0 7px;
         border: none;
         background: transparent;
         border-radius: 0;
         -webkit-box-shadow: none;
         box-shadow: none;
-        display: block;
         line-height: 40px;
         height: 40px; }
         .navbar-top .main-toolbar .search-area .dbo_form > div .bootstrap-tagsinput .twitter-typeahead {
@@ -12777,23 +12845,6 @@ blockquote {
           @media (max-width: 1019px) {
             .navbar-top .main-toolbar .search-area .dbo_form > div .bootstrap-tagsinput .tt-dropdown-menu {
               margin-right: -40px !important; } }
-      .navbar-top .main-toolbar .search-area .dbo_form > div .input_container {
-        overflow: visible;
-        background-color: transparent; }
-        @media (min-width: 1020px) {
-          .navbar-top .main-toolbar .search-area .dbo_form > div .input_container {
-            -webkit-transition: top 0.3s ease;
-            -o-transition: top 0.3s ease;
-            transition: top 0.3s ease;
-            border-width: 1px;
-            border-top-right-radius: 4px;
-            border-top-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            border-bottom-left-radius: 4px;
-            top: -16px;
-            z-index: 1031; } }
-        .navbar-top .main-toolbar .search-area .dbo_form > div .input_container.focus {
-          background-color: #fff; }
       .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square {
         position: relative; }
         .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square span.icon {
@@ -12801,9 +12852,9 @@ blockquote {
           left: 0;
           position: absolute;
           color: #08c; }
-        .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square:hover {
+        .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square:hover, .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square:focus {
           background-color: transparent !important; }
-          .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square:hover span.icon {
+          .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square:hover span.icon, .navbar-top .main-toolbar .search-area .dbo_form > div .btn-square:focus span.icon {
             color: #006699; }
   .navbar-top .main-toolbar .breadcrumb-area {
     overflow: hidden;
@@ -12852,9 +12903,9 @@ blockquote {
         @media (min-width: 480px) {
           .navbar-top .main-toolbar .nav-base > li > a {
             padding-right: 10px; } }
-        .navbar-top .main-toolbar .nav-base > li > a:hover {
+        .navbar-top .main-toolbar .nav-base > li > a:hover, .navbar-top .main-toolbar .nav-base > li > a:focus {
           color: #000000 !important; }
-      .navbar-top .main-toolbar .nav-base > li.active > a, .navbar-top .main-toolbar .nav-base > li.active > a:hover {
+      .navbar-top .main-toolbar .nav-base > li.active > a, .navbar-top .main-toolbar .nav-base > li.active > a:hover, .navbar-top .main-toolbar .nav-base > li.active > a:focus {
         color: #000000 !important; }
       @media (min-width: 1020px) {
         body.home .navbar-top .main-toolbar .nav-base > li:first-child > a {
@@ -13003,7 +13054,7 @@ blockquote {
             -webkit-transition: color 0.3s ease-in-out, font-size 0.5s ease-in-out;
             -o-transition: color 0.3s ease-in-out, font-size 0.5s ease-in-out;
             transition: color 0.3s ease-in-out, font-size 0.5s ease-in-out; }
-            .navbar-top .main-header + .container .breadcrumb > li a:hover {
+            .navbar-top .main-header + .container .breadcrumb > li a:hover, .navbar-top .main-header + .container .breadcrumb > li a:focus {
               color: #000000;
               text-decoration: none; }
   .navbar-top.navbar-fixed-top {
@@ -13145,9 +13196,9 @@ blockquote {
             -webkit-transition: all 0.3s ease-in-out;
             -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out; }
-            .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:focus {
+            .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:focus, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:focus {
               color: #fff; }
-              .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:hover *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:hover *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:focus, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:focus * {
+              .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:hover *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:focus, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:focus *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:hover, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:hover *, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:focus, .navbar-cart .list-group.list-group-small-cart > .list-group-item > a.active:focus * {
                 text-decoration: none !important; } }
         .navbar-cart .list-group.list-group-small-cart > .list-group-item > a:before {
           position: relative;
@@ -14820,14 +14871,14 @@ body > .container > .row > div.sidebar > .list-group {
   background-color: #14d9bb; }
   .list-group-item.bg-color-turquoise, .list-group-item.bg-color-turquoise .list-group-item-heading, .list-group-item.bg-color-turquoise .list-group-item-text, .list-group-item.bg-color-turquoise h4, .list-group-item.bg-color-turquoise div, .list-group-item.bg-color-turquoise span, .list-group-item.bg-color-turquoise:before {
     color: #fff !important; }
-  .list-group-item.bg-color-turquoise:hover {
+  .list-group-item.bg-color-turquoise:hover, .list-group-item.bg-color-turquoise:focus {
     background-color: #10aa93 !important; }
 
 .list-group-item.bg-color-blue {
   background-color: #08c; }
   .list-group-item.bg-color-blue, .list-group-item.bg-color-blue .list-group-item-heading, .list-group-item.bg-color-blue .list-group-item-text, .list-group-item.bg-color-blue h4, .list-group-item.bg-color-blue div, .list-group-item.bg-color-blue span, .list-group-item.bg-color-blue:before {
     color: #fff !important; }
-  .list-group-item.bg-color-blue:hover {
+  .list-group-item.bg-color-blue:hover, .list-group-item.bg-color-blue:focus {
     background-color: #006699 !important; }
 
 .list-group-item-brand {
@@ -15085,7 +15136,7 @@ a.list-group-item-brand {
       -webkit-transition: all 0.3s ease-in-out;
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
-    .modal-dialog.fancybox-type-iframe .fancybox-skin .fancybox-close:hover .icon {
+    .modal-dialog.fancybox-type-iframe .fancybox-skin .fancybox-close:hover .icon, .modal-dialog.fancybox-type-iframe .fancybox-skin .fancybox-close:focus .icon {
       opacity: 1;
       filter: alpha(opacity=100); }
 
@@ -16375,7 +16426,7 @@ a.thumbnail-club, a.thumbnail-club *, a.thumbnail-club:focus, a.thumbnail-club:f
     padding-bottom: 40px; }
     .main-content .carousel .item p {
       padding-bottom: 0; }
-  .main-content .carousel a.item:hover, .main-content .carousel a.item:active {
+  .main-content .carousel a.item:hover, .main-content .carousel a.item:focus, .main-content .carousel a.item:active {
     background-color: #f5f5f5;
     text-decoration: none !important; }
   .main-content .carousel .carousel-caption {

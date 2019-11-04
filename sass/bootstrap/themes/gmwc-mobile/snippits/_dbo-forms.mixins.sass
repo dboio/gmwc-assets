@@ -3,7 +3,7 @@
   display: block
   line-height: $dimension-grid-inputheight
   height: $dimension-grid-inputheight
-  margin: $dimension-grid-inputpadding 0
+  margin: ($dimension-grid-inputpadding * 2) 0 0
   font-size: $dimension-grid-fontsize
   position: absolute
   top: 0
@@ -28,6 +28,15 @@
     outline: none !important
     box-shadow: none !important
 
+  &:-internal-autofill-selected,
+  &:-webkit-autofill
+    &, &:hover, &:focus
+      border: none
+      background-color: transparent !important
+      -webkit-text-fill-color: darken($brand-warning, 10%) !important
+      text-fill-color: darken($brand-warning, 10%) !important
+
+
 =input_textarea
   width: 100%
   outline: none !important
@@ -36,7 +45,7 @@
   font-family: $form-font-family !important
   resize: none
   white-space: pre !important
-  padding: 0 $default-paddings
+  padding: $dimension-grid-inputpadding $default-paddings 0
 
 =input_select
   width: 100%
@@ -62,12 +71,18 @@
   display: block
   z-index: 1
   color: $fg-placeholder
+  transition: font-size, line-height, padding .3s ease
   .icon, .glyphicon
     margin: 0 - $dimension-grid-inputpadding
     margin-right: 0
     width: $dimension-grid-width
     display: inline
     float: left
+
+=placeholderWhenSmall
+  font-size: $dimension-grid-fontsize * .8
+  line-height: $dimension-grid-inputheight * .8
+  padding: 0 $default-paddings
 
 =error($errorContainer: '.form_row')
   #{$errorContainer} .error

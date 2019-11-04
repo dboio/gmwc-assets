@@ -3,7 +3,6 @@
 // mixins
 // @import mixins/form // imported in base.sass
 
-
 // columnar view as mixin
 //////////////////////////////////////////////////////////////////////////////
 =columnar
@@ -155,7 +154,7 @@
         &:first-child
           border-top-style: none
 
-        &, a, .choice, .hint, .input_triggers, span, div, strong, i, .icon, .icon:before
+        //&, a, .choice, .hint, .input_triggers, span, div, strong, i, .icon, .icon:before
           //+transition(all .3s ease-in-out !important)
         a
           text-decoration: none
@@ -432,6 +431,7 @@
       margin: 0
       line-height: $dimension-grid-height
       clear: both
+      position: relative
       +error('.form_row')
 
       &.add_row, .add_row
@@ -505,6 +505,7 @@
         color: $fg-placeholder
         font-family: $form-font-family
         cursor: default
+
         .icon, .glyphicon
           margin: 0 (-$dimension-grid-inputpadding)
           margin-right: 0
@@ -535,8 +536,18 @@
           .icon, .glyphicon, .ui-icon
             margin: 0
 
+      .placeholder + .choice
+        line-height: $dimension-grid-inputheight
+        margin: ($dimension-grid-inputpadding * 2) 0 0
+      button.choice
+        &, &:focus, &:hover
+          background: transparent !important
+          -webkit-appearance: none
+          appearance: none
+          text-align: left
       .placeholder
         +input_placeholder
+
       .file_value
         line-height: $dimension-grid-inputheight
         height: $dimension-grid-inputheight
@@ -764,7 +775,7 @@
             display: block
             position: inherit
             float: none
-            padding: $dimension-grid-inputpadding $default-paddings
+            padding: ($dimension-grid-inputpadding * 2) $default-paddings 0
             cursor: text
             +transition(all 0.5s ease)
             +box-sizing(border-box)
@@ -772,6 +783,10 @@
             margin: 0
             overflow: auto !important
             min-height: $dimension-grid-height
+          textarea.input
+            padding-top: 0
+            margin-top: $dimension-grid-inputpadding * 2.5
+            padding-bottom: $dimension-grid-inputpadding
         &.border-bottom
           .input_container
             input, textarea, .input
@@ -1043,10 +1058,10 @@
         +animation-name(fadeInLeft)
       &.value_set, .value_set
         .placeholder
-          display: none !important
+          +placeholderWhenSmall
         .input_container
           .placeholder
-            display: none !important
+            +placeholderWhenSmall
           input, .input
             +opacity(1)
           select, select.input, input[type='file']
@@ -1072,7 +1087,7 @@
 
       &.focus, .focus
         .placeholder
-          display: none !important
+          +placeholderWhenSmall
         .input_container
           background: $dropdown-link-active-bg
           color: $dropdown-link-active-color
@@ -1084,7 +1099,7 @@
               border: none !important
               outline: 0 none !important
           .placeholder
-            display: none !important
+            +placeholderWhenSmall
           //.input_triggers, .hint, .choice, div, span
             &, .icon, .glyphicon
               color: $dropdown-link-active-color !important
