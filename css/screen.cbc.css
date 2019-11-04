@@ -8890,9 +8890,7 @@ button.close {
           border: none;
           background-color: transparent !important;
           -webkit-text-fill-color: #ec971f !important;
-          text-fill-color: #ec971f !important;
-          -webkit-box-shadow: 0 0 0 0 white inset !important;
-          box-shadow: 0 0 0 0 white inset !important; }
+          text-fill-color: #ec971f !important; }
       .dbo_form textarea, .dbo_form .form_row textarea {
         width: 100%;
         outline: none !important;
@@ -9160,6 +9158,7 @@ button.close {
             margin: 0; }
       .dbo_form .placeholder + .choice, .dbo_form .form_row .placeholder + .choice {
         line-height: 26px;
+        min-height: 26px;
         margin: 14px 0 0; }
       .dbo_form button.choice, .dbo_form button.choice:focus, .dbo_form button.choice:hover, .dbo_form .form_row button.choice, .dbo_form .form_row button.choice:focus, .dbo_form .form_row button.choice:hover {
         background: transparent !important;
@@ -11016,6 +11015,14 @@ button.close {
     top: 0;
     width: 30px; }
 
+button.switchery {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: 0; }
+
 .switchery-small {
   border-radius: 20px;
   height: 20px;
@@ -12837,12 +12844,12 @@ blockquote {
           position: inherit;
           float: left;
           padding-left: 0;
-          margin-top: 7px;
+          margin-top: 0;
           width: 100% !important; }
         .navbar-top .main-toolbar .search-area .dbo_form > div .bootstrap-tagsinput .tag {
           float: left;
           vertical-align: middle;
-          margin: 10px 5px 0 0;
+          margin: 3px 5px 0 0;
           font-weight: bold;
           padding: 1px 20px 1px 5px;
           font-size: 12px;
