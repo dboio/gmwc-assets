@@ -45,7 +45,14 @@
 @each $colors, $colors-var in $colors
   .fg-color-#{$colors}
     &, &:before, &:after
-      color: $colors-var !important
+      @if ($colors == 'Gold' or $colors == 'gold' or $colors == 'PinotNoir' or $colors == 'Pinot')
+        color: darken($colors-var, 15%) !important
+      @else if ($colors == 'International' or $colors == 'international')
+        color: darken($colors-var, 5%) !important
+      @else if ($colors == 'danger')
+        color: darken($colors-var, 10%) !important
+      @else
+        color: $colors-var !important
     &.disabled, &.disabled:before, &.disabled:after
       color: transparentize($colors-var, .6) !important
   .bg-color-#{$colors}

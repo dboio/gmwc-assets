@@ -154,7 +154,7 @@
 
 .color-fg-danger, .color-fg-danger:before, .color-fg-danger:after {
   transition: all .3s ease-in-out;
-  color: #ee3b36 !important; }
+  color: #de1813 !important; }
 
 .color-fg-danger.disabled:before {
   color: rgba(238, 59, 54, 0.4) !important; }
@@ -210,7 +210,7 @@
 
 .color-fg-gold, .color-fg-gold:before, .color-fg-gold:after {
   transition: all .3s ease-in-out;
-  color: #FFD12E !important; }
+  color: #e1af00 !important; }
 
 .color-fg-gold.disabled:before {
   color: rgba(255, 209, 46, 0.4) !important; }

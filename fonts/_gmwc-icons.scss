@@ -12,12 +12,12 @@
 // Import the fonts
 @font-face {
   font-family: 'Glyphicons Custom';
-  src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.eot'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.eot'));
-  src: url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.eot?#iefix'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.eot?#iefix')) format('embedded-opentype'),
-       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.woff2'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.woff2')) format('woff2'),
-       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.woff'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.woff')) format('woff'),
-       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.ttf'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.ttf')) format('truetype'),
-       url(if($bootstrap-sass-asset-helper, twbs-font-path('#{$icon-font-path-custom}#{$icon-font-name-custom}.svg##{$icon-font-svg-id}'), '#{$icon-font-path-custom}#{$icon-font-name-custom}.svg##{$icon-font-svg-id}')) format('svg');
+  src: url('#{$font-path}#{$icon-font-name-custom}.eot');
+  src: url('#{$font-path}#{$icon-font-name-custom}.eot?#iefix') format('embedded-opentype'),
+       url('#{$font-path}#{$icon-font-name-custom}.woff2') format('woff2'),
+       url('#{$font-path}#{$icon-font-name-custom}.woff') format('woff'),
+       url('#{$font-path}#{$icon-font-name-custom}.ttf') format('truetype'),
+       url('#{$font-path}#{$icon-font-name-custom}.svg##{$icon-font-svg-id}') format('svg');
 }
 
 // Catchall baseclass

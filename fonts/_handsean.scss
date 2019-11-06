@@ -2,6 +2,6 @@
 // Regular
 @font-face {
   font-family: 'handsean';
-  src: font-url('handsean/handsean.eot');
-  src: font-url('handsean/handsean.eot?#iefix') format('embedded-opentype'),font-url('handsean/handsean.woff2') format('woff2'),font-url('handsean/handsean.woff') format('woff'),font-url('handsean/handsean.ttf') format('truetype');
+  src: url('#{$font-path}handsean/handsean.eot');
+  src: url('#{$font-path}handsean/handsean.eot?#iefix') format('embedded-opentype'),url('#{$font-path}handsean/handsean.woff2') format('woff2'),url('#{$font-path}handsean/handsean.woff') format('woff'),url('#{$font-path}handsean/handsean.ttf') format('truetype');
 }

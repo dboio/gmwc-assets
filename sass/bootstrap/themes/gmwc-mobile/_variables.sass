@@ -3,8 +3,9 @@ $font-system-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helv
 $font-family-sans-serif: $font-helvetica-neue
 $font-family-base:       $font-helvetica-neue
 
-$icon-font-path-custom: '/media/gm/app/assets/shared/fonts/icons/'
-$icon-font-name-custom:  "gmwcicons-regular"
+$assets-path-custom: '/media/gm/app/assets'
+$gfx-path-custom: '/media/gm/app/gmwc'
+$icon-font-name-custom:  "icons/gmwcicons-regular"
 
 // colors
 $white:             #ffffff
@@ -16,7 +17,7 @@ $color-pinot:       #a8456f
 $color-pinotBG:     #D66193
 $color-pinot2:      #c93484
 $color-pink:        #f44566
-$color-red:         #ee3b36
+$color-red:         darken(#ee3b36, 5%)
 $color-gray:        #cccccc
 $color-body-bg-lg:  #f6f5f7
 $color-gray-light:  #e5e5e5
@@ -24,13 +25,13 @@ $color-gray-bright: #f2f2f2
 $color-borders-1:   #E5E5E5
 $color-borders-2:   #cccccc
 $color-gray-mid:    #8a8a8a
-$color-gray-dark:   #808080
+$color-gray-dark:   hsla(200,0%,0%,.7)
 $color-gray-darker: #575757
 $color-green:       #6e9c42
 $color-cartgreen:   #8dc43b
 $color-brown:       #883717
 $color-turquoise:   #14d9bb
-$color-blue:        #08c
+$color-blue:        darken(#08c, 10%)
 $color-blue-bright: #00d2f7
 $color-light-blue:  #e8f6fa
 $color-black:       #000000
@@ -46,12 +47,12 @@ $color-instagram:   #3f729b
 
 // Club Colors
 $club-fallback:      #6d5172
-$club-international: #77D624
+$club-international: darken(#77D624, 12%)
 $club-diamond:       #616786
-$club-pinot-noir:    #D66193
+$club-pinot-noir:    darken(#D66193, 5%)
 $club-gold:          #FFD12E
 $club-platinum:      #5F5957
-$club-garagiste:     #F7645B
+$club-garagiste:     darken(#F7645B, 10%)
 
 // Overrides
 //$brand-success:      $color-turquoise
@@ -61,14 +62,17 @@ $colors: ( 'primary': $brand-primary, 'orange': $color-orange, 'purple': $color-
 $label-default-bg:    $color-gray-dark
 $label-primary-bg:    $brand-primary
 $label-success-bg:    $brand-success
-$label-info-bg:       $color-blue-bright
+$label-info-bg:       $brand-primary
 $label-warning-bg:    $color-orange
 $label-danger-bg:     $color-red
 
 $btn-default-bg:      $color-gray-dark
 $btn-default-color:   $body-bg
+$btn-warning-color:   $color-black
+$btn-success-color:   $color-black
 
 $shopping-cart-bar-bg: $brand-primary
+$shopping-cart-bar-color: $body-bg
 
 
 // reset colors

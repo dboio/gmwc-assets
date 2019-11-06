@@ -417,7 +417,8 @@
           width: $max-body-width
           padding-left: 0
         .badge
-          color: darken($shopping-cart-bar-bg, 10%) !important
+          background-color: $shopping-cart-bar-color !important
+          color: $shopping-cart-bar-bg !important
           float: right !important
           margin-top: -1px
           &.pull-left
@@ -427,7 +428,7 @@
         display: block
         padding: 10px 0
         background-color: transparent !important
-        color: $color-gray
+        color: $shopping-cart-bar-color
         @media (min-width: $screen-md-min)
           +transition(all .3s ease-in-out)
           &:hover,
@@ -435,7 +436,7 @@
           &.active,
           &.active:hover,
           &.active:focus
-            color: $body-bg
+            color: darken($shopping-cart-bar-color, 20%)
             &, *
               text-decoration: none !important
         +moreIcon

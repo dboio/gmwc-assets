@@ -2,8 +2,8 @@
 // Regular
 @font-face {
   font-family: 'arvo';
-  src: font-url('arvo/arvo-regular_201.eot');
-  src: font-url('arvo/arvo-regular_201.eot?#iefix') format('embedded-opentype'),font-url('arvo/arvo-regular_201.woff2') format('woff2'),font-url('arvo/arvo-regular_201.woff') format('woff'),font-url('arvo/arvo-regular_201.ttf') format('truetype');
+  src: url('#{$font-path}arvo/arvo-regular_201.eot');
+  src: url('#{$font-path}arvo/arvo-regular_201.eot?#iefix') format('embedded-opentype'),url('#{$font-path}arvo/arvo-regular_201.woff2') format('woff2'),url('#{$font-path}arvo/arvo-regular_201.woff') format('woff'),url('#{$font-path}arvo/arvo-regular_201.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -11,8 +11,8 @@
 // Bold
 @font-face {
   font-family: 'arvo';
-  src: font-url('arvo/arvo-bold_201.eot');
-  src: font-url('arvo/arvo-bold_201.eot?#iefix') format('embedded-opentype'),font-url('arvo/arvo-bold_201.woff2') format('woff2'),font-url('arvo/arvo-bold_201.woff') format('woff'),font-url('arvo/arvo-bold_201.ttf') format('truetype');
+  src: url('#{$font-path}arvo/arvo-bold_201.eot');
+  src: url('#{$font-path}arvo/arvo-bold_201.eot?#iefix') format('embedded-opentype'),url('#{$font-path}arvo/arvo-bold_201.woff2') format('woff2'),url('#{$font-path}arvo/arvo-bold_201.woff') format('woff'),url('#{$font-path}arvo/arvo-bold_201.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -20,8 +20,8 @@
 // Italic
 @font-face {
   font-family: 'arvo';
-  src: font-url('arvo/arvo-italic_201.eot');
-  src: font-url('arvo/arvo-italic_201.eot?#iefix') format('embedded-opentype'),font-url('arvo/arvo-italic_201.woff2') format('woff2'),font-url('arvo/arvo-italic_201.woff') format('woff'),font-url('arvo/arvo-italic_201.ttf') format('truetype');
+  src: url('#{$font-path}arvo/arvo-italic_201.eot');
+  src: url('#{$font-path}arvo/arvo-italic_201.eot?#iefix') format('embedded-opentype'),url('#{$font-path}arvo/arvo-italic_201.woff2') format('woff2'),url('#{$font-path}arvo/arvo-italic_201.woff') format('woff'),url('#{$font-path}arvo/arvo-italic_201.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
@@ -29,8 +29,8 @@
 // Bold Italic
 @font-face {
   font-family: 'arvo';
-  src: font-url('arvo/arvo-bolditalic_201.eot');
-  src: font-url('arvo/arvo-bolditalic_201.eot?#iefix') format('embedded-opentype'),font-url('arvo/arvo-bolditalic_201.woff2') format('woff2'),font-url('arvo/arvo-bolditalic_201.woff') format('woff'),font-url('arvo/arvo-bolditalic_201.ttf') format('truetype');
+  src: url('#{$font-path}arvo/arvo-bolditalic_201.eot');
+  src: url('#{$font-path}arvo/arvo-bolditalic_201.eot?#iefix') format('embedded-opentype'),url('#{$font-path}arvo/arvo-bolditalic_201.woff2') format('woff2'),url('#{$font-path}arvo/arvo-bolditalic_201.woff') format('woff'),url('#{$font-path}arvo/arvo-bolditalic_201.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
 }

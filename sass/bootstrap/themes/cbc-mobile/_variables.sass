@@ -2,7 +2,7 @@
 $font-family-sans-serif: $font-arvo
 $font-family-base:       $font-arvo
 $font-helvetica-neue:    $font-family-base
-$icon-font-name-custom:  "../icons/gmwcicons-regular"
+$icon-font-name-custom:  "icons/gmwcicons-regular"
 
 // colors
 $brand-primary:     #af0401
@@ -12,14 +12,14 @@ $color-purple:      #58384D
 $color-pinot:       #a8456f
 $color-pinot2:      #c93484
 $color-pink:        #f44566
-$color-red:         #ee3b36
+$color-red:         $brand-primary
 $color-gray:        #cccccc
 $color-gray-light:  #e5e5e5
 $color-gray-bright: #f2f2f2
 $color-borders-1:   #E5E5E5
 $color-borders-2:   #cccccc
 $color-gray-mid:    #8a8a8a
-$color-gray-dark:   grey
+$color-gray-dark:   hsla(200,0%,0%,.7)
 $color-gray-darker: #575757
 $color-green:       #6e9c42
 $color-cartgreen:   #8dc43b
@@ -60,8 +60,11 @@ $label-danger-bg:     $color-red
 
 $btn-default-bg:      $color-gray-dark
 $btn-default-color:   $body-bg
+$btn-warning-color:   $color-black
+$btn-success-color:   $color-black
 
 $shopping-cart-bar-bg: $color-cartgreen
+$shopping-cart-bar-color: $btn-success-color
 
 
 
@@ -72,6 +75,7 @@ $navbar-default-border:           $color-borders-2
 $navbar-bright-border:            $color-borders-1
 $panel-default-border:            $navbar-bright-border
 $default-gray-text:               $color-gray-dark
+$text-muted:                      $color-gray-dark
 $fg-text:                         $default-gray-text
 $default-icon-color:              $color-gray-mid
 $fg-icons:                        $default-icon-color
@@ -102,10 +106,10 @@ $container-sm:                100%
 $container-lg:                $max-body-width - 2
 $container-md:                $container-lg
 
-$screen-md:                  $max-body-width !default
-$screen-md-min:              $screen-md !default
-$screen-desktop:             $screen-md-min !default
-$screen-sm-max:              ($screen-md-min - 1) !default
+$screen-md:                  $max-body-width
+$screen-md-min:              $screen-md
+$screen-desktop:             $screen-md-min
+$screen-sm-max:              ($screen-md-min - 1)
 
 // customize bootstrap
 $badge-line-height:           $line-height-computed - 2

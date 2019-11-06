@@ -62,7 +62,7 @@ html.win
   @media (min-width: $min-device-width-iphone-6)
     line-height: ($dimension-grid-height/2) + 5
     font-size: $font-size-small + 3
-  &:hover
+  &:hover, &:focus
     background: darken($brand-primary, 10%)
     color: $body-bg
     span.icon
@@ -113,6 +113,8 @@ html.win
       background: darken($club-international, 10%)
   &.bg-color-Gold
     background: $club-gold
+    &, &:hover, &:focus
+      color: $btn-warning-color
     span.icon
       background: darken($club-gold, 10%)
   &.bg-color-PinotNoir
@@ -257,4 +259,3 @@ a.btn-cart-lg, button.btn-cart-lg
 .ff
   .btn-cart span
     line-height: 28px
-

@@ -12,7 +12,14 @@
   .color-fg-#{$color}
     &, &:before, &:after
       transition: all .3s ease-in-out
-      color: $color-var !important
+      @if ($color == 'Gold' or $color == 'gold' or $color == 'PinotNoir' or $color == 'Pinot')
+        color: darken($color-var, 15%) !important
+      @else if ($color == 'International' or $colors == 'international')
+        color: darken($color-var, 5%) !important
+      @else if ($color == 'danger')
+        color: darken($color-var, 10%) !important
+      @else
+        color: $color-var !important
     &.disabled:before
       color: transparentize( $color-var, .6) !important
 

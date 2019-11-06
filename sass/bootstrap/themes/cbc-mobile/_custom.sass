@@ -1,11 +1,7 @@
 $font-helvetica-neue: $font-family-base
 
-@import ../gmwc-mobile/custom
-
-
-
 html
-  background: #d77f3b image-url('../../../gmwc/gfx_cbc/bg.html.jpg') top center repeat fixed
+  background: #d77f3b url('#{$gfx-path-custom}/gfx_cbc/bg.html.jpg') top center repeat fixed
   background-size: 280px auto
   body
     border-color: $color-black
@@ -46,7 +42,6 @@ h4, .h4,
       > a
         padding-left: ($grid-gutter-width / 2) !important
         padding-right: ($grid-gutter-width / 2) !important
-        color: $white
   .quick-cart
     &:before
       right: $dimension-grid-width
@@ -75,7 +70,7 @@ h4, .h4,
         + .container
           padding-top: 0
   .main-header
-    background: image-url('../../../cbc/gfx/orange.jpg') top right no-repeat
+    background: url('#{$assets-path-custom}/../cbc/gfx/orange.jpg') top right no-repeat
     background-size: cover
     border-bottom: 2px $default-border-style $color-black
     @media (min-width: $screen-desktop)
@@ -317,7 +312,7 @@ h4, .h4,
       color: $brand-primary
   &.list-group-item-bottles
     background-color: $brand-primary
-    background-image: image-url('../../cbc/bg.bottles.png')
+    background-image: url('#{$assets-path-custom}cbc/bg.bottles.png')
     background-position: 95% ($dimension-grid-height / 2)
     background-size: $dimension-grid-width*2.25 auto
     background-repeat: no-repeat

@@ -65,7 +65,7 @@
       &:before
         margin-right: -$panel-body-padding
       &.pull-right span
-        margin-right: -($panel-body-padding / 2)
+        margin-right: 0
         white-space: nowrap
 
 .panel-grid
@@ -90,19 +90,22 @@
 
 
 
-.main-content > .panel,
-.sidebar > .panel
-  margin: (-$default-border-size) (-$default-paddings) 0
-  border-left-style: none
-  border-right-style: none
-  +border-radius(0)
-  &:last-child
-    margin-bottom: -($default-border-size)
-    .panel-body
-      .media:last-child
-        margin-bottom: 0
-  + .list-group
-    margin-top: -$default-border-size !important
+.main-content,
+.sidebar
+  > .panel
+    margin: (-$default-border-size) (-$default-paddings) 0
+    &:last-child
+      margin-bottom: -($default-border-size)
+      .panel-body
+        .media:last-child
+          margin-bottom: 0
+    + .list-group
+      margin-top: -$default-border-size !important
+  > .panel,
+  .list-group > .panel
+    border-left-style: none
+    border-right-style: none
+    +border-radius(0)
 
 .sidebar > .panel
   margin: (-$default-border-size) (-$default-border-size) 0 (-($default-border-size))
