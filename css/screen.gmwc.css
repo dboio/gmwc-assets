@@ -2,7 +2,7 @@
 /*!
  * Agency: Manolab, LLC
  * Project: Gold Medal Wine Club
- * Modified: 11/01/19
+ * Modified: 11/12/19
  * Developer: Christian Fillies
  *
  */
@@ -8803,11 +8803,12 @@ button.close {
           border: 0 !important;
           outline: none !important;
           box-shadow: none !important; }
-        .dbo_form input:-internal-autofill-selected, .dbo_form input:-internal-autofill-selected:hover, .dbo_form input:-internal-autofill-selected:focus, .dbo_form input:-webkit-autofill, .dbo_form input:-webkit-autofill:hover, .dbo_form input:-webkit-autofill:focus, .dbo_form .input:-internal-autofill-selected, .dbo_form .input:-internal-autofill-selected:hover, .dbo_form .input:-internal-autofill-selected:focus, .dbo_form .input:-webkit-autofill, .dbo_form .input:-webkit-autofill:hover, .dbo_form .input:-webkit-autofill:focus, .dbo_form .form_row input:-internal-autofill-selected, .dbo_form .form_row input:-internal-autofill-selected:hover, .dbo_form .form_row input:-internal-autofill-selected:focus, .dbo_form .form_row input:-webkit-autofill, .dbo_form .form_row input:-webkit-autofill:hover, .dbo_form .form_row input:-webkit-autofill:focus, .dbo_form .form_row .input:-internal-autofill-selected, .dbo_form .form_row .input:-internal-autofill-selected:hover, .dbo_form .form_row .input:-internal-autofill-selected:focus, .dbo_form .form_row .input:-webkit-autofill, .dbo_form .form_row .input:-webkit-autofill:hover, .dbo_form .form_row .input:-webkit-autofill:focus {
+        .dbo_form input:-internal-autofill-selected, .dbo_form input:-webkit-autofill, .dbo_form input:-khtml-autofill, .dbo_form input:-o-autofill, .dbo_form input:autofill, .dbo_form input:hover:-internal-autofill-selected, .dbo_form input:hover:-webkit-autofill, .dbo_form input:hover:-khtml-autofill, .dbo_form input:hover:-o-autofill, .dbo_form input:hover:autofill, .dbo_form input:focus:-internal-autofill-selected, .dbo_form input:focus:-webkit-autofill, .dbo_form input:focus:-khtml-autofill, .dbo_form input:focus:-o-autofill, .dbo_form input:focus:autofill, .dbo_form .input:-internal-autofill-selected, .dbo_form .input:-webkit-autofill, .dbo_form .input:-khtml-autofill, .dbo_form .input:-o-autofill, .dbo_form .input:autofill, .dbo_form .input:hover:-internal-autofill-selected, .dbo_form .input:hover:-webkit-autofill, .dbo_form .input:hover:-khtml-autofill, .dbo_form .input:hover:-o-autofill, .dbo_form .input:hover:autofill, .dbo_form .input:focus:-internal-autofill-selected, .dbo_form .input:focus:-webkit-autofill, .dbo_form .input:focus:-khtml-autofill, .dbo_form .input:focus:-o-autofill, .dbo_form .input:focus:autofill, .dbo_form .form_row input:-internal-autofill-selected, .dbo_form .form_row input:-webkit-autofill, .dbo_form .form_row input:-khtml-autofill, .dbo_form .form_row input:-o-autofill, .dbo_form .form_row input:autofill, .dbo_form .form_row input:hover:-internal-autofill-selected, .dbo_form .form_row input:hover:-webkit-autofill, .dbo_form .form_row input:hover:-khtml-autofill, .dbo_form .form_row input:hover:-o-autofill, .dbo_form .form_row input:hover:autofill, .dbo_form .form_row input:focus:-internal-autofill-selected, .dbo_form .form_row input:focus:-webkit-autofill, .dbo_form .form_row input:focus:-khtml-autofill, .dbo_form .form_row input:focus:-o-autofill, .dbo_form .form_row input:focus:autofill, .dbo_form .form_row .input:-internal-autofill-selected, .dbo_form .form_row .input:-webkit-autofill, .dbo_form .form_row .input:-khtml-autofill, .dbo_form .form_row .input:-o-autofill, .dbo_form .form_row .input:autofill, .dbo_form .form_row .input:hover:-internal-autofill-selected, .dbo_form .form_row .input:hover:-webkit-autofill, .dbo_form .form_row .input:hover:-khtml-autofill, .dbo_form .form_row .input:hover:-o-autofill, .dbo_form .form_row .input:hover:autofill, .dbo_form .form_row .input:focus:-internal-autofill-selected, .dbo_form .form_row .input:focus:-webkit-autofill, .dbo_form .form_row .input:focus:-khtml-autofill, .dbo_form .form_row .input:focus:-o-autofill, .dbo_form .form_row .input:focus:autofill {
           border: none;
           background-color: transparent !important;
-          -webkit-text-fill-color: #ec971f !important;
-          text-fill-color: #ec971f !important; }
+          -webkit-text-fill-color: #000000 !important;
+          text-fill-color: #000000 !important;
+          box-shadow: 0 0 0 1000px #fff inset; }
       .dbo_form textarea, .dbo_form .form_row textarea {
         width: 100%;
         outline: none !important;
@@ -12167,17 +12168,11 @@ body > .container {
 
 @media (min-width: 1020px) {
   body > .navbar-top + .container {
-    padding-top: 120px; } }
+    padding-top: 168px; } }
 
-@media (min-width: 1020px) {
-  body > .navbar-top.navbar-with-small-cart + .container {
+@media (max-width: 1020px) {
+  body > .navbar-top.navbar-fixed-top + .container {
     padding-top: 160px; } }
-
-body > .navbar-top.navbar-fixed-top + .container {
-  padding-top: 120px; }
-
-body > .navbar-top.navbar-with-small-cart.navbar-fixed-top + .container {
-  padding-top: 160px; }
 
 .container {
   margin-left: auto;
@@ -12920,14 +12915,12 @@ blockquote {
   .navbar-top .main-toolbar .pull-left.toggle-menus + .menu-section .nav-base > li:first-child > a {
     padding-left: 0; }
   .navbar-top .main-header {
-    padding-top: 15px;
+    padding-top: 50px;
     min-height: 80px;
     border-bottom: 1px solid #E5E5E5;
+    padding-bottom: 10px;
     z-index: 50;
     position: relative; }
-    @media (min-width: 375px) {
-      .navbar-top .main-header {
-        padding-top: 10px; } }
     @media (min-width: 1020px) {
       .navbar-top .main-header {
         border-bottom: none; }
@@ -13083,8 +13076,8 @@ blockquote {
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
         top: 0; } }
-  .navbar-top.navbar-with-small-cart {
-    padding-top: 40px; }
+    .navbar-top.navbar-fixed-top.navbar-with-small-cart {
+      padding-top: 40px; }
   .navbar-top .toggle-menus {
     -webkit-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -15586,6 +15579,10 @@ a.thumbnail-club, a.thumbnail-club *, a.thumbnail-club:focus, a.thumbnail-club:f
     .dbo_form .form_row.type_textarea .input_container textarea {
       height: 100px;
       line-height: 1.428571429; }
+  .dbo_form .type_select .placeholder:before {
+    content: 'Select '; }
+  .dbo_form .type_select.value_set .placeholder:before {
+    content: ''; }
   .dbo_form .type_combined .input_container {
     background-color: rgba(243, 243, 243, 0.85); }
   .dbo_form .type_combined.has-text-input .input_container {

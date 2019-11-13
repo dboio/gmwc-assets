@@ -66,15 +66,18 @@ h4, .h4,
     position: relative
     width: $container-md
     body > &
-      &, &.navbar-with-small-cart
+      & + .container
+        padding-top: 0
+      &.navbar-fixed-top
         + .container
-          padding-top: 0
+          padding-top: 160px
   .main-header
     background: url('#{$assets-path-custom}/../cbc/gfx/orange.jpg') top right no-repeat
     background-size: cover
     border-bottom: 2px $default-border-style $color-black
     @media (min-width: $screen-desktop)
-      padding: ($grid-gutter-width / 2)
+      padding-right: ($grid-gutter-width / 2)
+      padding-left: ($grid-gutter-width / 2)
     h1, .h1
       position: relative
       font-family: $font-28days

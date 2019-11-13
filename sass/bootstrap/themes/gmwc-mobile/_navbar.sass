@@ -191,12 +191,14 @@
 
 
   .main-header
-    padding-top: $dimension-grid-padding-top + 5
+    //padding-top: 0
+    padding-top: $dimension-grid-height + $dimension-grid-padding-top
     min-height: $dimension-grid-height * 2
     border-bottom: $default-border-size $default-border-style $navbar-bright-border
+    padding-bottom: $dimension-grid-padding-top
     z-index: 50
     position: relative
-    @media (min-width: $min-device-width-iphone-6)
+    //@media (min-width: $min-device-width-iphone-6)
       padding-top: $dimension-grid-padding-top
     @media (min-width: $screen-desktop)
       border-bottom: none
@@ -342,8 +344,8 @@
             +border-bottom-radius(0)
             top: 0
 
-  &.navbar-with-small-cart
-    padding-top: $dimension-grid-height
+    &.navbar-with-small-cart
+      padding-top: $dimension-grid-height
 
   .toggle-menus
     +transition(all .5s ease-in-out)

@@ -1,3 +1,7 @@
+/*!
+  * Modified: 11/12/2019
+ */
+
 // main menu functionality
   // resize the horizontal main menu to fit in the breadcrumb area
     Array.prototype.sum = function () {
@@ -44,13 +48,14 @@ $(document).ready(function() {
 });
 
 // Resize Navigation on scroll
-$( document ).on( "scroll", function() {
-  if( $( document ).scrollTop( ) > 80 ) {
-    $( ".navbar-top" ).addClass( "navbar-fixed-top" );
+$(document).on('scroll', function() {
+  var distance = $('.navbar-top').is( '.navbar-with-small-cart') ? 60 : 110;
+  if($(document).scrollTop() > distance) {
+    $('.navbar-top').addClass('navbar-fixed-top');
   } else {
-    $( ".navbar-top" ).removeClass( "navbar-fixed-top" );
+    $('.navbar-top').removeClass('navbar-fixed-top');
   }
-} );
+});
 
 
 

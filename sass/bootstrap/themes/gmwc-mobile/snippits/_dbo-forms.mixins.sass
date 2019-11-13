@@ -27,14 +27,17 @@
     border: 0 !important
     outline: none !important
     box-shadow: none !important
-
-  &:-internal-autofill-selected,
-  &:-webkit-autofill
-    &, &:hover, &:focus
+  &, &:hover, &:focus
+    &:-internal-autofill-selected,
+    &:-webkit-autofill,
+    &:-khtml-autofill,
+    &:-o-autofill,
+    &:autofill
       border: none
       background-color: transparent !important
-      -webkit-text-fill-color: darken($brand-warning, 10%) !important
-      text-fill-color: darken($brand-warning, 10%) !important
+      -webkit-text-fill-color: $input-color !important
+      text-fill-color: $input-color !important
+      box-shadow: 0 0 0 1000px $bg-inputs-focus inset
 
 
 =input_textarea

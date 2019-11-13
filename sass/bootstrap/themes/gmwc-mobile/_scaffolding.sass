@@ -55,15 +55,16 @@ body > .container
 
 body > .navbar-top + .container
   @media (min-width: $screen-desktop)
-    padding-top: $dimension-grid-height * 3
-body > .navbar-top.navbar-with-small-cart + .container
+    padding-top: $dimension-grid-height * 4 + 8
+//body > .navbar-top.navbar-with-small-cart + .container
   @media (min-width: $screen-desktop)
     padding-top: $dimension-grid-height * 4
 body > .navbar-top.navbar-fixed-top + .container
-  padding-top: $dimension-grid-height * 3
-body > .navbar-top.navbar-with-small-cart.navbar-fixed-top + .container
-  padding-top: $dimension-grid-height * 4
-body.modal-open > .navbar-top
+  @media (max-width: $screen-desktop)
+    padding-top: $dimension-grid-height * 4
+//body > .navbar-top.navbar-with-small-cart.navbar-fixed-top + .container
+  padding-top: $dimension-grid-height * 4 - 10
+//body.modal-open > .navbar-top
   //z-index: 0
 
 .container

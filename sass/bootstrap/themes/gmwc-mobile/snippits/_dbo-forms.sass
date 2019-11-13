@@ -27,6 +27,11 @@
         textarea
           height: $dimension-grid-height * 2.5
           line-height: $line-height-base
+  .type_select
+    .placeholder:before
+      content: 'Select '
+    &.value_set .placeholder:before
+      content: ''
   .type_combined
     .input_container
       background-color: $bg-type-combined
