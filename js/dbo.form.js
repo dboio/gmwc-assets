@@ -254,6 +254,7 @@ jQuery.fn.extend({
 
     this.find('.type_combo, .type_combined, .type_picker, .type_message-history').each(function(ndx, ele) {
       var $this = jQuery(ele);
+      var messageHistory = $this.is('.type_message-history');
       var $input = $this.find('.' + $css.input);
       var $button = $this.find('button');
       var $onChangeHook = $this.find('.' + $css.onChangeHook);
@@ -293,16 +294,18 @@ jQuery.fn.extend({
         menuObj = {
           focus: function(event, ui) {
             var $item = $(ui.item);
-            $row.addClass($css.focus)
-              .find('.' + $css.button).addClass($css.focus)
-              .find($css.icon).addClass($css.active);
-            $row.find('.' + $css.container).addClass($css.focus);
+            if (!messageHistory) {
+              $row.addClass($css.focus).find('.' + $css.button).addClass($css.focus);
+              $row.find('.' + $css.container).addClass($css.focus);
+            }
+            $row.find($css.icon).addClass($css.active);
             // $item.find('> a').focus();
             $item.focus(); // focus is a must, so the ENTER gets the correct target
           },
           blur: function(event, ui) {
             $row.removeClass($css.focus)
-              .find('.' + $css.button).removeClass($css.focus)
+              .find('.' + $css.button).removeClass($css.focus);
+            $row
               .find($css.icon).removeClass($css.active);
             $row.find('.' + $css.container).removeClass($css.focus);
           },
@@ -426,10 +429,11 @@ jQuery.fn.extend({
       // $triggers.off('click.menu');
       $triggers.on('click.menu', function(event) {
         $row.parents('.dbo_form, form').find('.' + $css.focus).removeClass($css.focus);
-        $row.addClass($css.focus)
-          .find('.' + $css.button).addClass($css.focus)
-          .find($css.icon).addClass($css.active);
-        $row.find('.' + $css.container).addClass($css.focus);
+        if (!messageHistory) {
+          $row.addClass($css.focus).find('.' + $css.button).addClass($css.focus);
+          $row.find('.' + $css.container).addClass($css.focus);
+        }
+        $row.find($css.icon).addClass($css.active);
         $('.' + $css.menu).hide();
         $menu
           .show()
@@ -453,8 +457,11 @@ jQuery.fn.extend({
 
       //$input.unbind();
       $input.focus(function() {
-        $row.addClass($css.focus).find('.' + $css.button).addClass($css.focus).find($css.icon).addClass($css.active);
-        $row.find('.' + $css.container).addClass($css.focus);
+        if (!messageHistory) {
+          $row.addClass($css.focus).find('.' + $css.button).addClass($css.focus);
+          $row.find('.' + $css.container).addClass($css.focus);
+        }
+        $row.find($css.icon).addClass($css.active);
         $('.' + $css.menu).hide();
         if (!$input.is('textarea')) {
           $menu.show();
@@ -513,7 +520,7 @@ jQuery.fn.extend({
 
       // make sure .focus stays added as long as someone types
       $input.keypress(function() {
-        if (!$row.hasClass($css.focus)) {
+        if (!$row.hasClass($css.focus) && !messageHistory) {
           $row.addClass($css.focus);
         }
       });
