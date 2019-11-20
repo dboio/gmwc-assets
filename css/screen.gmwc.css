@@ -9807,6 +9807,14 @@ button.close {
         overflow-x: hidden; }
         .dbo_form.type_combined .menu > ul li, .dbo_form .form_row.type_combined .menu > ul li {
           z-index: 10001; }
+      .dbo_form.type_message-history .menu > ul, .dbo_form .form_row.type_message-history .menu > ul {
+        display: none;
+        z-index: 10000;
+        max-height: 190px;
+        overflow-y: auto;
+        overflow-x: hidden; }
+        .dbo_form.type_message-history .menu > ul li, .dbo_form .form_row.type_message-history .menu > ul li {
+          z-index: 10001; }
       .dbo_form.type_date, .dbo_form .type_date, .dbo_form .form_row.type_date, .dbo_form .form_row .type_date {
         position: relative; }
         .dbo_form.type_date .input_container .input_triggers .form_btn, .dbo_form .type_date .input_container .input_triggers .form_btn, .dbo_form .form_row.type_date .input_container .input_triggers .form_btn, .dbo_form .form_row .type_date .input_container .input_triggers .form_btn {
