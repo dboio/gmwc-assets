@@ -252,7 +252,7 @@ jQuery.fn.extend({
 
     }); // this.find('.type_toggle').each(function(ndx,ele)
 
-    this.find('.type_combo, .type_combined, .type_picker').each(function(ndx, ele) {
+    this.find('.type_combo, .type_combined, .type_picker, .type_message-history').each(function(ndx, ele) {
       var $this = jQuery(ele);
       var $input = $this.find('.' + $css.input);
       var $button = $this.find('button');
@@ -273,7 +273,7 @@ jQuery.fn.extend({
       var $inputID = $input.attr('id');
       var $inputName = $input.attr('name');
       var $inputType = $input.attr('type');
-      debug('type_combo||type_combined||type_picker||type_textarea', $input);
+      debug('type_combo||type_combined||type_picker||type_message-history', $input);
       if ($width < 201) {
         $width = 200;
       }
