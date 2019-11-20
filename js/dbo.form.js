@@ -1,7 +1,7 @@
 /*!
  * dbo.form.js
  * by Christian Fillies
- * Modified: (29/11/2015)
+ * Modified: (11/20/2019)
  *
  */
 
@@ -61,36 +61,36 @@ jQuery.fn.extend({
       focus: 'focus', // when a button or input is focused
       fullScreen: 'full_screen' // gets added to body, when a textarea is enlarged to full_screen
     };
-		debug = (function(msg,object) {
-			var loc = window.location.toString().toLowerCase();
-			if (loc.indexOf("debugforms") > -1)
-			{
-				if (msg !== undefined) {
-					if (object !== undefined) {
+    debug = (function(msg,object) {
+      var loc = window.location.toString().toLowerCase();
+      if (loc.indexOf("debugforms") > -1)
+      {
+        if (msg !== undefined) {
+          if (object !== undefined) {
             console.debug("dbo.forms: " + msg, object);
           } else {
             console.debug("dbo.forms: " + msg);
           }
-				}
-				return true;
-			}
+        }
+        return true;
+      }
 
-		});
-		error = (function(msg,object) {
-			var loc = window.location.toString().toLowerCase();
-			if (loc.indexOf("debugforms") > -1)
-			{
-				if (msg !== undefined) {
-					if (object !== undefined) {
+    });
+    error = (function(msg,object) {
+      var loc = window.location.toString().toLowerCase();
+      if (loc.indexOf("debugforms") > -1)
+      {
+        if (msg !== undefined) {
+          if (object !== undefined) {
             console.error("dbo.forms: " + msg, object);
           } else {
             console.error("dbo.forms: " + msg);
           }
-				}
-				return true;
-			}
+        }
+        return true;
+      }
 
-		});
+    });
     debug('intializing',null);
 
     this.find('[data-tooltip="true"]').tooltip();
@@ -117,7 +117,7 @@ jQuery.fn.extend({
         $setWidthTo = $this.find('.' + $css.input + ', .' + $css.placeholder + ', .' + $css.choice + ', .' + $css.tagsinput),
         $bugFixWidth = 0; // -1 because of textarea bug
 
-			if ($input.length > 0) {
+      if ($input.length > 0) {
         debug($css.container + ' loop: input: ', $input);
       } else {
         error($css.container + ' loop: no input with a class of "input" found in ', $this);
@@ -153,13 +153,13 @@ jQuery.fn.extend({
       }
 
       if ($inputValue === '' || $inputValue === null || (typeof $inputValue === "undefined") ) {} else {
-				debug($css.container + ' loop: value [' + $inputValue + '] found, adding $css.hasVaue', null);
+        debug($css.container + ' loop: value [' + $inputValue + '] found, adding $css.hasVaue', null);
         $parent.addClass($css.hasValue);
         $parent.find('[data-event~="clear_input"]').fadeIn();
       }
 
       $input.click(function() {
-				debug($css.container + ' loop: click detected, adding $css.hasVaue', null);
+        debug($css.container + ' loop: click detected, adding $css.hasVaue', null);
         $parent.addClass($css.hasValue);
         $parent.find('[data-event~="clear_input"]').fadeIn();
       });
@@ -168,11 +168,11 @@ jQuery.fn.extend({
         if (jQuery(this).val() === '' || jQuery(this).val() === null || (typeof jQuery(this).val() === "undefined")) {
           $parent.removeClass($css.hasValue);
           $parent.find('[data-event~="clear_input"]').fadeOut();
-					debug('blur detected, no value, removing $css.hasVaue', jQuery(this));
+          debug('blur detected, no value, removing $css.hasVaue', jQuery(this));
         } else {
           $parent.addClass($css.hasValue);
           $parent.find('[data-event~="clear_input"]').show();
-					debug('blur detected, has value, adding $css.hasVaue',  jQuery(this));
+          debug('blur detected, has value, adding $css.hasVaue',  jQuery(this));
         }
       });
 
@@ -222,39 +222,40 @@ jQuery.fn.extend({
         $iconFrom = jQuery(ele).find('.form_btn, .' + $css.button).attr('data-toggle-iconFrom');
       }
       var $toggler = function $toggler() {
-				var newValue;
+        var newValue;
         if (setTo) {
           // Code from the first handler here;
-					newValue = $valueTo;
+          newValue = $valueTo;
           $toggleIcon.removeClass($iconFrom).addClass($iconTo);
-					debug('.type_toggle: changing to iconTo.', null );
+          debug('.type_toggle: changing to iconTo.', null );
         } else {
           // Code from the second handler here;
-					newValue = $valueFrom;
+          newValue = $valueFrom;
           $toggleIcon.removeClass($iconTo).addClass($iconFrom);
-					debug('.type_toggle: changing to iconFrom.', null );
+          debug('.type_toggle: changing to iconFrom.', null );
         }
-				if ($toggleInput.val() !== newValue) {
-					//if there is a new value, update it
-					debug('.type_toggle: changing input from:' + $toggleInput.val() + ' to:' + newValue, null );
-					$toggleInput.val(newValue).change();
-				}
+        if ($toggleInput.val() !== newValue) {
+          //if there is a new value, update it
+          debug('.type_toggle: changing input from:' + $toggleInput.val() + ' to:' + newValue, null );
+          $toggleInput.val(newValue).change();
+        }
         setTo = !setTo; // Invert `first`
       };
 
       jQuery(ele).unbind('click');
       jQuery(ele).find('a.btn').bind('click', $toggler);
-			var setTo = true;
+      var setTo = true;
       if ($toggleInput.val() === $valueFrom) {
-				var setTo = false;
-			}
-			$toggler();
+        var setTo = false;
+      }
+      $toggler();
 
     }); // this.find('.type_toggle').each(function(ndx,ele)
 
     this.find('.type_combo, .type_combined, .type_picker').each(function(ndx, ele) {
       var $this = jQuery(ele);
       var $input = $this.find('.' + $css.input);
+      var $button = $this.find('button');
       var $onChangeHook = $this.find('.' + $css.onChangeHook);
       var $menu = $this.find('.menu > ul');
       var $choice = $this.find('.' + $css.choice);
@@ -272,7 +273,7 @@ jQuery.fn.extend({
       var $inputID = $input.attr('id');
       var $inputName = $input.attr('name');
       var $inputType = $input.attr('type');
-      debug('type_combo||type_combined||type_picker', $input);
+      debug('type_combo||type_combined||type_picker||type_textarea', $input);
       if ($width < 201) {
         $width = 200;
       }
@@ -288,51 +289,173 @@ jQuery.fn.extend({
         $twoPicker = true;
       }
 
-      $menu.menu({
-        focus: function() {
-          $row.addClass($css.focus)
-            .find('.' + $css.button).addClass($css.focus)
-            .find($css.icon).addClass($css.active);
-          $row.find('.' + $css.container).addClass($css.focus);
-        },
-        blur: function() {
-          $row.removeClass($css.focus)
-            .find('.' + $css.button).removeClass($css.focus)
-            .find($css.icon).removeClass($css.active);
-          $row.find('.' + $css.container).removeClass($css.focus);
+      var
+        menuObj = {
+          focus: function(event, ui) {
+            var $item = $(ui.item);
+            $row.addClass($css.focus)
+              .find('.' + $css.button).addClass($css.focus)
+              .find($css.icon).addClass($css.active);
+            $row.find('.' + $css.container).addClass($css.focus);
+            // $item.find('> a').focus();
+            $item.focus(); // focus is a must, so the ENTER gets the correct target
+          },
+          blur: function(event, ui) {
+            $row.removeClass($css.focus)
+              .find('.' + $css.button).removeClass($css.focus)
+              .find($css.icon).removeClass($css.active);
+            $row.find('.' + $css.container).removeClass($css.focus);
+          },
+          select: function( event, ui ) {
+
+            // debugger;
+            var
+              $this = $(ui.item).find('> a'),
+              $val = $this.attr('data-value'),
+              $altChoice = $this.attr('data-choice'),
+              $altIcon = $this.attr('data-icon-choice'),
+              $html = $this.html(),
+              $isText = $this.text(),
+              $text = $isText.trim(),
+              $valToSet = (($val === "_blank") ? '' : $val );
+            debug('click detected on li a', $this);
+
+            if ($choice.length) {
+              if ($altChoice) {
+                $choice.html($altChoice);
+              } else if ($altIcon) {
+                $choice.html($text);
+                $choice.prepend('<i class="dbo ' + $altIcon + '"></i>');
+              } else if ($altIcon && $altChoice) {
+                $choice.html($altChoice);
+                $choice.prepend('<i class="dbo ' + $altIcon + '"></i>');
+              } else {
+                $choice.html($html);
+              }
+            }
+
+            //	debugger;
+            // look through all the data attributes and find any that begin with data-value-
+            //debug('looping through data attributes',null);
+            for (var i = 0, atts = $this[0].attributes, n = atts.length; i < n; i++){
+              var tokenName = atts[i].nodeName;
+              if(tokenName.substring(0,11) === 'data-value-' && tokenName !== 'data-value-1' && tokenName !== 'data-value-2' ) {
+                // custom data value found
+                debug('custom data value:: ' + tokenName, null);
+                tokenName = '.' + tokenName.substring(11,tokenName.length);
+                var tokenValue = atts[i].nodeValue;
+                var tokenInput = $row.find(tokenName);
+                if (tokenInput.length) {
+                  debug('custom data value: matching input found, setting value: ' + tokenValue, null);
+                  tokenInput.val(tokenValue).change();
+                } else {
+                  error('custom data value: Unable to find hidden input with class "' + tokenName + '"', null);
+                }
+              }
+            }
+
+            if ($val) {
+              $input.val($valToSet).change();
+              if ($onChangeHook.length) {
+                $onChangeHook.trigger('change');
+              }
+            } else {
+              $input.val($text).change();
+              if ($onChangeHook.length) {
+                $onChangeHook.trigger('change');
+              }
+            }
+
+            // append the bootstrap modal function
+            if ($this.data('toggle') === 'modal') {
+              var $modal = $this.data('target');
+              // $($modal).modal('show'); // dont call 'show' as [data-toggle="modal"] with a true [data-target] is already bound to bootstrap modal show. Double bind will open and close immediately
+              // and now add dbo_forms() again
+              $($modal).on('shown.bs.modal', function (e) {
+                $($modal).find('.dbo_form' ).dboForms();
+                $($modal).find('.dbo_form .input').first().focus();
+                $($modal).find('.dbo_form .input').first().val($valToSet);
+              });
+              // todo: here we need to add a function to move values back and forth
+            }
+
+
+            $menu.hide();
+            // this this removes the abillity for touch devices to close menus on body.click
+            $('body').css('cursor', '');
+
+            $row.removeClass($css.focus).addClass($css.hasValue)
+              .find('.' + $css.button).removeClass($css.focus)
+              .find($css.icon).removeClass($css.active);
+            $row.find('.' + $css.container).removeClass($css.focus);
+
+
+            // if using "_blank" in data-value --> nothing gets passed
+            if ($val === '_blank') {
+              $input.focus().val('').change();
+              $row.addClass($css.focus).removeClass($css.hasValue);
+              $choice.html('');
+              $menu.hide();
+            }
+
+            // reinstate focus, so the tab will work,
+            // and the user can tab to the next input in the form
+            $row.focus();
+
+            return false;
+          }
         }
-      })
+      ;
+      $menu.menu(menuObj)
         .css('width', $width + 'px')
         .find('.' + $css.menu)
         .css('width', $width / 2 + 'px');
 
-      $triggers.unbind('click');
-      $triggers.click(function() {
+      // add RETURN & ESC KEY as selector
+      $(document).off('keydown.menu keyup.menu').on('keydown.menu keyup.menu', function (event) {
+        if (event.which === 13 && event.type === 'keydown' &&
+          $(event.target).closest('.ui-menu-item') &&
+          $(event.target).closest('.ui-menu-item').length) {
+          $(event.target).closest('a').trigger('click.menu.item');
+        }
+        if (event.which === 27 && event.type === 'keyup' && $(event.target).closest('.ui-menu').length) {
+          $('.' + $css.menu).hide();
+        }
+      });
+
+      // $triggers.off('click.menu');
+      $triggers.on('click.menu', function(event) {
         $row.parents('.dbo_form, form').find('.' + $css.focus).removeClass($css.focus);
         $row.addClass($css.focus)
           .find('.' + $css.button).addClass($css.focus)
           .find($css.icon).addClass($css.active);
         $row.find('.' + $css.container).addClass($css.focus);
-        jQuery('.' + $css.menu).hide();
+        $('.' + $css.menu).hide();
         $menu
           .show()
-          .menu()
           .position({
             my: "left top",
             at: "left bottom",
             of: $container,
             collision: "flipfit"
-          });
+          })
+        ;
+        $menu.menu('focus', null, $menu.find('.ui-menu-item:first'));
+
         // this enables touch devices to close menus on body.click
         $('body').css('cursor', 'pointer');
         return false;
+      });
+
+      $button.on('focus.menu.button', function () {
+        $triggers.trigger('click.menu');
       });
 
       //$input.unbind();
       $input.focus(function() {
         $row.addClass($css.focus).find('.' + $css.button).addClass($css.focus).find($css.icon).addClass($css.active);
         $row.find('.' + $css.container).addClass($css.focus);
-        jQuery('.' + $css.menu).fadeOut();
+        $('.' + $css.menu).hide();
         if (!$input.is('textarea')) {
           $menu.show();
         }
@@ -344,18 +467,29 @@ jQuery.fn.extend({
       $input.blur(function() {
         $row.removeClass($css.focus).find('.' + $css.button).removeClass($css.focus).find($css.icon).removeClass($css.active);
         $row.find('.' + $css.container).removeClass($css.focus);
-        jQuery('.' + $css.menu).fadeOut();
+        $('.' + $css.menu).hide();
+        // reinstate focus, so the tab will work,
+        // and the user can tab to the next input in the form
+        $row.focus();
         return false;
       });
 
       // close menu on close outside
       var $closeMenuOutside = function() {
-        $('html').not($input).click(function(){
-          jQuery('.' + $css.menu).fadeOut();
-          $('html').unbind('click');
-          // this this removes the abillity for touch devices to close menus on body.click
-          $('body').css('cursor', '');
-         });
+        $('body').on('click.menu.close', function(event) {
+          if (event.type === 'click') {
+            if ($(event.target).closest($menu).length || $menu.is(event.target) || $input.is(event.target)) {
+            } else {
+              $menu.hide();
+              $('body').off('click.menu.off');
+              // this this removes the ability for touch devices to close menus on body.click
+              $('body').css('cursor', '');
+              // reinstate focus, so the tab will work,
+              // and the user can tab to the next input in the form
+              $row.focus();
+            }
+          }
+        });
       };
       $menu.mouseleave(function() {
         $closeMenuOutside();
@@ -364,103 +498,18 @@ jQuery.fn.extend({
         $closeMenuOutside();
       });
 
-      jQuery('body').unbind('click');
-      jQuery('body').click(function(event) {
-        $menu.not($menu.has(event.target)).fadeOut();
-        // this this removes the abillity for touch devices to close menus on body.click
-        $('body').css('cursor', '');
-      });
-
-      $menu.find('li a').unbind('click');
-      $menu.find('li a').click(function() {
-        // debugger;
-        debug('click detected on li a',jQuery(this));
-        var $val = jQuery(this).attr('data-value'),
-          $altChoice = jQuery(this).attr('data-choice'),
-          $altIcon = jQuery(this).attr('data-icon-choice'),
-          $html = jQuery(this).html(),
-          $isText = jQuery(this).text(),
-          $text = $isText.trim(),
-          $valToSet = (($val === "_blank") ? '' : $val );
-        if ($choice.length) {
-          if ($altChoice) {
-            $choice.html($altChoice);
-          } else if ($altIcon) {
-            $choice.html($text);
-            $choice.prepend('<i class="dbo ' + $altIcon + '"></i>');
-          } else if ($altIcon && $altChoice) {
-            $choice.html($altChoice);
-            $choice.prepend('<i class="dbo ' + $altIcon + '"></i>');
-          } else {
-            $choice.html($html);
-          }
-        }
-
-        //	debugger;
-        // look through all the data attributes and find any that begin with data-value-
-        //debug('looping through data attributes',null);
-        for (var i = 0, atts = this.attributes, n = atts.length; i < n; i++){
-          var tokenName = atts[i].nodeName;
-          if(tokenName.substring(0,11) === 'data-value-' && tokenName !== 'data-value-1' && tokenName !== 'data-value-2' ) {
-            // custom data value found
-            debug('custom data value:: ' + tokenName, null);
-            tokenName = '.' + tokenName.substring(11,tokenName.length);
-            tokenValue = atts[i].nodeValue;
-            var tokenInput = $this.find(tokenName);
-            if (tokenInput.length) {
-              debug('custom data value: matching input found, setting value: ' + tokenValue, null);
-              tokenInput.val(tokenValue).change();
-            } else {
-              error('custom data value: Unable to find hidden input with class "' + tokenName + '"', null);
-            }
-          }
-        }
-
-
-        if ($val) {
-          $input.val($valToSet).change();
+      jQuery('body').off('click.menu.off');
+      jQuery('body').on('click.menu.off', function(event) {
+        if ($(event.target).closest($menu).length || $menu.is(event.target) || $input.is(event.target)) {
         } else {
-          $input.val($text).change();
-        }
-
-        // append the bootstrap modal function
-        if (jQuery(this).data('toggle') === 'modal') {
-          var $modal = jQuery(this).data('target');
-          $($modal).modal('show');
-          // and now add dbo_forms() again
-          $($modal).on('shown.bs.modal', function (e) {
-            $($modal).find('.dbo_form' ).dboForms();
-            $($modal).find('.dbo_form .input').first().focus();
-            $($modal).find('.dbo_form .input').first().val($valToSet);
-          });
-          // todo: here we need to add a function to move values back and forth
-        }
-
-
-        if ($onChangeHook.length) {
-          $onChangeHook.change();
-        }
-
-        $menu.hide();
-        // this this removes the abillity for touch devices to close menus on body.click
-        $('body').css('cursor', '');
-
-        $row.removeClass($css.focus).addClass($css.hasValue)
-          .find('.' + $css.button).removeClass($css.focus)
-          .find($css.icon).removeClass($css.active);
-        $row.find('.' + $css.container).removeClass($css.focus);
-
-        // if using "_blank" in data-value --> nothing gets passed
-        if ($val === '_blank') {
-          $input.focus().val('').change();
-          $row.addClass($css.focus).removeClass($css.hasValue);
-          $choice.html('');
           $menu.hide();
+          // this this removes the abillity for touch devices to close menus on body.click
+          $('body').css('cursor', '');
+          // reinstate focus, so the tab will work,
+          // and the user can tab to the next input in the form
+          $row.focus();
         }
-
-
-        return false;
-      }); // $menu.find('li a').click(function()
+      });
 
       // make sure .focus stays added as long as someone types
       $input.keypress(function() {
@@ -566,3 +615,4 @@ jQuery(window ).resize(function() {
 });
 
 /* dbo.form.js */
+
