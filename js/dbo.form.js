@@ -162,6 +162,7 @@ jQuery.fn.extend({
         debug($css.container + ' loop: click detected, adding $css.hasVaue', null);
         $parent.addClass($css.hasValue);
         $parent.find('[data-event~="clear_input"]').fadeIn();
+        return false; // IE11 Fix where click will blur
       });
 
       $input.blur(function() {
