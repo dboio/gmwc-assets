@@ -1,7 +1,7 @@
 /*!
  * dbo.form.js
  * by Christian Fillies
- * Modified: (11/20/2019)
+ * Modified: (12/03/2019)
  *
  */
 
@@ -294,14 +294,14 @@ jQuery.fn.extend({
       var
         menuObj = {
           focus: function(event, ui) {
-            var $item = $(ui.item);
+            var $item = ui.item;
+            $item.removeClass($css.uiStateFocus);
             if (!messageHistory) {
               $row.addClass($css.focus).find('.' + $css.button).addClass($css.focus);
               $row.find('.' + $css.container).addClass($css.focus);
             }
             $row.find($css.icon).addClass($css.active);
-            // $item.find('> a').focus();
-            $item.focus(); // focus is a must, so the ENTER gets the correct target
+            $item.first().addClass($css.uiStateFocus).focus(); // focus is a must, so the ENTER gets the correct target
           },
           blur: function(event, ui) {
             $row.removeClass($css.focus)
@@ -314,7 +314,7 @@ jQuery.fn.extend({
 
             // debugger;
             var
-              $this = $(ui.item).find('> a'),
+              $this = event.currentTarget && event.originalEvent && event.originalEvent.type === 'click' ? $(event.currentTarget).find('> a') : $(ui.item).find('> a'), // hack, when clicking on a row, after a character was typed, to jump to that section. jQuery menu would select the wrong item
               $val = $this.attr('data-value'),
               $altChoice = $this.attr('data-choice'),
               $altIcon = $this.attr('data-icon-choice'),
@@ -341,19 +341,21 @@ jQuery.fn.extend({
             //	debugger;
             // look through all the data attributes and find any that begin with data-value-
             //debug('looping through data attributes',null);
-            for (var i = 0, atts = $this[0].attributes, n = atts.length; i < n; i++){
-              var tokenName = atts[i].nodeName;
-              if(tokenName.substring(0,11) === 'data-value-' && tokenName !== 'data-value-1' && tokenName !== 'data-value-2' ) {
-                // custom data value found
-                debug('custom data value:: ' + tokenName, null);
-                tokenName = '.' + tokenName.substring(11,tokenName.length);
-                var tokenValue = atts[i].nodeValue;
-                var tokenInput = $row.find(tokenName);
-                if (tokenInput.length) {
-                  debug('custom data value: matching input found, setting value: ' + tokenValue, null);
-                  tokenInput.val(tokenValue).change();
-                } else {
-                  error('custom data value: Unable to find hidden input with class "' + tokenName + '"', null);
+            if ($this[0]) {
+              for (var i = 0, atts = $this[0].attributes, n = atts.length; i < n; i++) {
+                var tokenName = atts[i].nodeName;
+                if (tokenName.substring(0, 11) === 'data-value-' && tokenName !== 'data-value-1' && tokenName !== 'data-value-2') {
+                  // custom data value found
+                  debug('custom data value:: ' + tokenName, null);
+                  tokenName = '.' + tokenName.substring(11, tokenName.length);
+                  var tokenValue = atts[i].nodeValue;
+                  var tokenInput = $row.find(tokenName);
+                  if (tokenInput.length) {
+                    debug('custom data value: matching input found, setting value: ' + tokenValue, null);
+                    tokenInput.val(tokenValue).change();
+                  } else {
+                    error('custom data value: Unable to find hidden input with class "' + tokenName + '"', null);
+                  }
                 }
               }
             }
@@ -416,7 +418,9 @@ jQuery.fn.extend({
         .css('width', $width / 2 + 'px');
 
       // add RETURN & ESC KEY as selector
-      $(document).off('keydown.menu keyup.menu').on('keydown.menu keyup.menu', function (event) {
+      $(document)
+        .off('keydown.menu keyup.menu')
+        .on('keydown.menu keyup.menu', function (event) {
         if (event.which === 13 && event.type === 'keydown' &&
           $(event.target).closest('.ui-menu-item') &&
           $(event.target).closest('.ui-menu-item').length) {
