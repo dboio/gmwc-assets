@@ -1,0 +1,60 @@
+$wizard-prefix: os-
+$wizard-z-index: $zindex-modal * 100
+$wizard-max-width: 375px
+$wizard-min-height: 812px
+$wizard-unit: 50px
+
+.#{$wizard-prefix}wizard
+  &:not(.#{$wizard-prefix}modal)
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: $wizard-z-index
+  &-backdrop
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    pointer-events: none
+    display: grid
+    justify-items: center
+    align-content: center
+    z-index: $wizard-z-index - 1
+    background-color: rgba(0,0,0,.5)
+  &-dialog
+    pointer-events: all
+    position: relative
+  &-content:not(.#{$wizard-prefix}modal-content)
+    background-color: white
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: cover
+    z-index: $wizard-z-index
+    min-height: $wizard-min-height
+    max-height: 90vh
+    min-width: $wizard-max-width
+    max-width: $wizard-max-width
+    overflow: auto
+    box-shadow: 0 0 5px rgba(0,0,0,.4)
+    border-radius: 15px
+    @media (max-width: $wizard-max-width)
+      min-height: 100vh
+      max-height: 100vh
+      min-width: 320px
+      width: 100vw
+      max-width: 100vw
+      border-radius: 0
+  &-close
+    position: absolute
+    z-index: $wizard-z-index + 1
+    top: 0
+    right: 0
+    display: block
+    min-width: $wizard-unit
+    min-height: $wizard-unit
+
+
+
