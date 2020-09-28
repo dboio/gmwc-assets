@@ -7,16 +7,13 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
 #### INIT
 ``` html
  <button type="button" class="btn btn-info btn-xs" onclick="os.wizard(
-          this, event, {
-            url: 'testURL',
-          name: 'My Wizards',
-          event: event,
-          data: { mix: 1 },
-          container: $('.container'),
-          classes: { another: 'test', se$lector: 'custom' },
-          before: function(x) { console.warn('beforeEvent', x) },
-          done: function(x) { console.warn('builtEvent', x) }
-        }, function(x) { console.warn('callback', x)}, ['data=true'])">Wizard</button>
+          event, {
+            url: ['/my/first/url', '/my/second/url'],
+            name: 'My Wizard Name',
+            data: { passAlongData: 1 },
+            before: function(x) { console.warn('beforeEvent', x) },
+            done: function(x) { console.warn('builtEvent', x) }
+        }, function(x) { console.warn('always', x)})">Wizard</button>
       </div>
 ```
 
@@ -27,7 +24,8 @@ Load the next or previous widget screen within an existing screen. Based on the 
 *.widget.prev(overrides)
 ```
 * `overrides` [array|plain object|event]
-Next call allows you to override two main properties. The current event as `event` property and data that you may pass into the next or previous load. The data you add here extends the data from the original init, e.g. `os.widget.next(event, { override: 'data' })`. If you want to remove an exact data property, you need to set the properties value to `'removeThisProperty'`, e.g. `os.widget.next({ override: 'removeThisProperty' })`.
+
+    Next and Previous calls allow overriding two main properties. The current event as `event` property and data that you may pass into the next or previous load. The data you add here extends the data from the original init, e.g. `os.widget.next(event, { override: 'data' })`. If you want to remove an exact data property, you need to set the properties value to `'removeThisProperty'`, e.g. `os.widget.next({ override: 'removeThisProperty' })`.
 
 ## Properties and Settings
     
