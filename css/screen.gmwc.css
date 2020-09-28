@@ -15480,6 +15480,10 @@ a.thumbnail-club, a.thumbnail-club *, a.thumbnail-club:focus, a.thumbnail-club:f
 .list-group > .dbo_form {
   border-bottom: none; }
 
+body.os-wizard-no-scroll {
+  position: fixed;
+  overflow: hidden; }
+
 .os-wizard:not(.os-modal) {
   position: fixed;
   top: 0;

@@ -4,6 +4,9 @@ $wizard-max-width: 375px
 $wizard-min-height: 812px
 $wizard-unit: 50px
 
+body.#{$wizard-prefix}wizard-no-scroll
+  position: fixed
+  overflow: hidden
 .#{$wizard-prefix}wizard
   &:not(.#{$wizard-prefix}modal)
     position: fixed

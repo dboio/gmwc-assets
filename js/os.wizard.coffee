@@ -60,6 +60,7 @@ window[functionPrefix].wizard = (args...) ->
         close: classPrefix + '-wizard-close'
         hidden: 'hidden'
         animation: 'fadeIn'
+        body: classPrefix + '-wizard-no-scroll'
         modal:
           selector: classPrefix + '-modal'
           backdrop: classPrefix + '-modal-backdrop'
@@ -276,6 +277,9 @@ window[functionPrefix].wizard = (args...) ->
         console.log 'destroy', destroy
         console.groupEnd()
 
+      ## reset the body
+      doc.body.classList.remove call.current.classes.body
+
       if destroy
         closestWizard.remove()
       call.noTrace()
@@ -454,6 +458,9 @@ window[functionPrefix].wizard = (args...) ->
 
         if !call.wizard.hasWidhObserver
           call.observeWidth call.wizard
+
+      ## prevent body scroll
+      doc.body.classList.add call.current.classes.body
 
 
     ## default inits

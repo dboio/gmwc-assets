@@ -85,6 +85,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           close: classPrefix + '-wizard-close',
           hidden: 'hidden',
           animation: 'fadeIn',
+          body: classPrefix + '-wizard-no-scroll',
           modal: {
             selector: classPrefix + '-modal',
             backdrop: classPrefix + '-modal-backdrop',
@@ -442,7 +443,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           console.log('closestWizard', closestWizard);
           console.log('destroy', destroy);
           console.groupEnd();
-        }
+        } //# reset the body
+
+
+        doc.body.classList.remove(call.current.classes.body);
 
         if (destroy) {
           closestWizard.remove();
@@ -616,7 +620,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
 
           call.wizard.classList.add(call.defaults.classes.animation);
-          return call.always(call.wizard);
+          call.always(call.wizard);
         } else {
           if (typeof call.current.before === 'function') {
             beforeEvent = call.current.event || window.event;
@@ -670,9 +674,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           });
 
           if (!call.wizard.hasWidhObserver) {
-            return call.observeWidth(call.wizard);
+            call.observeWidth(call.wizard);
           }
-        }
+        } //# prevent body scroll
+
+
+        return doc.body.classList.add(call.current.classes.body);
       }; //# default inits
 
 
