@@ -15511,8 +15511,8 @@ a.thumbnail-club, a.thumbnail-club *, a.thumbnail-club:focus, a.thumbnail-club:f
   background-position: center center;
   background-size: cover;
   z-index: 104000;
-  min-height: 812px;
-  max-height: 90vh;
+  min-height: 80vh;
+  max-height: 80vh;
   min-width: 375px;
   max-width: 375px;
   overflow: auto;
