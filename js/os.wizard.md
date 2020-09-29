@@ -61,6 +61,9 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
         
 - #### `fetchTarget` [HTMLElement] (readonly)
     * Returns the HTMLElement that the fetch data is placed into.
+        
+- #### `containerId` [string]
+    * The HTML that is returned is scanned for a dom element with the ID specified here. The innerHTML of that element is extracted and all around is ignored. The **default** `containerId` is set to `'modalContainer'`.
     
 - #### `modalClasses` [boolean]
     * Use os modal classes instead. **default** is `false`. If set to `true`, the `os-modal` classes are used instead of `os-wizard`.
@@ -98,8 +101,8 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
 ### NEXT and PREV
 Load the next or previous widget screen within an existing screen. Based on the url array that is defined in the initial function call. Both functions allow the same arguments as documented below.
 ```javascript
-os.widget.next(['/additional/url'], { data: 'removeThisProperty'}, function(event) { console.warn('custom next callback', event) });
-os.widget.prev(event, function(event) { console.warn('custom previous callback', event) });
+os.wizard.next(['/additional/url'], { data: 'removeThisProperty'}, function(event) { console.warn('custom next callback', event) });
+os.wizard.prev(event, function(event) { console.warn('custom previous callback', event) });
 ```
     
 #### Properties and Arguments
@@ -121,11 +124,11 @@ os.widget.prev(event, function(event) { console.warn('custom previous callback',
 ### CLOSE
 Close the wizard. Function can only be called while a wizard is active.
 ```javascript
-os.widget.close();
+os.wizard.close();
 // or
-os.widget.close(event);
+os.wizard.close(event);
 // or
-os.widget.close('destroy');
+os.wizard.close('destroy');
 ```
 
 #### Properties and Arguments
