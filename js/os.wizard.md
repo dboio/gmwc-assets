@@ -75,10 +75,10 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
     * Define a function to call after the actual wizard is built. Function is only performed once and returns the original event with the `*Wizard` object assigned, ie: `before: function(event) { var wizardOptions = event.osWizard; }`.
 
 - #### `always` [function]
-    * Define a function to call no matter if the wizard was previously built or not. Function is called everytime the event is performed and returns the original event with the `*Wizard` object assigned, ie: `always: function(event) { var wizardOptions = event.osWizard; }`. This function is also re-called with every wizard screen that is loaded with the next and prev call, so it can be used to bind event handlers after load.
+    * Define a function to call no matter if the wizard was previously built or not. Function is called everytime the event is performed and returns the original event with the `*Wizard` object assigned, ie: `always: function(event) { var wizardOptions = event.osWizard; }`. This function is also re-called with every wizard screen that is loaded with the next and prev call, so it can be used to bind event handlers after load or re-initialize scripts on the newly added html.
     
 - #### `done` [function]
-    * Define a function to call before the actual wizard is built. Function is only performed once and returns the original event with the `*Wizard` object assigned, ie: `before: function(event) { var wizardOptions = event.osWizard; }`.
+    * Define a function to call after the actual wizard is built. Function is only performed one time after the initial build of the wizard and returns the original event with the `*Wizard` object assigned, ie: `done: function(event) { var wizardOptions = event.osWizard; }`.
     
 - #### `next` [function]
     * Define a function to call when the next function `os.wizard.next()` is called. Function returns the original event with the `*Wizard` object assigned, ie: `next: function(event) { var wizardOptions = event.osWizard; }`.
