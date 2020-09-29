@@ -225,10 +225,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               obj.event = arg;
             } else if (_typeof(arg) === 'object') {
               if (Array.isArray(arg)) {
-                obj.data = Object.assign(obj.data, call.fn.normalizeData(arg));
+                obj.concatUrls = arg;
               } else {
                 obj.data = Object.assign(obj.data, arg);
               }
+            } else if (typeof arg === 'function') {
+              obj.callback = arg;
             }
           }
 
@@ -245,10 +247,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               obj.event = arg;
             } else if (_typeof(arg) === 'object') {
               if (Array.isArray(arg)) {
-                if (obj.data && !Array.isArray(obj.data) && Object.keys(obj.data).length) {
-                  obj.data = Object.assign(obj.data, call.fn.normalizeData(arg));
+                if (obj.url && Array.isArray(obj.url)) {
+                  obj.url = obj.url.concat(arg);
                 } else {
-                  obj.data = call.fn.normalizeData(arg);
+                  obj.url = arg;
                 }
               } else if (arg instanceof HTMLElement) {
                 obj.srcElement = arg;
@@ -288,17 +290,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             }
 
             if (typeof arg === 'function') {
-              obj.always = arg;
+              obj.complete = arg;
             }
 
             if (typeof obj.url === 'string') {
-              obj.urlData = {};
-
-              if (obj.url.includes('?')) {
-                obj.urlData = Object.assign(obj.urlData, call.fn.normalizeData(obj.url.split('?')[1]));
-                obj.url = obj.url.split('?')[0];
-              }
-
               if (typeof obj.url === 'string') {
                 obj.url = [obj.url];
               }
@@ -306,15 +301,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             if (obj.data) {
               obj.data = call.fn.normalizeData(obj.data);
-            }
-
-            if (obj.urlData && Object.keys(obj.urlData).length) {
-              if (!obj.data) {
-                obj.data = {};
-              }
-
-              obj.data = Object.assign(obj.urlData, obj.data);
-              delete obj.urlData;
             }
           }
 
@@ -359,8 +345,38 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       call.fetch = function (urlIndex) {
         return new Promise(function (resolve, reject) {
-          var fetchUrl, res;
+          var fetchData, fetchDataArray, fetchUrl, j, len, prop, res;
           fetchUrl = call.current.url[urlIndex];
+          fetchData = {};
+
+          if (fetchUrl.includes('?')) {
+            fetchDataArray = fetchUrl.split('?')[1].split('&');
+
+            for (j = 0, len = fetchDataArray.length; j < len; j++) {
+              prop = fetchDataArray[j];
+              fetchData[prop.split('=')[0]] = call.fn.valueConversion(prop.split('=')[1]);
+            }
+
+            fetchUrl = fetchUrl.split('?')[0];
+          }
+
+          if (call.current.data && Object.keys(call.current.data).length) {
+            Object.keys(call.current.data).map(function (k) {
+              return fetchData[k] = call.current.data[k];
+            });
+          }
+
+          if (Object.keys(fetchData).length) {
+            fetchData = call.fn.removeProperty(fetchData);
+            fetchUrl += '?';
+            Object.keys(fetchData).map(function (k, i) {
+              var ampersand;
+              ampersand = i > 0 ? '&' : '';
+              return fetchUrl += ampersand + k + '=' + fetchData[k];
+            });
+          }
+
+          call.current.url[urlIndex] = fetchUrl;
           res = {};
           fetch(fetchUrl).then(function (x) {
             var notFound;
@@ -456,7 +472,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       };
 
       call.next = function () {
-        var currentUrl, event, nextUrl, nextUrlIndex, overrideObj; //# overrides, only data and event is overridable
+        var currentUrl, event, nextEvent, nextReturn, nextUrl, nextUrlIndex, overrideObj; //# overrides, only data and event is overridable
 
         for (var _len2 = arguments.length, overrides = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
           overrides[_key2] = arguments[_key2];
@@ -465,9 +481,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         overrideObj = call.fn.overrides(overrides);
 
         if (Object.keys(overrideObj).length) {
+          //# concat additional urls
+          if (call.current.url.length && overrideObj.concatUrls) {
+            overrideObj.concatUrls.map(function (url) {
+              if (call.current.url.indexOf(url) === -1) {
+                return call.current.url.push(url);
+              }
+            });
+            delete overrideObj.concatUrls;
+          } //# merge data
+
+
           if (call.current.data && Object.keys(call.current.data).length) {
             overrideObj.data = Object.assign(call.current.data, overrideObj.data);
             overrideObj.data = call.fn.removeProperty(overrideObj.data);
+          } //# the callback function is the custom next function instead
+
+
+          if (typeof overrideObj.callback === 'function') {
+            overrideObj.next = overrideObj.callback;
+            delete overrideObj.callback;
           }
 
           call.current = Object.assign(call.current, overrideObj);
@@ -475,11 +508,24 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         call.wizard.wizard = call.current; //# correct event
 
-        event = overrideObj.event || call.current.event || window.event; //# get the next url
+        event = overrideObj.event || call.current.event || window.event; //# custom next function
+
+        if (typeof call.current.next === 'function') {
+          nextEvent = event;
+          nextEvent[attrPrefix + 'Wizard'] = call.current;
+          nextReturn = call.current.next(nextEvent);
+
+          if (nextReturn === false) {
+            return false;
+          }
+        } //# get the next url
+
 
         currentUrl = call.wizard.getAttribute('src');
         nextUrlIndex = call.current.url.indexOf(currentUrl) + 1;
         nextUrl = call.current.url[nextUrlIndex];
+        call.current.src = nextUrl;
+        call.current.urlIndex = nextUrlIndex;
 
         if (call.current.debug) {
           console.groupCollapsed('%c' + functionPrefix + '.wizard.next(event)', 'font-size:1.2em; margin: .6em 0 0; display: block');
@@ -492,14 +538,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         if (nextUrl) {
           call.fetch(nextUrlIndex).then(function (res) {
-            var nextEvent;
-            call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content)).innerHTML = res;
-
-            if (typeof call.current.next === 'function') {
-              nextEvent = event;
-              nextEvent[attrPrefix + 'Wizard'] = call.current;
-              return call.current.next(nextEvent);
-            }
+            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content));
+            return call.current.fetchTarget.innerHTML = res;
           });
         } else {
           call.complete();
@@ -512,7 +552,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       };
 
       call.prev = function () {
-        var currentUrl, event, overrideObj, prevUrl, prevUrlIndex; //# overrides, only data and event is overridable
+        var currentUrl, event, overrideObj, prevEvent, prevReturn, prevUrl, prevUrlIndex; //# overrides, only data and event is overridable
 
         for (var _len3 = arguments.length, overrides = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
           overrides[_key3] = arguments[_key3];
@@ -521,9 +561,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         overrideObj = call.fn.overrides(overrides);
 
         if (Object.keys(overrideObj).length) {
+          //# concat additional urls
+          if (call.current.url.length && overrideObj.concatUrls) {
+            overrideObj.concatUrls.map(function (url) {
+              if (call.current.url.indexOf(url) === -1) {
+                return call.current.url.push(url);
+              }
+            });
+            delete overrideObj.concatUrls;
+          } //# merge data
+
+
           if (call.current.data && Object.keys(call.current.data).length) {
             overrideObj.data = Object.assign(call.current.data, overrideObj.data);
             overrideObj.data = call.fn.removeProperty(overrideObj.data);
+          } //# the callback function is the custom prev function instead
+
+
+          if (typeof overrideObj.callback === 'function') {
+            call.current.prev = overrideObj.callback;
+            delete overrideObj.callback;
           }
 
           call.current = Object.assign(call.current, overrideObj);
@@ -531,7 +588,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         call.wizard.wizard = call.current; //# correct event
 
-        event = overrideObj.event || call.current.event || window.event; //# get the next url
+        event = overrideObj.event || call.current.event || window.event; //# custom prev function
+
+        if (typeof call.current.prev === 'function') {
+          prevEvent = event;
+          prevEvent[attrPrefix + 'Wizard'] = call.current;
+          prevReturn = call.current.prev(prevEvent);
+
+          if (prevReturn === false) {
+            return false;
+          }
+        } //# get the next url
+
 
         currentUrl = call.wizard.getAttribute('src');
         prevUrlIndex = call.current.url.indexOf(currentUrl) - 1;
@@ -541,9 +609,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
 
         prevUrl = call.current.url[prevUrlIndex];
+        call.current.src = prevUrl;
+        call.current.urlIndex = prevUrlIndex;
 
         if (call.current.debug) {
-          console.groupCollapsed('%c' + functionPrefix + '.wizard.prev(event)', 'font-size:1.2em; margin: .6em 0 0; display: block');
+          console.groupCollapsed('%c' + functionPrefix + '.wizard.prev(arguments)', 'font-size:1.2em; margin: .6em 0 0; display: block');
+          console.log('arguments', overrides);
           console.log('event', event);
           console.log('current', call.current);
           console.log('currentUrl', currentUrl);
@@ -553,15 +624,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         if (prevUrl) {
           call.fetch(prevUrlIndex).then(function (res) {
-            var prevEvent;
-            call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content)).innerHTML = res;
-            call.always(call.wizard);
-
-            if (typeof call.current.prev === 'function') {
-              prevEvent = event;
-              prevEvent[attrPrefix + 'Wizard'] = call.current;
-              return call.current.prev(prevEvent);
-            }
+            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content));
+            call.current.fetchTarget.innerHTML = res;
+            return call.always(call.wizard);
           });
         } //# prevent additional clicks
 
@@ -586,6 +651,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       call.always = function (element) {
         var callbackEvent;
         call.current = element.wizard;
+        call.current.targetElement = element;
 
         if (call.current) {
           if (typeof call.current.always === 'function') {
@@ -659,8 +725,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             var doneEvent;
             call.wizard = doc.getElementById(call.wizard.id);
             call.current.res = res;
+            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content));
+            call.current.fetchTarget.innerHTML = res;
             call.wizard.wizard = call.current;
-            call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content)).innerHTML = res;
 
             if (typeof call.current.done === 'function') {
               doneEvent = call.current.event || window.event;

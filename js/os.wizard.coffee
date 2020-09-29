@@ -140,9 +140,11 @@ window[functionPrefix].wizard = (args...) ->
             obj.event = arg
           else if typeof arg is 'object'
             if Array.isArray(arg)
-              obj.data = Object.assign obj.data, call.fn.normalizeData arg
+              obj.concatUrls = arg
             else
               obj.data = Object.assign obj.data, arg
+          else if typeof arg is 'function'
+            obj.callback = arg
         obj
       assign: (args) ->
         obj = Object.assign {}, call.defaults
@@ -151,10 +153,10 @@ window[functionPrefix].wizard = (args...) ->
             obj.event = arg
           else if typeof arg is 'object'
             if Array.isArray(arg)
-              if obj.data and !Array.isArray(obj.data) and Object.keys(obj.data).length
-                obj.data = Object.assign obj.data, call.fn.normalizeData arg
+              if obj.url and Array.isArray(obj.url)
+                obj.url = obj.url.concat arg
               else
-                obj.data = call.fn.normalizeData arg
+                obj.url = arg
             else if arg instanceof HTMLElement
               obj.srcElement = arg
             else if arg instanceof jQuery
@@ -183,21 +185,12 @@ window[functionPrefix].wizard = (args...) ->
             else
               obj.name = arg
           if typeof arg is 'function'
-            obj.always = arg
+            obj.complete = arg
           if typeof obj.url is 'string'
-            obj.urlData = {}
-            if obj.url.includes '?'
-              obj.urlData = Object.assign obj.urlData, call.fn.normalizeData obj.url.split('?')[1]
-              obj.url = obj.url.split('?')[0]
             if typeof obj.url is 'string'
               obj.url = [obj.url]
           if obj.data
             obj.data = call.fn.normalizeData obj.data
-          if obj.urlData and Object.keys(obj.urlData).length
-            if !obj.data
-              obj.data = {}
-            obj.data = Object.assign obj.urlData, obj.data
-            delete obj.urlData
         Object.keys(obj).map (key) ->
           if obj[key] is undefined
             delete obj[key]
@@ -219,6 +212,22 @@ window[functionPrefix].wizard = (args...) ->
 
     call.fetch = (urlIndex) => new Promise (resolve, reject) ->
       fetchUrl = call.current.url[urlIndex]
+      fetchData = {}
+      if fetchUrl.includes '?'
+        fetchDataArray = fetchUrl.split('?')[1].split('&')
+        for prop in fetchDataArray
+          fetchData[prop.split('=')[0]] = call.fn.valueConversion(prop.split('=')[1])
+        fetchUrl = fetchUrl.split('?')[0]
+      if call.current.data and Object.keys(call.current.data).length
+        Object.keys(call.current.data).map (k) =>
+          fetchData[k] = call.current.data[k]
+      if Object.keys(fetchData).length
+        fetchData = call.fn.removeProperty fetchData
+        fetchUrl += '?'
+        Object.keys(fetchData).map (k, i) =>
+          ampersand = if i > 0 then '&' else ''
+          fetchUrl += ampersand + k + '=' + fetchData[k]
+      call.current.url[urlIndex] = fetchUrl
       res = {}
       fetch(fetchUrl)
         .then (x) =>
@@ -289,19 +298,44 @@ window[functionPrefix].wizard = (args...) ->
       ## overrides, only data and event is overridable
       overrideObj = call.fn.overrides overrides
       if Object.keys(overrideObj).length
+
+        ## concat additional urls
+        if call.current.url.length and overrideObj.concatUrls
+          overrideObj.concatUrls.map (url) ->
+            if call.current.url.indexOf(url) is -1
+              call.current.url.push url
+          delete overrideObj.concatUrls
+
+        ## merge data
         if call.current.data and Object.keys(call.current.data).length
           overrideObj.data = Object.assign call.current.data, overrideObj.data
           overrideObj.data = call.fn.removeProperty overrideObj.data
+
+        ## the callback function is the custom next function instead
+        if typeof overrideObj.callback is 'function'
+          overrideObj.next = overrideObj.callback
+          delete overrideObj.callback
+
         call.current = Object.assign call.current, overrideObj
       call.wizard.wizard = call.current
 
       ## correct event
       event = overrideObj.event or call.current.event or window.event
 
+      ## custom next function
+      if typeof call.current.next is 'function'
+        nextEvent = event
+        nextEvent[attrPrefix+'Wizard'] = call.current
+        nextReturn = call.current.next nextEvent
+        if nextReturn is false
+          return false
+
       ## get the next url
       currentUrl = call.wizard.getAttribute 'src'
       nextUrlIndex = call.current.url.indexOf(currentUrl) + 1
       nextUrl = call.current.url[nextUrlIndex]
+      call.current.src = nextUrl
+      call.current.urlIndex = nextUrlIndex
 
       if call.current.debug
         console.groupCollapsed '%c'+functionPrefix+'.wizard.next(event)', 'font-size:1.2em; margin: .6em 0 0; display: block'
@@ -314,11 +348,8 @@ window[functionPrefix].wizard = (args...) ->
       if nextUrl
         call.fetch(nextUrlIndex)
           .then (res) =>
-            call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content)).innerHTML = res
-            if typeof call.current.next is 'function'
-              nextEvent = event
-              nextEvent[attrPrefix+'Wizard'] = call.current
-              call.current.next nextEvent
+            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content))
+            call.current.fetchTarget.innerHTML = res
       else
         call.complete()
 
@@ -332,24 +363,52 @@ window[functionPrefix].wizard = (args...) ->
       ## overrides, only data and event is overridable
       overrideObj = call.fn.overrides overrides
       if Object.keys(overrideObj).length
+
+        ## concat additional urls
+        if call.current.url.length and overrideObj.concatUrls
+          overrideObj.concatUrls.map (url) ->
+            if call.current.url.indexOf(url) is -1
+              call.current.url.push url
+          delete overrideObj.concatUrls
+
+        ## merge data
         if call.current.data and Object.keys(call.current.data).length
           overrideObj.data = Object.assign call.current.data, overrideObj.data
           overrideObj.data = call.fn.removeProperty overrideObj.data
+
+        ## the callback function is the custom prev function instead
+        if typeof overrideObj.callback is 'function'
+          call.current.prev = overrideObj.callback
+          delete overrideObj.callback
+
         call.current = Object.assign call.current, overrideObj
+
       call.wizard.wizard = call.current
 
       ## correct event
       event = overrideObj.event or call.current.event or window.event
 
+      ## custom prev function
+      if typeof call.current.prev is 'function'
+        prevEvent = event
+        prevEvent[attrPrefix+'Wizard'] = call.current
+        prevReturn = call.current.prev prevEvent
+        if prevReturn is false
+          return false
+
       ## get the next url
       currentUrl = call.wizard.getAttribute 'src'
       prevUrlIndex = call.current.url.indexOf(currentUrl) - 1
+
       if prevUrlIndex is -1
         prevUrlIndex = 0
       prevUrl = call.current.url[prevUrlIndex]
+      call.current.src = prevUrl
+      call.current.urlIndex = prevUrlIndex
 
       if call.current.debug
-        console.groupCollapsed '%c'+functionPrefix+'.wizard.prev(event)', 'font-size:1.2em; margin: .6em 0 0; display: block'
+        console.groupCollapsed '%c'+functionPrefix+'.wizard.prev(arguments)', 'font-size:1.2em; margin: .6em 0 0; display: block'
+        console.log 'arguments', overrides
         console.log 'event', event
         console.log 'current', call.current
         console.log 'currentUrl', currentUrl
@@ -359,12 +418,9 @@ window[functionPrefix].wizard = (args...) ->
       if prevUrl
         call.fetch(prevUrlIndex)
           .then (res) =>
-            call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content)).innerHTML = res
+            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content))
+            call.current.fetchTarget.innerHTML = res
             call.always call.wizard
-            if typeof call.current.prev is 'function'
-              prevEvent = event
-              prevEvent[attrPrefix+'Wizard'] = call.current
-              call.current.prev prevEvent
 
       ## prevent additional clicks
       if event.target and event.target.getAttribute('onclick').includes(functionPrefix+'.wizard.prev')
@@ -379,6 +435,7 @@ window[functionPrefix].wizard = (args...) ->
 
     call.always = (element) ->
       call.current = element.wizard
+      call.current.targetElement = element
       if call.current
         if typeof call.current.always is 'function'
           callbackEvent = call.current.event or window.event
@@ -441,9 +498,9 @@ window[functionPrefix].wizard = (args...) ->
 
             call.wizard = doc.getElementById call.wizard.id
             call.current.res = res
+            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content))
+            call.current.fetchTarget.innerHTML = res
             call.wizard.wizard = call.current
-
-            call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content)).innerHTML = res
 
             if typeof call.current.done is 'function'
               doneEvent = call.current.event or window.event

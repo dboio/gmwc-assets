@@ -15482,7 +15482,10 @@ a.thumbnail-club, a.thumbnail-club *, a.thumbnail-club:focus, a.thumbnail-club:f
 
 body.os-wizard-no-scroll {
   position: fixed;
-  overflow: hidden; }
+  overflow: hidden;
+  top: auto;
+  left: 0;
+  right: 0; }
 
 .os-wizard:not(.os-modal) {
   position: fixed;
