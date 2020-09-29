@@ -19,6 +19,7 @@ window[functionPrefix].wizard = (args...) ->
 
   call = @wizard
   if call
+
     call.defaults =
       debug: false or if window._global then window._global.debug else false or wizardEnv.debugConsole and wizardEnv.debugConsole()
       event: window.event,
@@ -75,6 +76,10 @@ window[functionPrefix].wizard = (args...) ->
     defaults = call.defaults
 
     call.fn =
+
+      consoleParam: () =>
+        params = window.location.search.replace('?').split('&')
+        params.includes '_console=true'
       id: (length) ->
         Length = length or 24
         id = ''
@@ -191,6 +196,8 @@ window[functionPrefix].wizard = (args...) ->
               obj.url = [obj.url]
           if obj.data
             obj.data = call.fn.normalizeData obj.data
+          if !obj.debug and call.fn.consoleParam()
+            obj.debug = true
         Object.keys(obj).map (key) ->
           if obj[key] is undefined
             delete obj[key]

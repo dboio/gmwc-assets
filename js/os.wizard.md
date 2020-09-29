@@ -93,9 +93,7 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
     * Define a function to call when all wizard steps are absorbed and the last `next` step is executed. Function will only be performed ones and returns the original event with the `*Wizard` object assigned, ie: `complete: function(event) { var wizardOptions = event.osWizard; }`. **Shorthand** for this property is a simple function in the argument, eg: `*.wizard(function(event) { console.warn('completeEvent', event)})`.
     
 - #### `debug` [boolean]
-    * Default is `false`. When `true`, enables console log reporting.
- 
-    
+    * Default is `false`. When `true`, enables console log reporting. Debug can also be enabled using the url param `_console=true`.
 
 
 ### NEXT and PREV

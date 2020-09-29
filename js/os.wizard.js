@@ -103,6 +103,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       };
       defaults = call.defaults;
       call.fn = {
+        consoleParam: function consoleParam() {
+          var params;
+          params = window.location.search.replace('?').split('&');
+          return params.includes('_console=true');
+        },
         id: function id(length) {
           var Length, charSet, i, id;
           Length = length || 24;
@@ -301,6 +306,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             if (obj.data) {
               obj.data = call.fn.normalizeData(obj.data);
+            }
+
+            if (!obj.debug && call.fn.consoleParam()) {
+              obj.debug = true;
             }
           }
 
