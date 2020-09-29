@@ -6,7 +6,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   /**
    * ***.wizard.js
    * by Christian Fillies
-   * Modified: 9/28/2020
+   * Modified: 9/29/2020
    */
 
   /** Globalized Functions and Prefixes **/
@@ -32,7 +32,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         containerId: 'modalContents',
         modalClasses: false,
         closeButton: function closeButton() {
-          return "<a href='javascript:void(0)' class='".concat(call.current.classes.close, "' onclick='").concat(functionPrefix, ".wizard.close(event)'>x</a>");
+          return "<a href='javascript:void(0)' class='".concat(call.current.classes.close, "' onclick='").concat(functionPrefix, ".wizard.close(event)'><i class='ri ri-close os-unit icon glyphicon glyphicon-remove h3'></i></a>");
         },
         innerHtml: function innerHtml() {
           var backgroundImage, classes, closeButton, style;
@@ -378,9 +378,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           call.current.url[urlIndex] = fetchUrl;
           res = {};
-          fetch(fetchUrl).then(function (x) {
+          fetch(fetchUrl, {
+            mode: 'no-cors'
+          }).then(function (x) {
             var notFound;
             res = x;
+
+            if (call.current.debug) {
+              console.groupCollapsed('%c' + functionPrefix + '.wizard.fetch(urlIndex)', 'font-size:1.2em; margin: .6em 0 0; display: block');
+              console.log('urlIndex', urlIndex);
+              console.log('fetchUrl', fetchUrl);
+              console.log('fetch', fetch);
+              console.log('res', res);
+              console.log('current', call.current);
+              console.groupEnd();
+            }
 
             if (x.ok) {
               res = x.text();
@@ -736,7 +748,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             }
 
             return call.always(call.wizard);
-          }).catch(function () {
+          }).catch(function (x) {
+            if (call.current.debug) {
+              console.error(x, call.current);
+            }
+
             return call.close();
           });
 

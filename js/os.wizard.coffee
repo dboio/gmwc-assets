@@ -1,7 +1,7 @@
 ###*
  * ***.wizard.js
  * by Christian Fillies
- * Modified: 9/28/2020
+ * Modified: 9/29/2020
 ###
 
 
@@ -24,7 +24,7 @@ window[functionPrefix].wizard = (args...) ->
       event: window.event,
       containerId: 'modalContents'
       modalClasses: false
-      closeButton: => "<a href='javascript:void(0)' class='#{call.current.classes.close}' onclick='#{functionPrefix}.wizard.close(event)'>x</a>"
+      closeButton: => "<a href='javascript:void(0)' class='#{call.current.classes.close}' onclick='#{functionPrefix}.wizard.close(event)'><i class='ri ri-close os-unit icon glyphicon glyphicon-remove h3'></i></a>"
       innerHtml: =>
         classes =
           backdrop: call.current.classes.backdrop
@@ -229,9 +229,17 @@ window[functionPrefix].wizard = (args...) ->
           fetchUrl += ampersand + k + '=' + fetchData[k]
       call.current.url[urlIndex] = fetchUrl
       res = {}
-      fetch(fetchUrl)
+      fetch(fetchUrl, { mode: 'no-cors' })
         .then (x) =>
           res = x
+          if call.current.debug
+            console.groupCollapsed '%c'+functionPrefix+'.wizard.fetch(urlIndex)', 'font-size:1.2em; margin: .6em 0 0; display: block'
+            console.log 'urlIndex', urlIndex
+            console.log 'fetchUrl', fetchUrl
+            console.log 'fetch', fetch
+            console.log 'res', res
+            console.log 'current', call.current
+            console.groupEnd()
           if x.ok
             res = x.text()
           else
@@ -509,7 +517,9 @@ window[functionPrefix].wizard = (args...) ->
 
             call.always call.wizard
 
-          .catch () ->
+          .catch (x) ->
+            if call.current.debug
+              console.error x, call.current
             call.close()
 
 
