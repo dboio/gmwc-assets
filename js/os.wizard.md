@@ -92,6 +92,9 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
 - #### `complete` [function]
     * Define a function to call when all wizard steps are absorbed and the last `next` step is executed. Function will only be performed ones and returns the original event with the `*Wizard` object assigned, ie: `complete: function(event) { var wizardOptions = event.osWizard; }`. **Shorthand** for this property is a simple function in the argument, eg: `*.wizard(function(event) { console.warn('completeEvent', event)})`.
     
+- #### `closeButton` [function|boolean]
+    * Function returns the html for the closeButton. **Default** is `closeButton: function() { return "<a href='javascript:void(0)' class='#{call.current.classes.close}' onclick='os.wizard.close(event)'><i class='ri ri-close os-unit os-text-l icon glyphicon glyphicon-remove h3'></i></a>" }`. To remove the close button, simply set to `false`.
+    
 - #### `debug` [boolean]
     * Default is `false`. When `true`, enables console log reporting. Debug can also be enabled using the url param `_console=true`.
 

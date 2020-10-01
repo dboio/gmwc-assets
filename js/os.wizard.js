@@ -6,7 +6,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   /**
    * ***.wizard.js
    * by Christian Fillies
-   * Modified: 9/29/2020
+   * Modified: 10/01/2020
    */
 
   /** Globalized Functions and Prefixes **/
@@ -32,7 +32,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         containerId: 'modalContents',
         modalClasses: false,
         closeButton: function closeButton() {
-          return "<a href='javascript:void(0)' class='".concat(call.current.classes.close, "' onclick='").concat(functionPrefix, ".wizard.close(event)'><i class='ri ri-close os-unit icon glyphicon glyphicon-remove h3'></i></a>");
+          return "<a href='javascript:void(0)' class='".concat(call.current.classes.close, "' onclick='").concat(functionPrefix, ".wizard.close(event)'><i class='ri ri-close os-unit os-text-l icon glyphicon glyphicon-remove h3'></i></a>");
         },
         innerHtml: function innerHtml() {
           var backgroundImage, classes, closeButton, style;
@@ -691,87 +691,90 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       call.build = function (args) {
         var beforeEvent;
         call.current = {};
-        call.current = call.fn.assign(args); //# wizard already exists
+        call.current = call.fn.assign(args);
+        call.current.reopenCount = 0; //# if body exists
 
-        if (call.current.name) {
-          call.wizard = doc.querySelector("[name='".concat(call.current.name, "']"));
-        }
-
-        if (call.wizard) {
-          call.current = call.wizard.wizard;
-          call.current.reopenCount++;
-          call.wizard.wizard = call.current;
-
-          if (call.wizard.classList.contains(call.current.classes.hidden)) {
-            call.wizard.classList.remove(call.current.classes.hidden);
-          }
-
-          call.wizard.classList.add(call.defaults.classes.animation);
-          call.always(call.wizard);
-        } else {
-          if (typeof call.current.before === 'function') {
-            beforeEvent = call.current.event || window.event;
-            beforeEvent[attrPrefix + 'Wizard'] = call.current;
-            call.current.before(beforeEvent);
-          }
-
-          call.wizard = doc.createElement('div');
-
+        if (doc.body) {
+          //# wizard already exists
           if (call.current.name) {
-            call.wizard.setAttribute('name', call.current.name);
+            call.wizard = doc.querySelector("[name='".concat(call.current.name, "']"));
           }
 
-          call.wizard.id = attrPrefix + 'Wizard-' + call.fn.id();
-          call.wizard.classList.add(call.defaults.classes.selector);
-          call.wizard.classList.add('animated');
-          call.wizard.classList.add(call.defaults.classes.animation);
-
-          if (call.defaults.modalClasses) {
-            call.wizard.classList.add(call.defaults.classes.modal.selector);
-          }
-
-          call.wizard.innerHTML = call.defaults.innerHtml();
-          doc.body.appendChild(call.wizard);
-          call.current.reopenCount = 0;
-
-          if (call.current.debug) {
-            console.groupCollapsed('%c' + functionPrefix + '.wizard(arguments)', 'font-size:1.2em; margin: .6em 0 0; display: block');
-            console.log('arguments', args);
-            console.log('current', call.current);
-            console.groupEnd();
-          } //# call the first url in the array
-
-
-          call.fetch(0).then(function (res) {
-            var doneEvent;
-            call.wizard = doc.getElementById(call.wizard.id);
-            call.current.res = res;
-            call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content));
-            call.current.fetchTarget.innerHTML = res;
+          if (call.current && call.current.wizard) {
+            call.current = call.wizard.wizard;
+            call.current.reopenCount++;
             call.wizard.wizard = call.current;
 
-            if (typeof call.current.done === 'function') {
-              doneEvent = call.current.event || window.event;
-              doneEvent[attrPrefix + 'Wizard'] = call.current;
-              call.current.done(doneEvent);
+            if (call.wizard.classList.contains(call.current.classes.hidden)) {
+              call.wizard.classList.remove(call.current.classes.hidden);
             }
 
-            return call.always(call.wizard);
-          }).catch(function (x) {
+            call.wizard.classList.add(call.defaults.classes.animation);
+            call.always(call.wizard);
+          } else {
+            if (typeof call.current.before === 'function') {
+              beforeEvent = call.current.event || window.event;
+              beforeEvent[attrPrefix + 'Wizard'] = call.current;
+              call.current.before(beforeEvent);
+            }
+
+            call.wizard = doc.createElement('div');
+
+            if (call.current.name) {
+              call.wizard.setAttribute('name', call.current.name);
+            }
+
+            call.wizard.id = attrPrefix + 'Wizard-' + call.fn.id();
+            call.wizard.classList.add(call.defaults.classes.selector);
+            call.wizard.classList.add('animated');
+            call.wizard.classList.add(call.defaults.classes.animation);
+
+            if (call.defaults.modalClasses) {
+              call.wizard.classList.add(call.defaults.classes.modal.selector);
+            }
+
+            call.wizard.innerHTML = call.defaults.innerHtml();
+            doc.body.appendChild(call.wizard);
+
             if (call.current.debug) {
-              console.error(x, call.current);
+              console.groupCollapsed('%c' + functionPrefix + '.wizard(arguments)', 'font-size:1.2em; margin: .6em 0 0; display: block');
+              console.log('arguments', args);
+              console.log('current', call.current);
+              console.groupEnd();
+            } //# call the first url in the array
+
+
+            call.fetch(0).then(function (res) {
+              var doneEvent;
+              call.wizard = doc.getElementById(call.wizard.id);
+              call.current.res = res;
+              call.current.fetchTarget = call.wizard.querySelector(call.fn.classSelectors(call.defaults.classes.content));
+              call.current.fetchTarget.innerHTML = res;
+              call.wizard.wizard = call.current;
+
+              if (typeof call.current.done === 'function') {
+                doneEvent = call.current.event || window.event;
+                doneEvent[attrPrefix + 'Wizard'] = call.current;
+                call.current.done(doneEvent);
+              }
+
+              return call.always(call.wizard);
+            }).catch(function (x) {
+              if (call.current.debug) {
+                console.error(x, call.current);
+              }
+
+              return call.close();
+            });
+
+            if (!call.wizard.hasWidhObserver) {
+              call.observeWidth(call.wizard);
             }
-
-            return call.close();
-          });
-
-          if (!call.wizard.hasWidhObserver) {
-            call.observeWidth(call.wizard);
-          }
-        } //# prevent body scroll
+          } //# prevent body scroll
 
 
-        return doc.body.classList.add(call.current.classes.body);
+          return doc.body.classList.add(call.current.classes.body);
+        }
       }; //# default inits
 
 
@@ -784,11 +787,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }; //# init when page has finished loading
 
 
-  if (document.readyState && (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll)) {
-    window[functionPrefix].wizard();
-  } else {
-    document.addEventListener('DOMContentLoaded', window[functionPrefix].wizard);
-  }
+  window[functionPrefix].wizard();
 }).call(void 0);
 
 //# sourceMappingURL=os.wizard.js.map
