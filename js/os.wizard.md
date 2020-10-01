@@ -23,6 +23,13 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
 <!-- shorthands (combineable with object based argument) -->
 <button
     onclick="os.wizard(['/my/first/url', '/my/second/url'], 'My Wizard Name', function(event) { console.warn('completeEvent', event) })">Wizard</button>
+
+<!-- load with page has to be wrapped in a dom ready listener -->
+document.addEventListener('DOMContentLoaded', function() {
+  os.wizard(['/my/first/url', '/my/second/url'], {
+    closeButton: false
+  });
+});
 ```
     
 #### Properties and Arguments
