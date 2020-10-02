@@ -337,3 +337,45 @@
     position: absolute
     top: 0
     right: 0
+
+
+// custom wizard styling
+.wizard-styles
+  .alert
+    padding: 0
+    border-radius: 0
+    border: 0
+    background: transparent
+    color: $color-black
+    transition: all .3s ease
+    &.alert-danger, &.alert-warning, &.alert-success
+      color: $color-red
+      border-left: 3px $color-red solid
+      padding-left: 5px
+    &.alert-warning
+      color: darken($color-orange, 15%)
+      border-color: $color-orange
+    &.alert-success
+      color: darken($color-green, 15%)
+      border-color: $color-green
+  .form-group
+    label
+      font-size: ceil($form-font-size * .85)
+      opacity: .7
+      margin-bottom: 0
+  .form-control
+    background-color: transparent !important
+    border-radius: 0 !important
+    box-shadow: none !important
+    border-top: none !important
+    border-left: none !important
+    border-right: none !important
+    border-color: #979797
+    padding-left: 0
+    padding-right: 0
+    font-size: ceil($form-font-size * 1.14)
+    &:focus, &:active
+      border-color: $color-black
+  .has-error .form-control
+    border-color: $color-red
+

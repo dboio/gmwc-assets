@@ -6,7 +6,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   /**
    * ***.wizard.js
    * by Christian Fillies
-   * Modified: 10/01/2020
+   * Modified: 10/02/2020
    */
 
   /** Globalized Functions and Prefixes **/
@@ -567,7 +567,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } //# prevent additional clicks
 
 
-        if (event.target && event.target.getAttribute('onclick').includes(functionPrefix + '.wizard.next')) {
+        if (event && event.target && typeof event.target.hasAttribute === 'function' && event.target.hasAttribute('onclick') && event.target.getAttribute('onclick').includes(functionPrefix + '.wizard.next')) {
           return event.target.onclick = event.preventDefault();
         }
       };
@@ -652,7 +652,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } //# prevent additional clicks
 
 
-        if (event.target && event.target.getAttribute('onclick').includes(functionPrefix + '.wizard.prev')) {
+        if (event && event.target && typeof event.target.hasAttribute === 'function' && event.target.hasAttribute('onclick') && event.target.getAttribute('onclick').includes(functionPrefix + '.wizard.prev')) {
           return event.target.onclick = event.preventDefault();
         }
       };
@@ -700,7 +700,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             call.wizard = doc.querySelector("[name='".concat(call.current.name, "']"));
           }
 
-          if (call.current && call.current.wizard) {
+          if (call.current && call.wizard) {
+            console.warn('reopen');
             call.current = call.wizard.wizard;
             call.current.reopenCount++;
             call.wizard.wizard = call.current;
@@ -782,7 +783,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         args[_key] = arguments[_key];
       }
 
-      return call.build(args);
+      call.build(args);
+      return call.current;
     }
   }; //# init when page has finished loading
 

@@ -15514,7 +15514,7 @@ body.os-wizard-no-scroll {
   background-position: center center;
   background-size: cover;
   z-index: 104000;
-  min-height: 80vh;
+  min-height: 375px;
   max-height: 80vh;
   min-width: 375px;
   max-width: 375px;
@@ -16284,3 +16284,43 @@ body.os-wizard-no-scroll {
     position: absolute;
     top: 0;
     right: 0; }
+
+.wizard-styles .alert {
+  padding: 0;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  color: #000000;
+  transition: all .3s ease; }
+  .wizard-styles .alert.alert-danger, .wizard-styles .alert.alert-warning, .wizard-styles .alert.alert-success {
+    color: #ec241e;
+    border-left: 3px #ec241e solid;
+    padding-left: 5px; }
+  .wizard-styles .alert.alert-warning {
+    color: #a68000;
+    border-color: #f2bb00; }
+  .wizard-styles .alert.alert-success {
+    color: #48662b;
+    border-color: #6e9c42; }
+
+.wizard-styles .form-group label {
+  font-size: 12px;
+  opacity: .7;
+  margin-bottom: 0; }
+
+.wizard-styles .form-control, .wizard-styles .bootstrap-tagsinput {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-color: #979797;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 16px; }
+  .wizard-styles .form-control:focus, .wizard-styles .bootstrap-tagsinput:focus, .wizard-styles .form-control:active, .wizard-styles .bootstrap-tagsinput:active {
+    border-color: #000000; }
+
+.wizard-styles .has-error .form-control, .wizard-styles .has-error .bootstrap-tagsinput {
+  border-color: #ec241e; }

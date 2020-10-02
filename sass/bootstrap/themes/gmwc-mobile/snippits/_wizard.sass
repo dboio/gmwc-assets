@@ -1,15 +1,11 @@
 $wizard-prefix: os-
 $wizard-z-index: $zindex-modal * 100
 $wizard-max-width: 375px
-$wizard-min-height: 812px
+$wizard-min-height: 375px
 $wizard-unit: 50px
 
 body.#{$wizard-prefix}wizard-no-scroll
-  //position: fixed
   overflow: hidden
-  //top: auto
-  //left: 0
-  //right: 0
 .#{$wizard-prefix}wizard
   &:not(.#{$wizard-prefix}modal)
     position: fixed
@@ -39,7 +35,7 @@ body.#{$wizard-prefix}wizard-no-scroll
     background-position: center center
     background-size: cover
     z-index: $wizard-z-index
-    min-height: 80vh
+    min-height: $wizard-min-height
     max-height: 80vh
     min-width: $wizard-max-width
     max-width: $wizard-max-width

@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     - returns the original arguments that were used to build the widget.
     
 - #### `name` [string]
-    * When a name property is defined, the wizard becomes 're-usable', as the dom is only built once and referred to from then on. **default** is `undefined`, which will build wizards with each event. **Shorthand** for this property is a simple string in the argument, eg: `*.wizard('My great Wizard')`.
+    * When a name property is defined, the wizard becomes 're-usable', as the dom is only built once and referred to from then on. **default** is `undefined`, which will build wizards with each event. **Shorthand** for this property is a simple string in the argument, eg: `*.wizard('My great Wizard')`. When you call this function with a name that already exists, that wizard is re-opened.
     
 - #### `id` [string] (readonly)
     * The ID of the current wizard.

@@ -1,7 +1,7 @@
 ###*
  * ***.wizard.js
  * by Christian Fillies
- * Modified: 10/01/2020
+ * Modified: 10/02/2020
 ###
 
 
@@ -368,10 +368,8 @@ window[functionPrefix].wizard = (args...) ->
         call.complete()
 
       ## prevent additional clicks
-      if event.target and event.target.getAttribute('onclick').includes(functionPrefix+'.wizard.next')
+      if event and event.target and typeof event.target.hasAttribute is 'function' and event.target.hasAttribute('onclick') and event.target.getAttribute('onclick').includes(functionPrefix+'.wizard.next')
         event.target.onclick = event.preventDefault()
-
-
 
     call.prev = (overrides...) ->
       ## overrides, only data and event is overridable
@@ -437,7 +435,7 @@ window[functionPrefix].wizard = (args...) ->
             call.always call.wizard
 
       ## prevent additional clicks
-      if event.target and event.target.getAttribute('onclick').includes(functionPrefix+'.wizard.prev')
+      if event and event.target and typeof event.target.hasAttribute is 'function' and event.target.hasAttribute('onclick') and event.target.getAttribute('onclick').includes(functionPrefix+'.wizard.prev')
         event.target.onclick = event.preventDefault()
 
     call.complete = (event) ->
@@ -471,7 +469,8 @@ window[functionPrefix].wizard = (args...) ->
         if call.current.name
           call.wizard = doc.querySelector("[name='#{call.current.name}']")
 
-        if call.current and call.current.wizard
+        if call.current and call.wizard
+          console.warn 'reopen'
           call.current = call.wizard.wizard
           call.current.reopenCount++
           call.wizard.wizard = call.current
@@ -539,6 +538,7 @@ window[functionPrefix].wizard = (args...) ->
 
     ## default inits
     call.build(args)
+    call.current
 
 
 ## init when page has finished loading
