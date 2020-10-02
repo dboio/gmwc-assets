@@ -439,7 +439,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
 
       call.close = function (e) {
-        var closestWizard, destroy, event;
+        var closestWizard, destroy, event, urlLength;
         destroy = false;
 
         if (e === 'destroy') {
@@ -471,7 +471,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } //# correct event
 
 
-        event = event || call.current.event || window.event;
+        event = event || call.current.event || window.event; //# what if we are on the last page, and the close is pushed,
+        //# needs to destroy
+
+        if (call.current.url) {
+          urlLength = call.current.url.length;
+
+          if (call.current.targetElement) {
+            call.current.src = call.current.targetElement.getAttribute('src');
+          }
+
+          if (urlLength && call.current.src && urlLength > 1) {
+            //# if the url is the last in the array
+            if (call.current.url.indexOf(call.current.src) === urlLength - 1) {
+              destroy = true;
+            }
+          }
+        }
 
         if (call.current.debug) {
           console.groupCollapsed('%c' + functionPrefix + '.wizard.close(event)', 'font-size:1.2em; margin: .6em 0 0; display: block');
@@ -701,7 +717,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
 
           if (call.current && call.wizard) {
-            console.warn('reopen');
             call.current = call.wizard.wizard;
             call.current.reopenCount++;
             call.wizard.wizard = call.current;

@@ -3,7 +3,7 @@
 Script to activate and build modal type wizards.
 
 ## Functions
-General wizard script is bound under the environment, ie `rocket` or `os`. So the following functions are dot-chained, ie `os.wizard`.
+General wizard script is bound under the environment, ie `rocket` or `os`. So the following functions are dot-chained, ie `os.wizard`. The initial call will build a wizard or re-open an existing wizard. Also it returns the full object of properties that are used to build the wizard.
 
 
 ### INITIAL Call (Build)
@@ -23,6 +23,10 @@ General wizard script is bound under the environment, ie `rocket` or `os`. So th
 <!-- shorthands (combineable with object based argument) -->
 <button
     onclick="os.wizard(['/my/first/url', '/my/second/url'], 'My Wizard Name', function(event) { console.warn('completeEvent', event) })">Wizard</button>
+
+<!-- Re-Open previous wizard -->
+<button
+    onclick="os.wizard('My Wizard Name')">Reopen Wizard</button>
 
 <!-- load with page has to be wrapped in a dom ready listener -->
 document.addEventListener('DOMContentLoaded', function() {
@@ -145,7 +149,7 @@ os.wizard.close('destroy');
     * Pass in the current event handler. The `event.target` HTMLElement is used to find the closest open widget.
     
 - #### `'destroy'` [string]
-    * the argument `'destroy'` will remove the wizard HTMLElement from the dom tree.
+    * the argument `'destroy'` will remove the wizard HTMLElement from the dom tree. When the last page of the wizard is reached, and the close is executed, the `destroy` is automatically performed. If a wizard only has a single URL, the close will not destroy by default, as a single page is not treated as the last page.
 
 
 

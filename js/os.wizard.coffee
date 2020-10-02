@@ -292,6 +292,17 @@ window[functionPrefix].wizard = (args...) ->
       ## correct event
       event = event or call.current.event or window.event
 
+      ## what if we are on the last page, and the close is pushed,
+      ## needs to destroy
+      if call.current.url
+        urlLength = call.current.url.length
+        if call.current.targetElement
+          call.current.src = call.current.targetElement.getAttribute('src')
+        if urlLength and call.current.src and urlLength > 1
+          ## if the url is the last in the array
+          if call.current.url.indexOf(call.current.src) is (urlLength - 1)
+            destroy = true
+
       if call.current.debug
         console.groupCollapsed '%c'+functionPrefix+'.wizard.close(event)', 'font-size:1.2em; margin: .6em 0 0; display: block'
         console.log 'event', event
@@ -470,7 +481,6 @@ window[functionPrefix].wizard = (args...) ->
           call.wizard = doc.querySelector("[name='#{call.current.name}']")
 
         if call.current and call.wizard
-          console.warn 'reopen'
           call.current = call.wizard.wizard
           call.current.reopenCount++
           call.wizard.wizard = call.current
